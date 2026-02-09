@@ -1,0 +1,119 @@
+{
+  "Common": {
+    "save": "บันทึก",
+    "cancel": "ยกเลิก",
+    "delete": "ลบ",
+    "edit": "แก้ไข",
+    "add": "เพิ่ม",
+    "required": "จำเป็น",
+    "actions": "จัดการ"
+  },
+  "Overview": {
+    "title": "ภาพรวมระบบ (Overview)",
+    "subtitle": "สรุปข้อมูลสถานะทรัพยากรบุคคลขององค์กรแบบเรียลไทม์",
+    "stats": {
+        "totalEmployees": "พนักงานทั้งหมด",
+        "presentToday": "เข้างานวันนี้",
+        "onLeaveToday": "ลางาน",
+        "pendingApprovals": "รออนุมัติ"
+    },
+    "attendanceTrend": "แนวโน้มการเข้างาน (7 วันล่าสุด)",
+    "recentActivities": "กิจกรรมล่าสุด",
+    "pendingTasks": "งานและคำขอรออนุมัติ",
+    "viewAll": "ดูทั้งหมด"
+  },
+  "Sidebar": {
+    "dashboard": "แดชบอร์ด",
+    "employeeManagement": "จัดการพนักงาน",
+    "organization": "โครงสร้างองค์กร",
+    "chainOfCommand": "สายบังคับบัญชา",
+    "masterData": "ข้อมูลหลัก (Master Data)",
+    "timeAttendance": "เวลาและการเข้างาน",
+    "leaveManagement": "การลา",
+    "payrollBenefits": "เงินเดือนและสวัสดิการ",
+    "settings": "ตั้งค่า"
+  },
+  "Auth": {
+    "welcomeBack": "ยินดีต้อนรับกลับ",
+    "signInToAccount": "เข้าสู่ระบบของคุณ",
+    "username": "ชื่อผู้ใช้",
+    "password": "รหัสผ่าน",
+    "signIn": "เข้าสู่ระบบ",
+    "forgotPassword": "ลืมรหัสผ่าน?",
+    "testCredentials": "รหัสผ่านสำหรับทดสอบ"
+  },
+  "Employee": {
+    "title": "จัดการพนักงาน",
+    "subtitle": "จัดการข้อมูลพนักงาน บทบาท และสถานะ",
+    "addEmployee": "เพิ่มพนักงาน",
+    "searchPlaceholder": "ค้นหาด้วยชื่อ หรือ รหัส...",
+    "table": {
+        "employee": "พนักงาน",
+        "position": "ตำแหน่ง",
+        "company": "บริษัท / แผนก",
+        "status": "สถานะ",
+        "joined": "วันที่เริ่มงาน"
+    },
+    "form": {
+        "basicInfo": "ข้อมูลพื้นฐาน",
+        "idCard": "เลขบัตรประชาชน",
+        "employeeId": "รหัสพนักงาน",
+        "firstName": "ชื่อจริง",
+        "lastName": "นามสกุล",
+        "company": "บริษัท",
+        "department": "แผนก",
+        "position": "ตำแหน่ง",
+        "joinDate": "วันที่เริ่มงาน"
+    }
+  },
+  "Organization": {
+      "title": "โครงสร้างองค์กร",
+      "subtitle": "จัดการบริษัทและบริษัทย่อย",
+      "addOrganization": "เพิ่มองค์กร",
+      "empty": "ไม่พบข้อมูลองค์กร",
+      "emptySubtitle": "เริ่มต้นด้วยการสร้างบริษัทหรือบริษัทย่อยใหม่"
+  },
+  "Attendance": {
+    "title": "ตรวจสอบตารางเวลาพนักงาน",
+    "filterMonth": "เดือน",
+    "filterYear": "ปี",
+    "btnHolidayType": "ประเภทวันหยุด",
+    "btnRecalculate": "คำนวณตารางทำงานใหม่",
+    "btnSearch": "ค้นหา",
+    "colEmployee": "พนักงาน",
+    "colTotal": "รวม",
+    "colAction": "สิทธิ์หยุด",
+    "statusNormal": "N",
+    "statusHoliday": "PH",
+    "statusLeave": "V",
+    "viewDetail": "ดู"
+  },
+  "ChainOfCommand": {
+    "title": "สายบังคับบัญชา",
+    "subtitle": "โครงสร้างผังองค์กรและลำดับขั้นการบังคับบัญชา",
+    "btnAddNode": "เพิ่มระดับสูงสุด",
+    "reset": "รีเซ็ต",
+    "search": "ค้นหา"
+  },
+  "MasterData": {
+    "title": "จัดการข้อมูลหลัก (Master Data)",
+    "subtitle": "ตั้งค่าข้อมูลพื้นฐานของระบบและระวางโครงสร้างข้อมูล",
+    "categories": {
+      "recruitment": "ข้อมูลผู้มาสมัครงาน/สัมภาษณ์งาน",
+      "employee": "ข้อมูลพนักงาน",
+      "employeeGroup": "ข้อมูลกลุ่มพนักงาน",
+      "employeeType": "ข้อมูลประเภทพนักงาน",
+      "company": "ข้อมูลบริษัท/องค์กร",
+      "unit": "ข้อมูลหน่วยงาน",
+      "department": "ข้อมูลแผนก",
+      "position": "ข้อมูลตำแหน่ง",
+      "jobDescription": "ข้อมูลงาน / Job Description",
+      "leaveType": "ข้อมูลประเภทการลา/หยุด",
+      "otType": "ข้อมูลประเภท OT",
+      "user": "ข้อมูลผู้ใช้งาน",
+      "permission": "ข้อมูลสิทธิ์การใช้งาน",
+      "workingShift": "ตารางกะทำงาน",
+      "companyHoliday": "วันหยุดบริษัท"
+    }
+  }
+}

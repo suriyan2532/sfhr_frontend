@@ -1,0 +1,119 @@
+{
+  "Common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "required": "Required",
+    "actions": "Actions"
+  },
+  "Overview": {
+    "title": "Dashboard Overview",
+    "subtitle": "Real-time summary of your organization's HR status.",
+    "stats": {
+        "totalEmployees": "Total Employees",
+        "presentToday": "Present Today",
+        "onLeaveToday": "On Leave",
+        "pendingApprovals": "Pending Approvals"
+    },
+    "attendanceTrend": "Attendance Trend (Last 7 Days)",
+    "recentActivities": "Recent Activities",
+    "pendingTasks": "Pending Tasks & Approvals",
+    "viewAll": "View All"
+  },
+  "Sidebar": {
+    "dashboard": "Dashboard",
+    "employeeManagement": "Employee Management",
+    "organization": "Organization",
+    "chainOfCommand": "Chain of Command",
+    "masterData": "Master Data",
+    "timeAttendance": "Time & Attendance",
+    "leaveManagement": "Leave Management",
+    "payrollBenefits": "Payroll & Benefits",
+    "settings": "Settings"
+  },
+  "Auth": {
+    "welcomeBack": "Welcome Back",
+    "signInToAccount": "Sign in to your account",
+    "username": "Username",
+    "password": "Password",
+    "signIn": "Sign In",
+    "forgotPassword": "Forgot your password?",
+    "testCredentials": "Test Credentials"
+  },
+  "Employee": {
+    "title": "Employee Management",
+    "subtitle": "Manage active employees, roles, and status.",
+    "addEmployee": "Add Employee",
+    "searchPlaceholder": "Search by name or ID...",
+    "table": {
+        "employee": "Employee",
+        "position": "Position",
+        "company": "Company / Dept",
+        "status": "Status",
+        "joined": "Joined"
+    },
+    "form": {
+        "basicInfo": "Basic Information",
+        "idCard": "ID Card (National ID)",
+        "employeeId": "Employee ID",
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "company": "Company",
+        "department": "Department",
+        "position": "Position",
+        "joinDate": "Join Date"
+    }
+  },
+  "Organization": {
+      "title": "Organization",
+      "subtitle": "Manage companies and subsidiaries.",
+      "addOrganization": "Add Organization",
+      "empty": "No organizations",
+      "emptySubtitle": "Get started by creating a new company or subsidiary."
+  },
+  "Attendance": {
+    "title": "Employee Attendance Table Audit",
+    "filterMonth": "Month",
+    "filterYear": "Year",
+    "btnHolidayType": "Holiday Types",
+    "btnRecalculate": "Recalculate",
+    "btnSearch": "Search",
+    "colEmployee": "Employee",
+    "colTotal": "Total",
+    "colAction": "Action",
+    "statusNormal": "N",
+    "statusHoliday": "PH",
+    "statusLeave": "V",
+    "viewDetail": "View"
+  },
+  "ChainOfCommand": {
+    "title": "Chain of Command",
+    "subtitle": "Organization structure and reporting lines",
+    "btnAddNode": "Add Top Level",
+    "reset": "Reset",
+    "search": "Search"
+  },
+  "MasterData": {
+    "title": "Master Data Configuration",
+    "subtitle": "Manage core system entities and configurations",
+    "categories": {
+      "recruitment": "Recruitment & Interviews",
+      "employee": "Employee Information",
+      "employeeGroup": "Employee Groups",
+      "employeeType": "Employee Types",
+      "company": "Company / Organization",
+      "unit": "Units / Agencies",
+      "department": "Departments",
+      "position": "Positions",
+      "jobDescription": "Job Descriptions",
+      "leaveType": "Leave Types",
+      "otType": "OT Types",
+      "user": "Users",
+      "permission": "Permissions",
+      "workingShift": "Working Shifts",
+      "companyHoliday": "Company Holidays"
+    }
+  }
+}

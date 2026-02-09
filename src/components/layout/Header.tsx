@@ -1,33 +1,121 @@
-import { Button } from "@/components/ui/button";
-import { Bell, Search } from "lucide-react";
-import { Input } from "@/components/ui/input";
+'use client';
 
-export function Header() {
+import { 
+  Bell, 
+  Search, 
+  Menu,
+  ChevronDown,
+  User 
+} from 'lucide-react';
+import { useState } from 'react';
+import { signOut } from 'next-auth/react'; // Client-side sign out? Or use server action?
+import LanguageSwitcher from '../common/LanguageSwitcher';
+// Better to use a form for signout or client side wrapper. For now, let's just make UI.
+
+interface HeaderProps {
+  onMenuClick: () => void;
+  user?: {
+    name?: string | null;
+    email?: string | null;
+    image?: string | null;
+    role?: string;
+  };
+}
+
+export function Header({ onMenuClick, user }: HeaderProps) {
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+
   return (
-    <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b bg-background/95 px-6 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
-        <form className="ml-auto flex-1 sm:flex-initial">
-          <div className="relative">
-            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-            <Input
-              type="search"
+    <header className="sticky top-0 z-40 bg-white border-b border-gray-200 h-16">
+      <div className="flex items-center justify-between h-full px-4 sm:px-6 lg:px-8">
+        
+        {/* Left: Mobile Menu & Search */}
+        <div className="flex items-center gap-4">
+          <button
+            type="button"
+            className="md:hidden -ml-2 p-2 text-gray-500 hover:text-gray-700 rounded-md"
+            onClick={onMenuClick}
+          >
+            <span className="sr-only">Open sidebar</span>
+            <Menu className="h-6 w-6" />
+          </button>
+
+          <div className="hidden sm:flex items-center max-w-xs relative text-gray-400 focus-within:text-gray-600">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <Search className="h-5 w-5" />
+            </div>
+            <input
+              name="search"
+              id="search"
+              className="block w-full pl-10 pr-3 py-1.5 border border-transparent rounded-md leading-5 bg-gray-50 text-gray-900 placeholder-gray-500 focus:outline-none focus:bg-white focus:border-gray-300 focus:ring-0 sm:text-sm transition-colors"
               placeholder="Search..."
-              className="pl-8 sm:w-[300px] md:w-[200px] lg:w-[300px]"
+              type="search"
             />
           </div>
-        </form>
-        <Button variant="ghost" size="icon" className="rounded-full">
-          <Bell className="h-5 w-5" />
-          <span className="sr-only">Toggle notifications</span>
-        </Button>
-        <div className="flex items-center gap-2">
-            <div className="h-8 w-8 rounded-full bg-zinc-200 flex items-center justify-center font-bold text-xs">
-                JD
-            </div>
-            <div className="hidden sm:block text-sm">
-                <p className="font-medium">John Doe</p>
-                <p className="text-xs text-muted-foreground">HR Manager</p>
-            </div>
+        </div>
+
+        {/* Right: Notifications & Profile */}
+        <div className="flex items-center gap-4">
+          <LanguageSwitcher />
+
+          <button className="p-2 text-gray-400 hover:text-gray-500 rounded-full hover:bg-gray-100 transition-colors relative">
+            <span className="sr-only">View notifications</span>
+            <Bell className="h-6 w-6" />
+            <span className="absolute top-2 right-2 block h-2 w-2 rounded-full bg-red-400 ring-2 ring-white" />
+          </button>
+
+          {/* Profile Dropdown */}
+          <div className="relative">
+            <button 
+              className="flex items-center gap-2 max-w-xs rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 p-1 pl-2 hover:bg-gray-50 transition-colors"
+              onClick={() => setIsProfileOpen(!isProfileOpen)}
+            >
+              <div className="flex flex-col items-end hidden sm:block">
+                <span className="text-sm font-medium text-gray-900">{user?.name || 'User'}</span>
+                <span className="text-xs text-gray-500">{user?.role || 'Employee'}</span>
+              </div>
+              <div className="h-8 w-8 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-700">
+                {user?.image ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                   <img className="h-8 w-8 rounded-full" src={user.image} alt="" />
+                ) : (
+                   <User className="h-5 w-5" />
+                )}
+              </div>
+              <ChevronDown className="h-4 w-4 text-gray-400" />
+            </button>
+
+            {/* Dropdown Menu */}
+            {isProfileOpen && (
+              <div className="absolute right-0 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                <div className="px-4 py-2 border-b border-gray-100 sm:hidden">
+                    <p className="text-sm font-medium text-gray-900">{user?.name}</p>
+                    <p className="text-xs text-gray-500">{user?.email}</p>
+                </div>
+                <a
+                  href="#"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  Your Profile
+                </a>
+                <a
+                  href="#"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  Settings
+                </a>
+                <a
+                  href="/api/auth/signout" // Simple fallback
+                  className="block px-4 py-2 text-sm text-red-600 hover:bg-red-50"
+                  onClick={(e) => {
+                      // Optional: handle client side transition or just let link work
+                  }}
+                >
+                  Sign out
+                </a>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </header>
