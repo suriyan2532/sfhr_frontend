@@ -21,7 +21,7 @@ export function PositionForm({ departments }: { departments: SelectOption[] }) {
     handleSubmit,
     formState: { errors },
   } = useForm<PositionFormValues>({
-    resolver: zodResolver(positionSchema),
+    resolver: zodResolver(positionSchema) as any,
   });
 
   const onSubmit = async (data: PositionFormValues) => {

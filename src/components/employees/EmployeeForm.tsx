@@ -27,7 +27,7 @@ export function EmployeeForm({ departments, positions, companies, units, working
     formState: { errors, isSubmitting },
     setError,
   } = useForm<EmployeeFormValues>({
-    resolver: zodResolver(employeeSchema),
+    resolver: zodResolver(employeeSchema) as any,
     defaultValues: {
       status: 'PROBATION',
       positionIds: [],

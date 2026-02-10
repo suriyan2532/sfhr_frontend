@@ -24,6 +24,9 @@ ENV NEXT_TELEMETRY_DISABLED 1
 # Generate Prisma Client
 RUN npx prisma generate
 
+# Type Check
+RUN npm run type-check
+
 RUN npm run build
 
 # Production image, copy all the files and run next

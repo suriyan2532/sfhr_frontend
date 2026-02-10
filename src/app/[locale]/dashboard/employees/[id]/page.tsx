@@ -1,16 +1,20 @@
 import { prisma } from '@/lib/prisma';
-import { getEmployee } from '@/lib/actions/employee-actions';
 import { notFound } from 'next/navigation';
 import { Link } from '@/navigation';
-import { ArrowLeft, Mail, Phone, MapPin, Building2, Calendar, User, Briefcase } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 
 export default async function EmployeeDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const employee = await prisma.employee.findUnique({
     where: { id },
     include: {
+      person: true,
       department: true,
-      position: true,
+      positions: {
+        include: {
+            position: true
+        }
+      },
       company: true,
     },
   });
@@ -41,7 +45,7 @@ export default async function EmployeeDetailPage({ params }: { params: Promise<{
           <dl className="sm:divide-y sm:divide-gray-200">
             <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
               <dt className="text-sm font-medium text-gray-500">Full Name</dt>
-              <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{employee.firstName} {employee.lastName}</dd>
+              <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{employee.person.firstName} {employee.person.lastName}</dd>
             </div>
             <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
               <dt className="text-sm font-medium text-gray-500">Employee ID</dt>
@@ -49,11 +53,11 @@ export default async function EmployeeDetailPage({ params }: { params: Promise<{
             </div>
             <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
               <dt className="text-sm font-medium text-gray-500">Department</dt>
-              <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{employee.department.name}</dd>
+              <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{employee.department?.name}</dd>
             </div>
             <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
               <dt className="text-sm font-medium text-gray-500">Position</dt>
-              <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{employee.position.title}</dd>
+              <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{employee.positions[0]?.position.title}</dd>
             </div>
              <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
               <dt className="text-sm font-medium text-gray-500">Join Date</dt>
