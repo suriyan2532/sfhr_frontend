@@ -74,7 +74,7 @@ export async function EmployeeTable({ employees }: EmployeeTableProps) {
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                 <div className="flex justify-end gap-2">
-                    <Link href={`/dashboard/employees/${employee.id}`} className="text-indigo-600 hover:text-indigo-900">
+                    <Link href={`/employees/${employee.id}`} className="text-indigo-600 hover:text-indigo-900">
                         <Pencil className="h-4 w-4" />
                     </Link>
                     <form action={async () => {

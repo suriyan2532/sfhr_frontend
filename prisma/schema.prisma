@@ -476,3 +476,12 @@ model BenefitClaim {
   createdAt     DateTime    @default(now())
   updatedAt     DateTime    @updatedAt
 }
+
+model SystemConfig {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  value     String
+  category  String?  // e.g. "GENERAL", "ATTENDANCE"
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

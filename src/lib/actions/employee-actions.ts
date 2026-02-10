@@ -124,8 +124,8 @@ export async function createEmployee(formData: FormData) {
     };
   }
 
-  revalidatePath('/dashboard/employees');
-  redirect('/dashboard/employees');
+  revalidatePath('/employees');
+  redirect('/employees');
 }
 
 export async function deleteEmployee(id: string) {
@@ -137,7 +137,7 @@ export async function deleteEmployee(id: string) {
         deletedAt: new Date()
       },
     });
-    revalidatePath('/dashboard/employees');
+    revalidatePath('/employees');
     return { message: 'Deleted Employee.' };
   } catch (error) {
     return { message: 'Database Error: Failed to Delete Employee.' };

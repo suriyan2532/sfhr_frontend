@@ -78,7 +78,7 @@ export async function createLeaveRequest(formData: FormData) {
         status: 'PENDING',
       },
     });
-    revalidatePath('/dashboard/leaves');
+    revalidatePath('/leaves');
     return { message: 'Leave request submitted successfully' };
   } catch (error) {
     console.error('Failed to create leave request:', error);
@@ -92,7 +92,7 @@ export async function cancelLeaveRequest(requestId: string) {
             where: { id: requestId },
             data: { status: 'CANCELLED' }
         });
-        revalidatePath('/dashboard/leaves');
+        revalidatePath('/leaves');
         return { message: 'Leave request cancelled' };
     } catch (error) {
         return { message: 'Failed to cancel request' };

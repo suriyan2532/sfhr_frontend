@@ -204,7 +204,7 @@ export function EmployeeForm({ departments, positions, companies, units, working
         </div>
 
         <div className="pt-6 flex justify-end gap-3">
-           <Link href="/dashboard/employees">
+           <Link href="/employees">
               <GlassButton type="button" variant="secondary">{tCommon('cancel')}</GlassButton>
            </Link>
           <GlassButton type="submit" isLoading={isSubmitting}>

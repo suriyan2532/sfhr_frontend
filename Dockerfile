@@ -33,6 +33,9 @@ RUN npm run build
 FROM base AS runner
 WORKDIR /app
 
+# Install dependencies for Prisma
+RUN apk add --no-cache libc6-compat openssl
+
 ENV NODE_ENV production
 # Uncomment the following line in case you want to disable telemetry during runtime.
 ENV NEXT_TELEMETRY_DISABLED 1
@@ -50,6 +53,10 @@ RUN chown nextjs:nodejs .next
 # https://nextjs.org/docs/advanced-features/output-file-tracing
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+COPY --from=builder /app/prisma ./prisma
+
+# Install prisma globally or ensure it's available for migration
+RUN npm install prisma
 
 USER nextjs
 

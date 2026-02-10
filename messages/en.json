@@ -246,5 +246,41 @@
     "cancel": "Cancel",
     "submit": "Submit Request",
     "noProfileLinked": "Your account is not linked to any employee profile. Please contact HR."
+  },
+  "Settings": {
+    "title": "System Settings",
+    "subtitle": "Manage all system configurations and master data.",
+    "savedSuccessfully": "Settings saved successfully.",
+    "mins": "mins",
+    "tabs": {
+        "general": "General",
+        "workingConditions": "Working Conditions",
+        "masterData": "Master Data"
+    },
+    "general": {
+        "title": "General Settings",
+        "description": "Configure basic system information.",
+        "appName": "Application Name",
+        "dateFormat": "Date Format",
+        "defaultLanguage": "Default Language"
+    },
+    "workingConditions": {
+        "title": "Working Conditions",
+        "description": "Set up standard working days and hours.",
+        "standardWorkDays": "Standard Working Days",
+        "startTime": "Work Start Time",
+        "endTime": "Work End Time",
+        "lateThreshold": "Late Threshold",
+        "lateThresholdDesc": "Minutes after start time before marked as late."
+    },
+    "days": {
+        "monday": "Mon",
+        "tuesday": "Tue",
+        "wednesday": "Wed",
+        "thursday": "Thu",
+        "friday": "Fri",
+        "saturday": "Sat",
+        "sunday": "Sun"
+    }
   }
 }

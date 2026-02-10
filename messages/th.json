@@ -250,5 +250,41 @@
     "cancel": "ยกเลิก",
     "submit": "ยืนยันการขอลา",
     "noProfileLinked": "บัญชีผู้ใช้นี้ยังไม่ได้เชื่อมโยงกับข้อมูลพนักงาน กรุณาติดต่อฝ่ายบุคคล"
+  },
+  "Settings": {
+    "title": "ตั้งค่าระบบ",
+    "subtitle": "จัดการการตั้งค่าระบบและข้อมูลหลักทั้งหมด",
+    "savedSuccessfully": "บันทึกการตั้งค่าเรียบร้อยแล้ว",
+    "mins": "นาที",
+    "tabs": {
+        "general": "ข้อมูลทั่วไป",
+        "workingConditions": "เงื่อนไขการทำงาน",
+        "masterData": "ข้อมูลหลัก"
+    },
+    "general": {
+        "title": "ตั้งค่าทั่วไป",
+        "description": "กำหนดข้อมูลพื้นฐานของระบบ",
+        "appName": "ชื่อแอปพลิเคชัน",
+        "dateFormat": "รูปแบบวันที่",
+        "defaultLanguage": "ภาษาเริ่มต้น"
+    },
+    "workingConditions": {
+        "title": "เงื่อนไขการทำงาน",
+        "description": "กำหนดวันและเวลาทำงานมาตรฐาน",
+        "standardWorkDays": "วันทำงานมาตรฐาน",
+        "startTime": "เวลาเข้างาน",
+        "endTime": "เวลาเลิกงาน",
+        "lateThreshold": "เกณฑ์สาย",
+        "lateThresholdDesc": "จำนวนนาทีหลังจากเวลาเข้างานที่จะถูกนับว่าสาย"
+    },
+    "days": {
+        "monday": "จันทร์",
+        "tuesday": "อังคาร",
+        "wednesday": "พุธ",
+        "thursday": "พฤหัสบดี",
+        "friday": "ศุกร์",
+        "saturday": "เสาร์",
+        "sunday": "อาทิตย์"
+    }
   }
 }

@@ -25,14 +25,14 @@ export function Sidebar({ isOpen, onClose }: { isOpen: boolean; onClose: () => v
 
   const navigation = [
     { name: t('dashboard'), href: '/dashboard', icon: LayoutDashboard },
-    { name: t('employeeManagement'), href: '/dashboard/employees', icon: Users },
-    { name: t('organization'), href: '/dashboard/organization', icon: Building2 },
-    { name: t('chainOfCommand'), href: '/dashboard/chain-of-command', icon: GitGraph },
-    { name: t('masterData'), href: '/dashboard/settings/master', icon: Settings },
-    { name: t('timeAttendance'), href: '/dashboard/attendance', icon: Clock },
-    { name: t('leaveManagement'), href: '/dashboard/leaves', icon: CalendarDays },
+    { name: t('employeeManagement'), href: '/employees', icon: Users },
+    { name: t('organization'), href: '/organization', icon: Building2 },
+    { name: t('chainOfCommand'), href: '/chain-of-command', icon: GitGraph },
+    { name: t('masterData'), href: '/settings/master', icon: Settings },
+    { name: t('timeAttendance'), href: '/attendance', icon: Clock },
+    { name: t('leaveManagement'), href: '/leaves', icon: CalendarDays },
     { name: t('benefits'), href: '/dashboard/benefits', icon: Banknote },
-    { name: t('settings'), href: '/dashboard/settings', icon: Settings },
+    { name: t('settings'), href: '/settings', icon: Settings },
   ];
 
   return (

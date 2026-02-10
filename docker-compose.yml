@@ -22,9 +22,10 @@ services:
     restart: always
     ports:
       - "3000:3000"
+    command: sh -c "npx prisma migrate deploy && node server.js"
     environment:
       # Use the service name 'db' as the hostname
-      DATABASE_URL: postgresql://postgres:postgrespassword@db:5433/sfhr_db
+      DATABASE_URL: postgresql://postgres:postgrespassword@db:5432/sfhr_db
       # You should generate a strong secret for production
       AUTH_SECRET: ${AUTH_SECRET}
       # NextAuth URL needs to be set for production

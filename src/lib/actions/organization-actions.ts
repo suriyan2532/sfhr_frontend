@@ -91,8 +91,8 @@ export async function createCompany(formData: FormData) {
         return { message: 'Database Error: Failed to Create Company.' };
     }
 
-    revalidatePath('/dashboard/organization');
-    redirect('/dashboard/organization');
+    revalidatePath('/organization');
+    redirect('/organization');
 }
 
 export async function updateCompany(id: string, formData: FormData) {
@@ -124,8 +124,8 @@ export async function updateCompany(id: string, formData: FormData) {
         return { message: 'Database Error: Failed to Update Company.' };
     }
 
-    revalidatePath('/dashboard/organization');
-    redirect('/dashboard/organization');
+    revalidatePath('/organization');
+    redirect('/organization');
 }
 
 
@@ -135,8 +135,8 @@ export async function deleteCompany(id: string) {
             where: { id },
             data: { isDeleted: true, deletedAt: new Date() }
         });
-        revalidatePath('/dashboard/organization');
-        revalidatePath('/dashboard/settings/master/company'); // Revalidate both
+        revalidatePath('/organization');
+        revalidatePath('/settings/master/company'); // Revalidate both
         return { message: 'Deleted Company.' };
     } catch (error) {
         return { message: 'Failed to Delete Company.' };
@@ -202,8 +202,8 @@ export async function createUnit(formData: FormData) {
         return { message: 'Database Error: Failed to Create Unit.' };
     }
 
-    revalidatePath('/dashboard/settings/master/unit');
-    redirect('/dashboard/settings/master/unit');
+    revalidatePath('/settings/master/unit');
+    redirect('/settings/master/unit');
 }
 
 export async function deleteUnit(id: string) {
@@ -212,7 +212,7 @@ export async function deleteUnit(id: string) {
             where: { id },
             data: { isDeleted: true, deletedAt: new Date() }
         });
-        revalidatePath('/dashboard/settings/master/unit');
+        revalidatePath('/settings/master/unit');
         return { message: 'Deleted Unit.' };
     } catch (error) {
         return { message: 'Failed to Delete Unit.' };
@@ -279,8 +279,8 @@ export async function createDepartment(formData: FormData) {
         return { message: 'Failed to Create Department.' };
     }
 
-    revalidatePath('/dashboard/settings/master/department');
-    redirect('/dashboard/settings/master/department');
+    revalidatePath('/settings/master/department');
+    redirect('/settings/master/department');
 }
 
 export async function deleteDepartment(id: string) {
@@ -289,7 +289,7 @@ export async function deleteDepartment(id: string) {
             where: { id },
             data: { isDeleted: true, deletedAt: new Date() }
         });
-        revalidatePath('/dashboard/settings/master/department');
+        revalidatePath('/settings/master/department');
         return { message: 'Deleted Department.' };
     } catch (error) {
         return { message: 'Failed to Delete Department.' };
@@ -355,8 +355,8 @@ export async function createPosition(formData: FormData) {
         return { message: 'Failed to Create Position.' };
     }
 
-    revalidatePath('/dashboard/settings/master/position');
-    redirect('/dashboard/settings/master/position');
+    revalidatePath('/settings/master/position');
+    redirect('/settings/master/position');
 }
 
 export async function deletePosition(id: string) {
@@ -365,7 +365,7 @@ export async function deletePosition(id: string) {
             where: { id },
             data: { isDeleted: true, deletedAt: new Date() }
         });
-        revalidatePath('/dashboard/settings/master/position');
+        revalidatePath('/settings/master/position');
         return { message: 'Deleted Position.' };
     } catch (error) {
         return { message: 'Failed to Delete Position.' };

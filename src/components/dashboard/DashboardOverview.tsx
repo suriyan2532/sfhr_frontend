@@ -119,17 +119,18 @@ export async function DashboardOverview({ data }: OverviewProps) {
                 <div className="space-y-8">
                     <ActivityList activities={activities} />
                     
+
                     <div className="bg-white dark:bg-[#252525] p-6 rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm dark:shadow-none">
                         <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">{t('sections.quickLinks')}</h3>
                         <div className="grid grid-cols-1 gap-3">
                             {[
-                                { label: t('links.requestLeave'), href: '/dashboard/leaves' },
-                                { label: t('links.employeeList'), href: '/dashboard/employees' },
-                                { label: t('links.attendance'), href: '/dashboard/attendance' },
-                                { label: t('links.settings'), href: '/dashboard/settings/master' }
+                                { label: t('links.requestLeave'), href: '/leaves' },
+                                { label: t('links.employeeList'), href: '/employees' },
+                                { label: t('links.organization'), href: '/organization' },
+                                { label: t('links.settings'), href: '/settings/master' }
                             ].map((link) => (
-                                <Link 
-                                    key={link.href} 
+                                <Link
+                                    key={link.href}
                                     href={link.href}
                                     className="flex items-center justify-between p-3 rounded-xl hover:bg-gray-50 dark:hover:bg-white/5 transition-colors border border-transparent hover:border-gray-100 dark:hover:border-white/10 text-sm font-medium text-gray-700 dark:text-gray-300"
                                 >

@@ -80,7 +80,7 @@ export function CompanyTable({ companies }: CompanyTableProps) {
           <div className="-mt-px flex divide-x divide-gray-200 border-t border-gray-200">
             <div className="w-0 flex-1 flex">
               <Link
-                href={`/dashboard/organization/${company.id}`}
+                href={`/organization/${company.id}`}
                 className="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-gray-500 hover:bg-gray-50 transition-colors"
                 title={t('edit')}
               >
