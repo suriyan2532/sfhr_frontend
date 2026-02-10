@@ -21,9 +21,38 @@
     "chainOfCommand": "Chain of Command",
     "masterData": "Master Data",
     "timeAttendance": "Time Attendance",
-    "leaveManagement": "Leave Management",
-    "payrollBenefits": "Payroll & Benefits",
+    "leaveManagement": "Leaves",
+    "benefits": "Benefits",
     "settings": "Settings"
+  },
+  "Benefits": {
+    "title": "Benefits Management",
+    "subtitle": "Track your benefit budgets and submit claims.",
+    "usedAmount": "Used",
+    "remaining": "Remaining",
+    "of": "of",
+    "noBudgetsFound": "No benefit budgets found.",
+    "claimHistory": "Claim History",
+    "claims": "claims",
+    "colBenefitType": "Benefit Type",
+    "colDate": "Date",
+    "colAmount": "Amount",
+    "colStatus": "Status",
+    "noClaimsFound": "No claim history found.",
+    "submitClaim": "Submit Benefit Claim",
+    "labelBenefitType": "Select Benefit Type",
+    "labelAmount": "Enter Amount",
+    "labelDescription": "Description / Reason",
+    "descriptionPlaceholder": "Provide more details for your claim...",
+    "selectType": "-- Select Type --",
+    "submitting": "Submitting...",
+    "submitNow": "Submit Now",
+    "status": {
+      "pending": "Pending",
+      "approved": "Approved",
+      "rejected": "Rejected",
+      "cancelled": "Cancelled"
+    }
   },
   "Auth": {
     "loginTitle": "Workspace Access",
@@ -94,6 +123,12 @@
           "recentActivity": "Recent Activity",
           "quickLinks": "Quick Links"
       },
+      "links": {
+          "requestLeave": "Request Leave",
+          "employeeList": "Employee List",
+          "attendance": "Attendance",
+          "settings": "Settings"
+      },
       "charts": {
         "employeeGrowth": "Employee Growth",
         "employeesByDept": "Employees by Department",
@@ -151,9 +186,65 @@
       "confirmDelete": "Are you sure you want to delete this {item}?"
   },
   "Attendance": {
-      "colEmployee": "Employee",
-      "colTotal": "Total",
-      "colAction": "Action",
-      "viewDetail": "View Detail"
+    "title": "Attendance History",
+    "viewSelf": "My Attendance",
+    "viewTeam": "Team Overview",
+    "colEmployee": "Employee / Dept",
+    "colTotal": "Total (Days)",
+    "colAction": "Action",
+    "viewDetail": "View Detail",
+    "btnHolidayType": "Holiday Type",
+    "btnRecalculate": "Recalculate",
+    "btnSearch": "Search",
+    "timeIn": "In: {time}",
+    "timeOut": "Out: {time}",
+    "leave": "Leave",
+    "present": "Present",
+    "absent": "Absent",
+    "holiday": "Holiday",
+    "late": "Late",
+    "early": "Early"
+  },
+  "MasterData": {
+    "title": "Master Data Management",
+    "subtitle": "Configure and manage system master data.",
+    "manageDesc": "Manage and configure {category} records.",
+    "categories": {
+      "recruitment": "Recruitment",
+      "employee": "Employee Info",
+      "employeeGroup": "Employee Group",
+      "employeeType": "Employee Type",
+      "company": "Company",
+      "unit": "Unit",
+      "department": "Department",
+      "position": "Position",
+      "jobDescription": "Job Description",
+      "leaveType": "Leave Type",
+      "otType": "Overtime Type",
+      "user": "User Accounts",
+      "permission": "Permissions",
+      "workingShift": "Working Shifts",
+      "companyHoliday": "Public Holidays"
+    }
+  },
+  "Leave": {
+    "title": "Leave Management",
+    "subtitle": "Track your leave balance and request new leaves.",
+    "newRequest": "Request Leave",
+    "history": "Leave History",
+    "type": "Type",
+    "dates": "Dates",
+    "days": "Days",
+    "reason": "Reason",
+    "status": "Status",
+    "noHistory": "No leave history found.",
+    "leaveType": "Leave Type",
+    "selectType": "Select leave type",
+    "startDate": "Start Date",
+    "endDate": "End Date",
+    "reasonPlaceholder": "Reason for leave (optional)",
+    "cancel": "Cancel",
+    "submit": "Submit Request",
+    "noProfileLinked": "Your account is not linked to any employee profile. Please contact HR."
   }
 }

@@ -22,8 +22,37 @@
     "masterData": "ข้อมูลหลัก",
     "timeAttendance": "การลงเวลา",
     "leaveManagement": "การลา",
-    "payrollBenefits": "เงินเดือนและสวัสดิการ",
+    "benefits": "สวัสดิการ",
     "settings": "ตั้งค่า"
+  },
+  "Benefits": {
+    "title": "จัดการสวัสดิการ",
+    "subtitle": "ตรวจสอบงบประมาณและยื่นคำขอเบิกสวัสดิการของคุณ",
+    "usedAmount": "ใช้ไปแล้ว",
+    "remaining": "ยอดคงเหลือ",
+    "of": "จาก",
+    "noBudgetsFound": "ไม่พบข้อมูลงบประมาณสวัสดิการ",
+    "claimHistory": "ประวัติการเบิกสวัสดิการ",
+    "claims": "รายการ",
+    "colBenefitType": "ประเภทสวัสดิการ",
+    "colDate": "วันที่ยื่น",
+    "colAmount": "จำนวนเงิน",
+    "colStatus": "สถานะ",
+    "noClaimsFound": "ยังไม่มีประวัติการเบิกสวัสดิการ",
+    "submitClaim": "ยื่นขอเบิกสวัสดิการ",
+    "labelBenefitType": "เลือกประเภทสวัสดิการ",
+    "labelAmount": "ระบุจำนวนเงิน",
+    "labelDescription": "รายละเอียด / เหตุผล",
+    "descriptionPlaceholder": "ระบุรายละเอียดเพิ่มเติมเพื่อประกอบการพิจารณา",
+    "selectType": "-- เลือกประเภท --",
+    "submitting": "กำลังยื่นคำขอ...",
+    "submitNow": "ส่งคำขอเบิก",
+    "status": {
+      "pending": "รออนุมัติ",
+      "approved": "อนุมัติแล้ว",
+      "rejected": "ปฏิเสธ",
+      "cancelled": "ยกเลิก"
+    }
   },
   "Auth": {
     "loginTitle": "เข้าสู่ระบบ",
@@ -92,7 +121,13 @@
           "pendingRequests": "คำขอที่รอดำเนินการ",
           "pendingRequestsDesc": "คุณมีคำขอที่รอการอนุมัติ {count} รายการ",
           "recentActivity": "กิจกรรมล่าสุด",
-          "quickLinks": "ลิงก์ด่วน"
+          "quickLinks": "เมนูทางลัด"
+      },
+      "links": {
+          "requestLeave": "ยื่นใบขอลา",
+          "employeeList": "รายชื่อพนักงาน",
+          "attendance": "การลงเวลา",
+          "settings": "ตั้งค่า"
       },
       "charts": {
         "employeeGrowth": "การเติบโตของพนักงาน",
@@ -151,9 +186,65 @@
       "confirmDelete": "คุณแน่ใจหรือไม่ว่าต้องการลบ {item} นี้?"
   },
   "Attendance": {
-      "colEmployee": "พนักงาน",
-      "colTotal": "รวม",
-      "colAction": "การดำเนินการ",
-      "viewDetail": "ดูรายละเอียด"
+    "title": "ประวัติการลงเวลา",
+    "viewSelf": "ดูของตัวเอง",
+    "viewTeam": "ดูภาพรวมทีม",
+    "colEmployee": "พนักงาน / แผนก",
+    "colTotal": "รวม (วัน)",
+    "colAction": "จัดการ",
+    "viewDetail": "ดูรายละเอียด",
+    "btnHolidayType": "ประเภทวันหยุด",
+    "btnRecalculate": "คำนวณใหม่",
+    "btnSearch": "ค้นหา",
+    "timeIn": "เข้า: {time}",
+    "timeOut": "ออก: {time}",
+    "leave": "ลา",
+    "present": "มาทำงาน",
+    "absent": "ขาดงาน",
+    "holiday": "วันหยุด",
+    "late": "สาย",
+    "early": "กลับก่อน"
+  },
+  "MasterData": {
+    "title": "การจัดการข้อมูลหลัก",
+    "subtitle": "กำหนดค่าและจัดการข้อมูลหลักของระบบ",
+    "manageDesc": "จัดการและตั้งค่าข้อมูล {category}",
+    "categories": {
+      "recruitment": "การสรรหา",
+      "employee": "ข้อมูลพนักงาน",
+      "employeeGroup": "กลุ่มพนักงาน",
+      "employeeType": "ประเภทพนักงาน",
+      "company": "บริษัท",
+      "unit": "หน่วยงาน",
+      "department": "แผนก",
+      "position": "ตำแหน่ง",
+      "jobDescription": "รายละเอียดงาน",
+      "leaveType": "ประเภทการลา",
+      "otType": "ประเภทการล่วงเวลา",
+      "user": "บัญชีผู้ใช้",
+      "permission": "สิทธิ์การใช้งาน",
+      "workingShift": "กะการทำงาน",
+      "companyHoliday": "วันหยุดนักขัตฤกษ์"
+    }
+  },
+  "Leave": {
+    "title": "การจัดการการลา",
+    "subtitle": "ตรวจสอบสิทธิ์การลาและยื่นใบลา",
+    "newRequest": "ยื่นใบขอลา",
+    "history": "ประวัติการลา",
+    "type": "ประเภท",
+    "dates": "วันที่ลา",
+    "days": "จำนวนวัน",
+    "reason": "เหตุผล",
+    "status": "สถานะ",
+    "noHistory": "ไม่พบประวัติการลา",
+    "leaveType": "ประเภทการลา",
+    "selectType": "เลือกประเภทการลา",
+    "startDate": "วันที่เริ่มต้น",
+    "endDate": "วันที่สิ้นสุด",
+    "reasonPlaceholder": "เหตุผลการลา (ไม่บังคับ)",
+    "cancel": "ยกเลิก",
+    "submit": "ยืนยันการขอลา",
+    "noProfileLinked": "บัญชีผู้ใช้นี้ยังไม่ได้เชื่อมโยงกับข้อมูลพนักงาน กรุณาติดต่อฝ่ายบุคคล"
   }
 }

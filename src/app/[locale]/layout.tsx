@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Safari HR",
+  title: "Safari HR System v1.0.0",
   description: "HR Management System",
 };
 

@@ -8,6 +8,7 @@ import {
     Search
 } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
+import { Link } from '@/navigation';
 import { StatCard } from './StatCard';
 import { AttendanceChart } from './AttendanceChart';
 import { ActivityList } from './ActivityList';
@@ -39,7 +40,7 @@ export async function DashboardOverview({ data }: OverviewProps) {
     ].sort((a: any, b: any) => b.time.getTime() - a.time.getTime()).slice(0, 5);
 
     return (
-        <div className="space-y-8 p-6 lg:p-10 bg-gray-50/50 min-h-screen">
+        <div className="space-y-8 p-6 lg:p-10 bg-white/40 dark:bg-black/20 backdrop-blur-3xl border border-white/20 dark:border-white/5 min-h-screen rounded-[2.5rem] shadow-2xl shadow-black/5">
             {/* Header */}
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
                 <div>
@@ -118,15 +119,23 @@ export async function DashboardOverview({ data }: OverviewProps) {
                 <div className="space-y-8">
                     <ActivityList activities={activities} />
                     
-                    {/* Upcoming Holidays / Events placeholder */}
-                    <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
-                        <h3 className="text-lg font-bold text-gray-900 mb-4">{t('sections.quickLinks')}</h3>
+                    <div className="bg-white dark:bg-[#252525] p-6 rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm dark:shadow-none">
+                        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">{t('sections.quickLinks')}</h3>
                         <div className="grid grid-cols-1 gap-3">
-                            {['Add Employee', 'Organization Chart', 'Leave Policy', 'Settings'].map((link) => (
-                                <button key={link} className="flex items-center justify-between p-3 rounded-xl hover:bg-gray-50 transition-colors border border-transparent hover:border-gray-100 text-sm font-medium text-gray-700">
-                                    {link}
+                            {[
+                                { label: t('links.requestLeave'), href: '/dashboard/leaves' },
+                                { label: t('links.employeeList'), href: '/dashboard/employees' },
+                                { label: t('links.attendance'), href: '/dashboard/attendance' },
+                                { label: t('links.settings'), href: '/dashboard/settings/master' }
+                            ].map((link) => (
+                                <Link 
+                                    key={link.href} 
+                                    href={link.href}
+                                    className="flex items-center justify-between p-3 rounded-xl hover:bg-gray-50 dark:hover:bg-white/5 transition-colors border border-transparent hover:border-gray-100 dark:hover:border-white/10 text-sm font-medium text-gray-700 dark:text-gray-300"
+                                >
+                                    {link.label}
                                     <ArrowUpRight className="h-4 w-4 text-gray-400" />
-                                </button>
+                                </Link>
                             ))}
                         </div>
                     </div>

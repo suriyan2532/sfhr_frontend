@@ -63,9 +63,9 @@ export default async function ChainOfCommandPage() {
   };
 
   return (
-    <div className="flex flex-col h-full bg-gray-50">
+    <div className="flex flex-col h-full bg-gray-50 rounded-xl">
         {/* Header Section */}
-        <div className="bg-white border-b border-gray-200 p-6">
+        <div className="bg-white border-b border-gray-200 p-6 rounded-xl">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 max-w-[1600px] mx-auto">
                 <div>
                    <h1 className="text-2xl font-bold text-gray-900">{t('title')}</h1>
@@ -85,7 +85,7 @@ export default async function ChainOfCommandPage() {
         </div>
 
         {/* Content Area - Hierarchy Container */}
-        <div className="flex-1 overflow-auto p-12 bg-[#F9FAFB]">
+        <div className="flex-1 overflow-auto p-12 bg-[#F9FAFB] rounded-xl">
             <div className="min-w-max flex justify-center">
                 <div className="relative p-8 rounded-2xl border border-dashed border-gray-300 bg-white/50">
                     {/* Floating Controls (Zoom/Pan placeholders) */}

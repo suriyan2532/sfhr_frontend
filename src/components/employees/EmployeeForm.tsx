@@ -1,3 +1,5 @@
+'use client';
+
 import { createEmployee } from '@/lib/actions/employee-actions';
 import { Department, Position, Company, WorkingShift, Unit } from '@prisma/client';
 import { Link } from '@/navigation';

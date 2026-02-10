@@ -199,6 +199,8 @@ model LeaveTypeMaster {
   code          String   @unique
   name          String
   nameTh        String?
+  category      String   @default("LEAVE")
+  description   String?
   isPaid        Boolean  @default(true)
   maxDaysPerYear Int?
   
@@ -351,6 +353,8 @@ model Employee {
   // Modules
   attendances    Attendance[]
   leaves         LeaveRequest[]
+  benefitBudgets BenefitBudget[]
+  benefitClaims  BenefitClaim[]
   
   // Soft Delete
   isDeleted      Boolean   @default(false)
@@ -397,6 +401,73 @@ model LeaveRequest {
   reason        String?
   
   status        LeaveStatus @default(PENDING)
+  
+  approverId    String?
+  approvedAt    DateTime?
+  rejectionReason String?
+
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+}
+enum BenefitStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  CANCELLED
+}
+
+// ... existing code ...
+
+model BenefitType {
+  id            String   @id @default(cuid())
+  code          String   @unique
+  name          String
+  nameTh        String?
+  description   String?
+  maxAmount     Float?   // Optional default max per employee
+  
+  budgets       BenefitBudget[]
+  claims        BenefitClaim[]
+
+  isDeleted     Boolean   @default(false)
+  deletedAt     DateTime?
+
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model BenefitBudget {
+  id            String   @id @default(cuid())
+  employeeId    String
+  employee      Employee @relation(fields: [employeeId], references: [id])
+  
+  benefitTypeId String
+  benefitType   BenefitType @relation(fields: [benefitTypeId], references: [id])
+  
+  year          Int
+  totalAmount   Float
+  usedAmount    Float    @default(0)
+  
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@unique([employeeId, benefitTypeId, year])
+}
+
+model BenefitClaim {
+  id            String      @id @default(cuid())
+  employeeId    String
+  employee      Employee    @relation(fields: [employeeId], references: [id])
+  
+  benefitTypeId String
+  benefitType   BenefitType @relation(fields: [benefitTypeId], references: [id])
+  
+  amount        Float
+  claimDate     DateTime    @default(now())
+  description   String?
+  attachmentUrl String?     // Receipt image or document
+  
+  status        BenefitStatus @default(PENDING)
   
   approverId    String?
   approvedAt    DateTime?

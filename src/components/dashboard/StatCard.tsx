@@ -10,7 +10,7 @@ interface StatCardProps {
 
 export function StatCard({ title, value, icon: Icon, color, description }: StatCardProps) {
     return (
-        <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+        <div className="bg-white dark:bg-[#252525] p-6 rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm dark:shadow-none hover:shadow-md transition-shadow">
             <div className="flex items-center justify-between mb-4">
                 <div className={`p-3 rounded-xl ${color}`}>
                     <Icon className="h-6 w-6" />
@@ -18,8 +18,8 @@ export function StatCard({ title, value, icon: Icon, color, description }: StatC
                 {description && <span className="text-xs font-medium text-green-500 bg-green-50 px-2 py-1 rounded-full">{description}</span>}
             </div>
             <div>
-                <p className="text-sm font-medium text-gray-500">{title}</p>
-                <h3 className="text-2xl font-bold text-gray-900 mt-1">{value}</h3>
+                <p className="text-sm font-medium text-gray-500 dark:text-gray-400">{title}</p>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mt-1">{value}</h3>
             </div>
         </div>
     );

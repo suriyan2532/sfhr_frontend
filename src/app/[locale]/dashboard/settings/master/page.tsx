@@ -40,9 +40,9 @@ export default async function MasterDataPage() {
   ];
 
   return (
-    <div className="flex flex-col h-full bg-gray-50/50">
+    <div className="flex flex-col h-full bg-gray-50/50 rounded-xl">
       {/* Header Section */}
-      <div className="bg-white border-b border-gray-200 p-6 sm:p-8">
+      <div className="bg-white border-b border-gray-200 p-6 sm:p-8 rounded-xl">
         <div className="max-w-7xl mx-auto">
           <h1 className="text-2xl font-bold text-gray-900">{t('title')}</h1>
           <p className="text-sm text-gray-500 mt-1">{t('subtitle')}</p>
@@ -67,7 +67,7 @@ export default async function MasterDataPage() {
                     {t(`categories.${cat.key}`)}
                   </h3>
                   <p className="text-xs text-gray-500 mt-2 line-clamp-2">
-                    Manage and configure {t(`categories.${cat.key}`).toLowerCase()} records.
+                    {t('manageDesc', { category: t(`categories.${cat.key}`) })}
                   </p>
                 </div>
                 

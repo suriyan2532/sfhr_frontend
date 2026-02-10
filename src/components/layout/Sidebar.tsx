@@ -31,7 +31,7 @@ export function Sidebar({ isOpen, onClose }: { isOpen: boolean; onClose: () => v
     { name: t('masterData'), href: '/dashboard/settings/master', icon: Settings },
     { name: t('timeAttendance'), href: '/dashboard/attendance', icon: Clock },
     { name: t('leaveManagement'), href: '/dashboard/leaves', icon: CalendarDays },
-    { name: t('payrollBenefits'), href: '/dashboard/payroll', icon: Banknote },
+    { name: t('benefits'), href: '/dashboard/benefits', icon: Banknote },
     { name: t('settings'), href: '/dashboard/settings', icon: Settings },
   ];
 
@@ -49,7 +49,7 @@ export function Sidebar({ isOpen, onClose }: { isOpen: boolean; onClose: () => v
       {/* Sidebar component */}
       <div 
         className={clsx(
-          "fixed inset-y-0 left-0 z-50 w-72 bg-white/90 dark:bg-[#1e1e1e]/90 backdrop-blur-xl border-r border-gray-200 dark:border-white/10 transform transition-transform duration-300 ease-in-out md:translate-x-0 md:static md:inset-auto md:flex md:w-72 md:flex-col",
+          "fixed inset-y-0 left-0 z-50 w-72 bg-white/60 dark:bg-[#1e1e1e]/40 backdrop-blur-3xl border-r border-gray-200/50 dark:border-white/5 transform transition-transform duration-300 ease-in-out md:translate-x-0 md:static md:inset-auto md:flex md:w-72 md:flex-col",
           isOpen ? "translate-x-0" : "-translate-x-full"
         )}
       >
