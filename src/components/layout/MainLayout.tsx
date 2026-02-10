@@ -13,7 +13,7 @@ export function MainLayout({ children, user }: MainLayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-[#1e1e1e] flex relative overflow-hidden font-[Rubik,sans-serif] transition-colors duration-300">
+    <div className="min-h-screen bg-gray-50 dark:bg-[#1e1e1e] flex relative overflow-hidden transition-colors duration-300">
        {/* Global Background Image - Dark mode only or adjusted opacity */}
        <div 
             className="fixed inset-0 z-0 bg-[url('https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?ixlib=rb-1.2.1&auto=format&fit=crop&w=2076&q=80')] bg-cover bg-center opacity-10 dark:opacity-100 transition-opacity duration-300"

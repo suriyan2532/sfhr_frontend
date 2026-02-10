@@ -32,6 +32,7 @@ export function Sidebar({ isOpen, onClose }: { isOpen: boolean; onClose: () => v
     { name: t('timeAttendance'), href: '/attendance', icon: Clock },
     { name: t('leaveManagement'), href: '/leaves', icon: CalendarDays },
     { name: t('benefits'), href: '/dashboard/benefits', icon: Banknote },
+    { name: t('userInformation'), href: '/users', icon: Users },
     { name: t('settings'), href: '/settings', icon: Settings },
   ];
 

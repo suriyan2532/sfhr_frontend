@@ -23,7 +23,8 @@
     "timeAttendance": "Time Attendance",
     "leaveManagement": "Leaves",
     "benefits": "Benefits",
-    "settings": "Settings"
+    "settings": "Settings",
+    "userInformation": "User Information"
   },
   "Benefits": {
     "title": "Benefits Management",

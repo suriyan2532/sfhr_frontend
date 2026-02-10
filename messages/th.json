@@ -23,7 +23,8 @@
     "timeAttendance": "การลงเวลา",
     "leaveManagement": "การลา",
     "benefits": "สวัสดิการ",
-    "settings": "ตั้งค่า"
+    "settings": "ตั้งค่า",
+    "userInformation": "ข้อมูลผู้ใช้งาน"
   },
   "Benefits": {
     "title": "จัดการสวัสดิการ",
