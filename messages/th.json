@@ -64,7 +64,11 @@
     "signIn": "เข้าสู่ระบบ",
     "signingIn": "กำลังเข้าสู่ระบบ...",
     "skipToDashboard": "ข้ามไปยังแดชบอร์ด",
-    "authorizedOnly": "สำหรับเจ้าหน้าที่ที่ได้รับอนุญาตเท่านั้น"
+    "authorizedOnly": "สำหรับเจ้าหน้าที่ที่ได้รับอนุญาตเท่านั้น",
+    "signOutTitle": "ออกจากระบบ",
+    "signOutConfirm": "คุณแน่ใจหรือไม่ว่าต้องการออกจากระบบ?",
+    "signOutButton": "ออกจากระบบ",
+    "cancelButton": "ยกเลิก"
   },
   "EmployeeForm": {
     "title": "ข้อมูลพนักงาน",

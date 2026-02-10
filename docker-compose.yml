@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: sfhr_db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespassword
+      POSTGRES_DB: sfhr_db
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  app:
+    container_name: sfhr_app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      # Use the service name 'db' as the hostname
+      DATABASE_URL: postgresql://postgres:postgrespassword@db:5432/sfhr_db
+      # You should generate a strong secret for production
+      AUTH_SECRET: ${AUTH_SECRET}
+      # NextAuth URL needs to be set for production
+      NEXTAUTH_URL: http://localhost:3000
+    depends_on:
+      - db
+    networks:
+      - sfhr_network
+
+volumes:
+  db_data:
+
+
+networks:
+  sfhr_network:
+    driver: bridge
