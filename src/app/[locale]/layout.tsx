@@ -19,6 +19,8 @@ export const metadata: Metadata = {
   description: "HR Management System",
 };
 
+import { ThemeProvider } from "@/components/common/ThemeProvider";
+
 export default async function RootLayout({
   children,
   params
@@ -30,13 +32,20 @@ export default async function RootLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <NextIntlClientProvider messages={messages}>
-          {children}
-        </NextIntlClientProvider>
+        <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <NextIntlClientProvider messages={messages}>
+              {children}
+            </NextIntlClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

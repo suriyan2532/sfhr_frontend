@@ -1,3 +1,5 @@
+'use client';
+
 import { createCompany, updateCompany } from '@/lib/actions/organization-actions';
 import { Company } from '@prisma/client';
 import { Link } from '@/navigation';
@@ -6,6 +8,7 @@ import { useRouter } from '@/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { companySchema, CompanyFormValues } from '@/lib/validators/organization-schema';
+import { useTranslations } from 'next-intl';
 
 interface CompanyFormProps {
   company?: Company;
@@ -14,6 +17,9 @@ interface CompanyFormProps {
 
 export function CompanyForm({ company, parentOptions }: CompanyFormProps) {
   const router = useRouter();  
+  const t = useTranslations('Organization');
+  const tCommon = useTranslations('Common');
+
   const {
     register,
     handleSubmit,
@@ -58,10 +64,10 @@ export function CompanyForm({ company, parentOptions }: CompanyFormProps) {
         <div className="bg-gradient-to-r from-indigo-500 to-purple-600 px-6 py-4 border-b border-gray-200">
            <h3 className="text-lg leading-6 font-medium text-white flex items-center">
              <Building2 className="mr-2 h-5 w-5" />
-             {company ? 'Edit Organization' : 'New Organization'}
+             {company ? t('editTitle') : t('newTitle')}
            </h3>
            <p className="mt-1 text-sm text-indigo-100">
-             {company ? 'Update company details and hierarchy.' : 'Register a new company or subsidiary.'}
+             {company ? t('editDesc') : t('newDesc')}
            </p>
         </div>
 
@@ -70,7 +76,7 @@ export function CompanyForm({ company, parentOptions }: CompanyFormProps) {
                 
                 {/* Company Code */}
                 <div className="sm:col-span-2">
-                    <label htmlFor="code" className="block text-sm font-medium text-gray-700">Company Code *</label>
+                    <label htmlFor="code" className="block text-sm font-medium text-gray-700">{t('code')} *</label>
                     <div className="mt-1">
                         <input
                             type="text"
@@ -84,7 +90,7 @@ export function CompanyForm({ company, parentOptions }: CompanyFormProps) {
 
                 {/* Company Name */}
                 <div className="sm:col-span-4">
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700">Company Name *</label>
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700">{t('name')} *</label>
                     <div className="mt-1">
                         <input
                             type="text"
@@ -98,13 +104,13 @@ export function CompanyForm({ company, parentOptions }: CompanyFormProps) {
 
                 {/* Tax ID */}
                  <div className="sm:col-span-3">
-                    <label htmlFor="taxId" className="block text-sm font-medium text-gray-700">Tax ID</label>
+                    <label htmlFor="taxId" className="block text-sm font-medium text-gray-700">{t('taxId')}</label>
                     <div className="mt-1">
                         <input
                             type="text"
                             {...register('taxId')}
                             className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                            placeholder="Tax Identification Number"
+                            placeholder={t('taxId')}
                         />
                          {errors.taxId && <p className="mt-1 text-sm text-red-600">{errors.taxId.message}</p>}
                     </div>
@@ -112,7 +118,7 @@ export function CompanyForm({ company, parentOptions }: CompanyFormProps) {
                 
                 {/* Phone */}
                  <div className="sm:col-span-3">
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Phone</label>
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700">{t('phone')}</label>
                     <div className="mt-1">
                         <input
                             type="text"
@@ -126,13 +132,13 @@ export function CompanyForm({ company, parentOptions }: CompanyFormProps) {
                 
                 {/* Parent Company */}
                 <div className="sm:col-span-6">
-                    <label htmlFor="parentId" className="block text-sm font-medium text-gray-700">Parent Company</label>
+                    <label htmlFor="parentId" className="block text-sm font-medium text-gray-700">{t('parentCompany')}</label>
                     <div className="mt-1">
                         <select
                             {...register('parentId')}
                             className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                         >
-                            <option value="">None (Headquarters)</option>
+                            <option value="">{t('selectParent')}</option>
                             {parentOptions.map((opt) => (
                                 <option key={opt.id} value={opt.id}>
                                     {opt.name} ({opt.code})
@@ -146,7 +152,7 @@ export function CompanyForm({ company, parentOptions }: CompanyFormProps) {
 
                 {/* Address */}
                 <div className="sm:col-span-6">
-                    <label htmlFor="address" className="block text-sm font-medium text-gray-700">Address</label>
+                    <label htmlFor="address" className="block text-sm font-medium text-gray-700">{t('address')}</label>
                     <div className="mt-1">
                         <textarea
                             {...register('address')}
@@ -167,7 +173,7 @@ export function CompanyForm({ company, parentOptions }: CompanyFormProps) {
                     className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 flex items-center"
                 >
                     <X className="mr-2 h-4 w-4" />
-                    Cancel
+                    {tCommon('cancel')}
                 </Link>
                 <button
                     type="submit"
@@ -175,11 +181,11 @@ export function CompanyForm({ company, parentOptions }: CompanyFormProps) {
                     className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 flex items-center"
                 >
                     {isSubmitting ? (
-                        'Saving...'
+                        tCommon('saving')
                     ) : (
                         <>
                          <Save className="mr-2 h-4 w-4" />
-                         Save
+                         {tCommon('save')}
                         </>
                     )}
                 </button>

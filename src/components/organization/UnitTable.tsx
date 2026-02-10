@@ -14,10 +14,10 @@ interface Unit {
 }
 
 export function UnitTable({ units }: { units: Unit[] }) {
-  const t = useTranslations('Common');
+  const t = useTranslations('Organization');
 
   const handleDelete = async (id: string) => {
-    if (confirm('Are you sure you want to delete this unit?')) {
+    if (confirm(t('confirmDelete', { item: t('unit') }))) {
       await deleteUnit(id);
     }
   };
@@ -27,10 +27,10 @@ export function UnitTable({ units }: { units: Unit[] }) {
       <table className="min-w-full divide-y divide-gray-200">
         <thead className="bg-gray-50">
           <tr>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Unit Code</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Company</th>
-            <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{t('code')}</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{t('name')}</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{t('company')}</th>
+            <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">{t('actions')}</th>
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-200">

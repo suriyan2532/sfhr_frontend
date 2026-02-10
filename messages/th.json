@@ -1,119 +1,159 @@
 {
   "Common": {
     "save": "บันทึก",
+    "saving": "กำลังบันทึก...",
     "cancel": "ยกเลิก",
+    "back": "กลับ",
     "delete": "ลบ",
     "edit": "แก้ไข",
-    "add": "เพิ่ม",
+    "search": "ค้นหา...",
+    "actions": "การดำเนินการ",
+    "selectOption": "เลือกรายการ",
+    "optional": "ไม่บังคับ",
     "required": "จำเป็น",
-    "actions": "จัดการ"
-  },
-  "Overview": {
-    "title": "ภาพรวมระบบ (Overview)",
-    "subtitle": "สรุปข้อมูลสถานะทรัพยากรบุคคลขององค์กรแบบเรียลไทม์",
-    "stats": {
-        "totalEmployees": "พนักงานทั้งหมด",
-        "presentToday": "เข้างานวันนี้",
-        "onLeaveToday": "ลางาน",
-        "pendingApprovals": "รออนุมัติ"
-    },
-    "attendanceTrend": "แนวโน้มการเข้างาน (7 วันล่าสุด)",
-    "recentActivities": "กิจกรรมล่าสุด",
-    "pendingTasks": "งานและคำขอรออนุมัติ",
-    "viewAll": "ดูทั้งหมด"
+    "yes": "ใช่",
+    "no": "ไม่"
   },
   "Sidebar": {
     "dashboard": "แดชบอร์ด",
     "employeeManagement": "จัดการพนักงาน",
     "organization": "โครงสร้างองค์กร",
-    "chainOfCommand": "สายบังคับบัญชา",
-    "masterData": "ข้อมูลหลัก (Master Data)",
-    "timeAttendance": "เวลาและการเข้างาน",
+    "chainOfCommand": "สายการบังคับบัญชา",
+    "masterData": "ข้อมูลหลัก",
+    "timeAttendance": "การลงเวลา",
     "leaveManagement": "การลา",
     "payrollBenefits": "เงินเดือนและสวัสดิการ",
     "settings": "ตั้งค่า"
   },
   "Auth": {
-    "welcomeBack": "ยินดีต้อนรับกลับ",
-    "signInToAccount": "เข้าสู่ระบบของคุณ",
+    "loginTitle": "เข้าสู่ระบบ",
+    "loginSubtitle": "ลงชื่อเข้าใช้เพื่อเริ่มงาน",
     "username": "ชื่อผู้ใช้",
     "password": "รหัสผ่าน",
-    "signIn": "เข้าสู่ระบบ",
+    "rememberMe": "จำฉันไว้ในระบบ",
     "forgotPassword": "ลืมรหัสผ่าน?",
-    "testCredentials": "รหัสผ่านสำหรับทดสอบ"
+    "signIn": "เข้าสู่ระบบ",
+    "signingIn": "กำลังเข้าสู่ระบบ...",
+    "skipToDashboard": "ข้ามไปยังแดชบอร์ด",
+    "authorizedOnly": "สำหรับเจ้าหน้าที่ที่ได้รับอนุญาตเท่านั้น"
   },
-  "Employee": {
-    "title": "จัดการพนักงาน",
-    "subtitle": "จัดการข้อมูลพนักงาน บทบาท และสถานะ",
-    "addEmployee": "เพิ่มพนักงาน",
-    "searchPlaceholder": "ค้นหาด้วยชื่อ หรือ รหัส...",
-    "table": {
-        "employee": "พนักงาน",
-        "position": "ตำแหน่ง",
-        "company": "บริษัท / แผนก",
-        "status": "สถานะ",
-        "joined": "วันที่เริ่มงาน"
+  "EmployeeForm": {
+    "title": "ข้อมูลพนักงาน",
+    "subtitle": "จัดการรายละเอียดและการมอบหมายงานพนักงาน",
+    "basicInfo": "ข้อมูลพื้นฐาน",
+    "basicInfoDesc": "รายละเอียดข้อมูลส่วนตัวและการติดต่อ",
+    "workInfo": "ข้อมูลการทำงาน",
+    "workInfoDesc": "บริษัท แผนก และตำแหน่งงาน",
+    "fields": {
+      "idCard": "เลขบัตรประชาชน",
+      "employeeId": "รหัสพนักงาน",
+      "prefix": "คำนำหน้า",
+      "firstName": "ชื่อจริง",
+      "lastName": "นามสกุล",
+      "nickname": "ชื่อเล่น",
+      "gender": "เพศ",
+      "birthDate": "วันเกิด",
+      "maritalStatus": "สถานะภาพ",
+      "address": "ที่อยู่",
+      "mobile": "เบอร์โทรศัพท์",
+      "lineId": "Line ID",
+      "email": "อีเมล",
+      "company": "บริษัท",
+      "unit": "หน่วยงาน",
+      "department": "แผนก",
+      "positions": "ตำแหน่ง",
+      "workingShift": "กะการทำงาน",
+      "joinDate": "วันที่เริ่มงาน",
+      "probationDate": "วันที่ผ่านโปร"
     },
-    "form": {
-        "basicInfo": "ข้อมูลพื้นฐาน",
-        "idCard": "เลขบัตรประชาชน",
-        "employeeId": "รหัสพนักงาน",
-        "firstName": "ชื่อจริง",
-        "lastName": "นามสกุล",
-        "company": "บริษัท",
-        "department": "แผนก",
-        "position": "ตำแหน่ง",
-        "joinDate": "วันที่เริ่มงาน"
+    "placeholders": {
+        "selectCompany": "เลือกบริษัท",
+        "selectUnit": "เลือกหน่วยงาน",
+        "selectDepartment": "เลือกแผนก",
+        "selectShift": "เลือกกะการทำงาน"
+    },
+    "hints": {
+        "multiPosition": "กด Ctrl/Cmd ค้างเพื่อเลือกหลายตำแหน่ง"
     }
+  },
+  "Dashboard": {
+      "welcome": "ยินดีต้อนรับกลับ",
+      "overview": "ภาพรวม",
+      "search": "ค้นหาข้อมูล...",
+      "title": "ภาพรวมแดชบอร์ด",
+      "subtitle": "ยินดีต้อนรับกลับ, นี่คือสิ่งที่เกิดขึ้นในวันนี้",
+      "stats": {
+          "totalEmployees": "พนักงานทั้งหมด",
+          "presentToday": "เข้างานวันนี้",
+          "onLeaveToday": "ลางาน",
+          "pendingApprovals": "รอการอนุมัติ"
+      },
+      "sections": {
+          "pendingRequests": "คำขอที่รอดำเนินการ",
+          "pendingRequestsDesc": "คุณมีคำขอที่รอการอนุมัติ {count} รายการ",
+          "recentActivity": "กิจกรรมล่าสุด",
+          "quickLinks": "ลิงก์ด่วน"
+      },
+      "charts": {
+        "employeeGrowth": "การเติบโตของพนักงาน",
+        "employeesByDept": "พนักงานแยกตามแผนก",
+        "employmentStatus": "สถานะการจ้างงาน",
+        "joined": "เข้าใหม่",
+        "resigned": "ลาออก"
+      },
+      "activities": {
+          "joinTitle": "พนักงานใหม่",
+          "joinDesc": "{name} ได้ถูกเพิ่มเข้าในระบบแล้ว",
+          "leaveTitle": "อนุมัติการลา",
+          "leaveDesc": "{name} ลาเนื่องจาก {type}"
+      },
+      "actions": {
+          "viewAll": "ดูทั้งหมด",
+          "approve": "อนุมัติ",
+          "reject": "ปฏิเสธ",
+          "goToApprovals": "ไปที่การอนุมัติ"
+      }
+  },
+  "EmployeeTable": {
+      "headers": {
+          "name": "ชื่อ",
+          "idPosition": "รหัส / ตำแหน่ง",
+          "department": "แผนก",
+          "status": "สถานะ",
+          "actions": "การดำเนินการ"
+      }
   },
   "Organization": {
-      "title": "โครงสร้างองค์กร",
-      "subtitle": "จัดการบริษัทและบริษัทย่อย",
-      "addOrganization": "เพิ่มองค์กร",
-      "empty": "ไม่พบข้อมูลองค์กร",
-      "emptySubtitle": "เริ่มต้นด้วยการสร้างบริษัทหรือบริษัทย่อยใหม่"
+      "company": "บริษัท",
+      "department": "แผนก",
+      "unit": "หน่วยงาน",
+      "position": "ตำแหน่ง",
+      "code": "รหัส",
+      "name": "ชื่อ",
+      "title": "ชื่อตำแหน่ง",
+      "level": "ระดับ",
+      "taxId": "เลขประจำตัวผู้เสียภาษี",
+      "parentCompany": "บริษัทแม่",
+      "selectParent": "เลือกองค์กรแม่",
+      "editTitle": "แก้ไของค์กร",
+      "newTitle": "องค์กรใหม่",
+      "editDesc": "อัปเดตรายละเอียดบริษัทและโครงสร้าง",
+      "newDesc": "ลงทะเบียนบริษัทใหม่หรือสาขา",
+      "details": "รายละเอียด",
+      "address": "ที่อยู่",
+      "phone": "โทรศัพท์",
+      "headquarters": "สำนักงานใหญ่",
+      "subsidiaryOf": "สาขาของ {name}",
+      "employees": "พนักงาน",
+      "depts": "แผนก",
+      "units": "หน่วยงาน",
+      "actions": "การดำเนินการ",
+      "confirmDelete": "คุณแน่ใจหรือไม่ว่าต้องการลบ {item} นี้?"
   },
   "Attendance": {
-    "title": "ตรวจสอบตารางเวลาพนักงาน",
-    "filterMonth": "เดือน",
-    "filterYear": "ปี",
-    "btnHolidayType": "ประเภทวันหยุด",
-    "btnRecalculate": "คำนวณตารางทำงานใหม่",
-    "btnSearch": "ค้นหา",
-    "colEmployee": "พนักงาน",
-    "colTotal": "รวม",
-    "colAction": "สิทธิ์หยุด",
-    "statusNormal": "N",
-    "statusHoliday": "PH",
-    "statusLeave": "V",
-    "viewDetail": "ดู"
-  },
-  "ChainOfCommand": {
-    "title": "สายบังคับบัญชา",
-    "subtitle": "โครงสร้างผังองค์กรและลำดับขั้นการบังคับบัญชา",
-    "btnAddNode": "เพิ่มระดับสูงสุด",
-    "reset": "รีเซ็ต",
-    "search": "ค้นหา"
-  },
-  "MasterData": {
-    "title": "จัดการข้อมูลหลัก (Master Data)",
-    "subtitle": "ตั้งค่าข้อมูลพื้นฐานของระบบและระวางโครงสร้างข้อมูล",
-    "categories": {
-      "recruitment": "ข้อมูลผู้มาสมัครงาน/สัมภาษณ์งาน",
-      "employee": "ข้อมูลพนักงาน",
-      "employeeGroup": "ข้อมูลกลุ่มพนักงาน",
-      "employeeType": "ข้อมูลประเภทพนักงาน",
-      "company": "ข้อมูลบริษัท/องค์กร",
-      "unit": "ข้อมูลหน่วยงาน",
-      "department": "ข้อมูลแผนก",
-      "position": "ข้อมูลตำแหน่ง",
-      "jobDescription": "ข้อมูลงาน / Job Description",
-      "leaveType": "ข้อมูลประเภทการลา/หยุด",
-      "otType": "ข้อมูลประเภท OT",
-      "user": "ข้อมูลผู้ใช้งาน",
-      "permission": "ข้อมูลสิทธิ์การใช้งาน",
-      "workingShift": "ตารางกะทำงาน",
-      "companyHoliday": "วันหยุดบริษัท"
-    }
+      "colEmployee": "พนักงาน",
+      "colTotal": "รวม",
+      "colAction": "การดำเนินการ",
+      "viewDetail": "ดูรายละเอียด"
   }
 }

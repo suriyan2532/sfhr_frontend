@@ -31,7 +31,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           const { username, password } = parsedCredentials.data;
           
           // MOCK AUTHENTICATION: Enforce specific credentials
-          if (username === 'admin' && password === 'P@sssw0rd') {
+          if (username === 'admin' && password === 'P@ssw0rd') {
             return {
               id: 'mock-admin-id',
               username: username,

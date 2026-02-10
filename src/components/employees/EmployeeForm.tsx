@@ -4,6 +4,8 @@ import { Link } from '@/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { employeeSchema, EmployeeFormValues } from '@/lib/validators/employee-schema';
+import { GlassInput, GlassSelect, GlassButton, GlassLabel, GlassCard } from '../ui/glass-ui';
+import { useTranslations } from 'next-intl';
 
 interface EmployeeFormProps {
   departments: Department[];
@@ -14,6 +16,9 @@ interface EmployeeFormProps {
 }
 
 export function EmployeeForm({ departments, positions, companies, units, workingShifts }: EmployeeFormProps) {
+  const t = useTranslations('EmployeeForm');
+  const tCommon = useTranslations('Common');
+
   const {
     register,
     handleSubmit,
@@ -29,7 +34,6 @@ export function EmployeeForm({ departments, positions, companies, units, working
 
   const onSubmit = async (data: EmployeeFormValues) => {
     const formData = new FormData();
-    // Append all fields to FormData
     Object.entries(data).forEach(([key, value]) => {
       if (Array.isArray(value)) {
           value.forEach(v => formData.append(key, v));
@@ -41,216 +45,171 @@ export function EmployeeForm({ departments, positions, companies, units, working
     const result = await createEmployee(formData);
     
     if (result?.errors) {
-        // Handle field errors from server
         Object.entries(result.errors).forEach(([key, messages]) => {
             setError(key as any, { message: messages[0] });
         });
     } else if (result?.message) {
-        // General error
         alert(result.message);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-8 divide-y divide-gray-200">
-      <div className="space-y-8 divide-y divide-gray-200 sm:space-y-5">
+    <GlassCard>
+      <div className="mb-8 border-b border-white/10 pb-5">
+        <h3 className="text-xl font-bold text-white">{t('title')}</h3>
+        <p className="mt-1 max-w-2xl text-sm text-blue-200">
+          {t('subtitle')}
+        </p>
+      </div>
+
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
         
         {/* Basic Information */}
-        <div className="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
-          <div>
-            <h3 className="text-lg leading-6 font-medium text-gray-900">Basic Information</h3>
-            <p className="mt-1 max-w-2xl text-sm text-gray-500">
-              Identity and contact details.
-            </p>
+        <div className="space-y-6">
+          <div className="border-b border-white/10 pb-2 mb-4">
+            <h4 className="text-lg font-medium text-white">{t('basicInfo')}</h4>
+            <p className="text-xs text-white/50">{t('basicInfoDesc')}</p>
           </div>
-          <div className="space-y-6 sm:space-y-5">
-            <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-              <label htmlFor="idCard" className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
-                ID Card (National ID) *
-              </label>
-              <div className="mt-1 sm:mt-0 sm:col-span-2">
-                <input
-                  type="text"
-                  {...register('idCard')}
-                  className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-                />
-                {errors.idCard && <p className="mt-2 text-sm text-red-600">{errors.idCard.message}</p>}
-              </div>
+          
+          <div className="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+            <div className="sm:col-span-3">
+              <GlassLabel htmlFor="idCard">{t('fields.idCard')} *</GlassLabel>
+              <GlassInput id="idCard" {...register('idCard')} error={errors.idCard?.message} placeholder="1234567890123" />
             </div>
 
-            <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-              <label htmlFor="employeeId" className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
-                Employee ID *
-              </label>
-              <div className="mt-1 sm:mt-0 sm:col-span-2">
-                <input
-                  type="text"
-                  {...register('employeeId')}
-                  className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-                />
-                {errors.employeeId && <p className="mt-2 text-sm text-red-600">{errors.employeeId.message}</p>}
-              </div>
+            <div className="sm:col-span-3">
+              <GlassLabel htmlFor="employeeId">{t('fields.employeeId')} *</GlassLabel>
+              <GlassInput id="employeeId" {...register('employeeId')} error={errors.employeeId?.message} placeholder="EMP-001" />
             </div>
 
-            <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-              <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
-                First Name *
-              </label>
-              <div className="mt-1 sm:mt-0 sm:col-span-2">
-                <input
-                  type="text"
-                  {...register('firstName')}
-                  className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-                />
-                {errors.firstName && <p className="mt-2 text-sm text-red-600">{errors.firstName.message}</p>}
-              </div>
+            <div className="sm:col-span-3">
+              <GlassLabel htmlFor="firstName">{t('fields.firstName')} *</GlassLabel>
+              <GlassInput id="firstName" {...register('firstName')} error={errors.firstName?.message} />
             </div>
 
-            <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-              <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
-                Last Name *
-              </label>
-              <div className="mt-1 sm:mt-0 sm:col-span-2">
-                <input
-                  type="text"
-                  {...register('lastName')}
-                  className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-                />
-                {errors.lastName && <p className="mt-2 text-sm text-red-600">{errors.lastName.message}</p>}
-              </div>
+            <div className="sm:col-span-3">
+              <GlassLabel htmlFor="lastName">{t('fields.lastName')} *</GlassLabel>
+              <GlassInput id="lastName" {...register('lastName')} error={errors.lastName?.message} />
+            </div>
+
+            <div className="sm:col-span-2">
+              <GlassLabel htmlFor="nickname">{t('fields.nickname')}</GlassLabel>
+              <GlassInput id="nickname" {...register('nickname')} error={errors.nickname?.message} />
+            </div>
+
+            <div className="sm:col-span-2">
+              <GlassLabel htmlFor="birthDate">{t('fields.birthDate')}</GlassLabel>
+              <GlassInput type="date" id="birthDate" {...register('birthDate')} error={errors.birthDate?.message} />
+            </div>
+
+             <div className="sm:col-span-2">
+              <GlassLabel htmlFor="gender">{t('fields.gender')}</GlassLabel>
+              <GlassSelect id="gender" {...register('gender')} error={errors.gender?.message}>
+                  <option value="">{tCommon('selectOption')}</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+              </GlassSelect>
             </div>
             
-             <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-              <label htmlFor="companyId" className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
-                Company *
-              </label>
-              <div className="mt-1 sm:mt-0 sm:col-span-2">
-                 <select
-                   title="Company"
-                   {...register('companyId')}
-                   className="max-w-lg block w-full focus:ring-indigo-500 focus:border-indigo-500 shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-                 >
-                   <option value="">Select a Company</option>
-                   {companies.map(c => (
-                     <option key={c.id} value={c.id}>{c.name}</option>
-                   ))}
-                 </select>
-                 {errors.companyId && <p className="mt-2 text-sm text-red-600">{errors.companyId.message}</p>}
-              </div>
+            <div className="sm:col-span-6">
+              <GlassLabel htmlFor="address">{t('fields.address')}</GlassLabel>
+              <GlassInput id="address" {...register('address')} error={errors.address?.message} />
             </div>
 
-            <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-              <label htmlFor="unitId" className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
-                Unit
-              </label>
-              <div className="mt-1 sm:mt-0 sm:col-span-2">
-                 <select
-                   title="Unit"
-                   {...register('unitId')}
-                   className="max-w-lg block w-full focus:ring-indigo-500 focus:border-indigo-500 shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-                 >
-                   <option value="">Select a Unit (Optional)</option>
+            <div className="sm:col-span-3">
+              <GlassLabel htmlFor="mobile">{t('fields.mobile')}</GlassLabel>
+              <GlassInput id="mobile" {...register('mobile')} error={errors.mobile?.message} />
+            </div>
+            
+             <div className="sm:col-span-3">
+              <GlassLabel htmlFor="lineId">{t('fields.lineId')}</GlassLabel>
+              <GlassInput id="lineId" {...register('lineId')} error={errors.lineId?.message} />
+            </div>
+          </div>
+        </div>
+
+        {/* Work Information */}
+        <div className="pt-6 space-y-6">
+          <div className="border-b border-white/10 pb-2 mb-4">
+            <h4 className="text-lg font-medium text-white">{t('workInfo')}</h4>
+            <p className="text-xs text-white/50">{t('workInfoDesc')}</p>
+          </div>
+
+          <div className="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+             <div className="sm:col-span-3">
+              <GlassLabel htmlFor="companyId">{t('fields.company')} *</GlassLabel>
+              <GlassSelect id="companyId" {...register('companyId')} error={errors.companyId?.message}>
+                 <option value="">{t('placeholders.selectCompany')}</option>
+                  {companies.map(c => (
+                     <option key={c.id} value={c.id}>{c.name}</option>
+                   ))}
+              </GlassSelect>
+            </div>
+
+            <div className="sm:col-span-3">
+              <GlassLabel htmlFor="unitId">{t('fields.unit')}</GlassLabel>
+              <GlassSelect id="unitId" {...register('unitId')} error={errors.unitId?.message}>
+                 <option value="">{t('placeholders.selectUnit')} ({tCommon('optional')})</option>
                    {units.map(u => (
                      <option key={u.id} value={u.id}>{u.name}</option>
                    ))}
-                 </select>
-                 {errors.unitId && <p className="mt-2 text-sm text-red-600">{errors.unitId.message}</p>}
-              </div>
+              </GlassSelect>
             </div>
 
-            <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-              <label htmlFor="departmentId" className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
-                Department *
-              </label>
-              <div className="mt-1 sm:mt-0 sm:col-span-2">
-                 <select
-                   title="Department"
-                   {...register('departmentId')}
-                   className="max-w-lg block w-full focus:ring-indigo-500 focus:border-indigo-500 shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-                 >
-                   <option value="">Select a Department</option>
+            <div className="sm:col-span-3">
+              <GlassLabel htmlFor="departmentId">{t('fields.department')} *</GlassLabel>
+               <GlassSelect id="departmentId" {...register('departmentId')} error={errors.departmentId?.message}>
+                 <option value="">{t('placeholders.selectDepartment')}</option>
                    {departments.map(d => (
                      <option key={d.id} value={d.id}>{d.name}</option>
                    ))}
-                 </select>
-                 {errors.departmentId && <p className="mt-2 text-sm text-red-600">{errors.departmentId.message}</p>}
-              </div>
+              </GlassSelect>
             </div>
 
-            <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-              <label htmlFor="positionIds" className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
-                Positions *
-              </label>
-              <div className="mt-1 sm:mt-0 sm:col-span-2">
-                 <select
-                    title="Positions"
-                    multiple
-                   {...register('positionIds')}
-                   className="max-w-lg block w-full focus:ring-indigo-500 focus:border-indigo-500 shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md h-32"
-                 >
-                   {positions.map(p => (
-                     <option key={p.id} value={p.id}>{p.title}</option>
-                   ))}
-                 </select>
-                 <p className="mt-2 text-xs text-gray-500">Hold Ctrl/Cmd to select multiple positions.</p>
-                 {errors.positionIds && <p className="mt-2 text-sm text-red-600">{errors.positionIds.message}</p>}
-              </div>
-            </div>
-
-            <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-              <label htmlFor="workingShiftId" className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
-                Working Shift
-              </label>
-              <div className="mt-1 sm:mt-0 sm:col-span-2">
-                 <select
-                   title="Working Shift"
-                   {...register('workingShiftId')}
-                   className="max-w-lg block w-full focus:ring-indigo-500 focus:border-indigo-500 shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-                 >
-                   <option value="">Select a Shift (Optional)</option>
+            <div className="sm:col-span-3">
+              <GlassLabel htmlFor="workingShiftId">{t('fields.workingShift')}</GlassLabel>
+               <GlassSelect id="workingShiftId" {...register('workingShiftId')} error={errors.workingShiftId?.message}>
+                  <option value="">{t('placeholders.selectShift')} ({tCommon('optional')})</option>
                    {workingShifts.map(s => (
                      <option key={s.id} value={s.id}>{s.name} ({s.startTime} - {s.endTime})</option>
                    ))}
-                 </select>
-                 {errors.workingShiftId && <p className="mt-2 text-sm text-red-600">{errors.workingShiftId.message}</p>}
-              </div>
-            </div>
-            
-            <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-              <label htmlFor="joinDate" className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
-                Join Date *
-              </label>
-              <div className="mt-1 sm:mt-0 sm:col-span-2">
-                <input
-                  type="date"
-                  {...register('joinDate')}
-                  className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-                />
-                {errors.joinDate && <p className="mt-2 text-sm text-red-600">{errors.joinDate.message}</p>}
-              </div>
+              </GlassSelect>
             </div>
 
+            <div className="sm:col-span-6">
+              <GlassLabel htmlFor="positionIds">{t('fields.positions')} *</GlassLabel>
+               <GlassSelect multiple id="positionIds" {...register('positionIds')} className="h-32" error={errors.positionIds?.message}>
+                   {positions.map(p => (
+                     <option key={p.id} value={p.id}>{p.title}</option>
+                   ))}
+              </GlassSelect>
+              <p className="mt-2 text-xs text-white/40">{t('hints.multiPosition')}</p>
+            </div>
+
+            <div className="sm:col-span-3">
+              <GlassLabel htmlFor="joinDate">{t('fields.joinDate')} *</GlassLabel>
+              <GlassInput type="date" id="joinDate" {...register('joinDate')} error={errors.joinDate?.message} />
+            </div>
+             <div className="sm:col-span-3">
+             <GlassLabel htmlFor="status">Status</GlassLabel>
+               <GlassSelect id="status" {...register('status')}>
+                  <option value="PROBATION">PROBATION</option>
+                  <option value="ACTIVE">ACTIVE</option>
+              </GlassSelect>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="pt-5">
-        <div className="flex justify-end">
-          <Link
-            href="/dashboard/employees"
-            className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-          >
-            Cancel
-          </Link>
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
-          >
-            {isSubmitting ? 'Saving...' : 'Save'}
-          </button>
+        <div className="pt-6 flex justify-end gap-3">
+           <Link href="/dashboard/employees">
+              <GlassButton type="button" variant="secondary">{tCommon('cancel')}</GlassButton>
+           </Link>
+          <GlassButton type="submit" isLoading={isSubmitting}>
+             {isSubmitting ? tCommon('saving') : tCommon('save')}
+          </GlassButton>
         </div>
-      </div>
-    </form>
+      </form>
+    </GlassCard>
   );
 }

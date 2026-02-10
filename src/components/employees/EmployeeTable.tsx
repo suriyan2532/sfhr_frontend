@@ -2,6 +2,7 @@ import { Employee, Department, Position, Person, EmployeePosition } from '@prism
 import { Pencil, Trash2, Eye } from 'lucide-react';
 import { Link } from '@/navigation';
 import { deleteEmployee } from '@/lib/actions/employee-actions';
+import { getTranslations } from 'next-intl/server';
 
 // Extended type to include relations
 type EmployeeWithRelations = Employee & {
@@ -14,26 +15,28 @@ interface EmployeeTableProps {
   employees: EmployeeWithRelations[];
 }
 
-export function EmployeeTable({ employees }: EmployeeTableProps) {
+export async function EmployeeTable({ employees }: EmployeeTableProps) {
+  const t = await getTranslations('EmployeeTable');
+  
   return (
     <div className="overflow-x-auto">
       <table className="min-w-full divide-y divide-gray-200">
         <thead className="bg-gray-50">
           <tr>
             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Name
+              {t('headers.name')}
             </th>
             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              ID / Position
+              {t('headers.idPosition')}
             </th>
             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Department
+              {t('headers.department')}
             </th>
             <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Status
+              {t('headers.status')}
             </th>
             <th scope="col" className="relative px-6 py-3">
-              <span className="sr-only">Actions</span>
+              <span className="sr-only">{t('headers.actions')}</span>
             </th>
           </tr>
         </thead>

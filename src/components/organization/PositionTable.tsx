@@ -13,10 +13,10 @@ interface Position {
 }
 
 export function PositionTable({ positions }: { positions: Position[] }) {
-  const t = useTranslations('Common');
+  const t = useTranslations('Organization');
 
   const handleDelete = async (id: string) => {
-    if (confirm('Are you sure you want to delete this position?')) {
+    if (confirm(t('confirmDelete', { item: t('position') }))) {
       await deletePosition(id);
     }
   };
@@ -26,11 +26,11 @@ export function PositionTable({ positions }: { positions: Position[] }) {
       <table className="min-w-full divide-y divide-gray-200">
         <thead className="bg-gray-50">
           <tr>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Code</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Department</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Level</th>
-            <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{t('code')}</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{t('title')}</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{t('department')}</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{t('level')}</th>
+            <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">{t('actions')}</th>
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-200">

@@ -49,52 +49,47 @@ export function Sidebar({ isOpen, onClose }: { isOpen: boolean; onClose: () => v
       {/* Sidebar component */}
       <div 
         className={clsx(
-          "fixed inset-y-0 left-0 z-50 w-72 bg-white border-r border-gray-200 transform transition-transform duration-300 ease-in-out md:translate-x-0 md:static md:inset-auto md:flex md:w-72 md:flex-col",
+          "fixed inset-y-0 left-0 z-50 w-72 bg-white/90 dark:bg-[#1e1e1e]/90 backdrop-blur-xl border-r border-gray-200 dark:border-white/10 transform transition-transform duration-300 ease-in-out md:translate-x-0 md:static md:inset-auto md:flex md:w-72 md:flex-col",
           isOpen ? "translate-x-0" : "-translate-x-full"
         )}
       >
         {/* Logo */}
-        <div className="flex h-16 items-center justify-between px-6 border-b border-gray-100">
+        <div className="flex h-16 items-center justify-between px-6 border-b border-gray-200 dark:border-white/10">
           <Link href="/dashboard" className="flex items-center gap-2">
-            <div className="h-8 w-8 rounded-lg bg-indigo-600 flex items-center justify-center">
+            <div className="h-8 w-8 rounded-lg bg-blue-600 dark:bg-blue-500/80 flex items-center justify-center shadow-lg shadow-blue-500/20">
               <span className="text-white font-bold text-xl">S</span>
             </div>
-            <span className="text-xl font-bold text-gray-900">Safari HR</span>
+            <span className="text-xl font-bold text-gray-900 dark:text-white tracking-tight">Safari HR</span>
           </Link>
           <button 
             type="button" 
-            className="md:hidden p-1 text-gray-500 hover:text-gray-700"
+            className="md:hidden p-1 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
             onClick={onClose}
           >
             <X className="h-6 w-6" />
           </button>
         </div>
 
-        {/* User Profile Summary (Optional for Sidebar, usually in Header) */}
-        
         {/* Navigation Links */}
-        <div className="flex-1 overflow-y-auto py-6 px-3">
+        <div className="flex-1 overflow-y-auto py-6 px-3 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-white/10 scrollbar-track-transparent">
           <nav className="space-y-1">
             {navigation.map((item) => {
-              // Pathname includes locale in standard next navigation? 
-              // next-intl usePathname returns path WITHOUT locale.
-              // So exact match or startsWith works fine.
               const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
               return (
                 <Link
                   key={item.href}
                   href={item.href}
                   className={clsx(
-                    "group flex items-center px-3 py-2.5 text-sm font-medium rounded-lg transition-colors",
+                    "group flex items-center px-3 py-2.5 text-sm font-medium rounded-xl transition-all duration-300",
                     isActive 
-                      ? "bg-indigo-50 text-indigo-700" 
-                      : "text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+                      ? "bg-blue-50 dark:bg-blue-500/20 text-blue-600 dark:text-blue-200 border border-blue-200 dark:border-blue-500/20 shadow-sm dark:shadow-lg shadow-blue-500/5" 
+                      : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/5 hover:text-gray-900 dark:hover:text-white border border-transparent"
                   )}
                 >
                   <item.icon 
                     className={clsx(
                       "mr-3 h-5 w-5 flex-shrink-0 transition-colors",
-                      isActive ? "text-indigo-600" : "text-gray-400 group-hover:text-gray-500"
+                      isActive ? "text-blue-600 dark:text-blue-400" : "text-gray-400 dark:text-gray-500 group-hover:text-blue-500 dark:group-hover:text-blue-300"
                     )}
                     aria-hidden="true"
                   />
@@ -106,8 +101,8 @@ export function Sidebar({ isOpen, onClose }: { isOpen: boolean; onClose: () => v
         </div>
 
         {/* Footer / Version */}
-        <div className="p-4 border-t border-gray-100">
-          <p className="text-xs text-center text-gray-400">
+        <div className="p-4 border-t border-gray-200 dark:border-white/10">
+          <p className="text-xs text-center text-gray-500 dark:text-gray-500">
             v1.0.0 &copy; 2026 Safari HR
           </p>
         </div>

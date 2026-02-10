@@ -1,5 +1,7 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
+
 interface ChartData {
     date: string;
     fullDate: string;
@@ -7,11 +9,12 @@ interface ChartData {
 }
 
 export function AttendanceChart({ data }: { data: ChartData[] }) {
+    const t = useTranslations('Dashboard');
     const maxVal = Math.max(...data.map(d => d.count), 1);
     
     return (
         <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm h-full">
-            <h3 className="text-lg font-bold text-gray-900 mb-6">Attendance Trend</h3>
+            <h3 className="text-lg font-bold text-gray-900 mb-6">{t('sections.attendanceTrend')}</h3>
             <div className="flex items-end justify-between h-48 gap-2">
                 {data.map((d, i) => {
                     const height = (d.count / maxVal) * 100;

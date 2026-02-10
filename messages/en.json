@@ -1,119 +1,159 @@
 {
   "Common": {
     "save": "Save",
+    "saving": "Saving...",
     "cancel": "Cancel",
+    "back": "Back",
     "delete": "Delete",
     "edit": "Edit",
-    "add": "Add",
+    "search": "Search...",
+    "actions": "Actions",
+    "selectOption": "Select an option",
+    "optional": "Optional",
     "required": "Required",
-    "actions": "Actions"
-  },
-  "Overview": {
-    "title": "Dashboard Overview",
-    "subtitle": "Real-time summary of your organization's HR status.",
-    "stats": {
-        "totalEmployees": "Total Employees",
-        "presentToday": "Present Today",
-        "onLeaveToday": "On Leave",
-        "pendingApprovals": "Pending Approvals"
-    },
-    "attendanceTrend": "Attendance Trend (Last 7 Days)",
-    "recentActivities": "Recent Activities",
-    "pendingTasks": "Pending Tasks & Approvals",
-    "viewAll": "View All"
+    "yes": "Yes",
+    "no": "No"
   },
   "Sidebar": {
     "dashboard": "Dashboard",
-    "employeeManagement": "Employee Management",
+    "employeeManagement": "Employees",
     "organization": "Organization",
     "chainOfCommand": "Chain of Command",
     "masterData": "Master Data",
-    "timeAttendance": "Time & Attendance",
+    "timeAttendance": "Time Attendance",
     "leaveManagement": "Leave Management",
     "payrollBenefits": "Payroll & Benefits",
     "settings": "Settings"
   },
   "Auth": {
-    "welcomeBack": "Welcome Back",
-    "signInToAccount": "Sign in to your account",
+    "loginTitle": "Workspace Access",
+    "loginSubtitle": "Sign in to your workspace",
     "username": "Username",
     "password": "Password",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot password?",
     "signIn": "Sign In",
-    "forgotPassword": "Forgot your password?",
-    "testCredentials": "Test Credentials"
+    "signingIn": "Signing In...",
+    "skipToDashboard": "Skip to Dashboard",
+    "authorizedOnly": "Authorized Personnel Only"
   },
-  "Employee": {
-    "title": "Employee Management",
-    "subtitle": "Manage active employees, roles, and status.",
-    "addEmployee": "Add Employee",
-    "searchPlaceholder": "Search by name or ID...",
-    "table": {
-        "employee": "Employee",
-        "position": "Position",
-        "company": "Company / Dept",
-        "status": "Status",
-        "joined": "Joined"
+  "EmployeeForm": {
+    "title": "Employee Information",
+    "subtitle": "Manage employee details and assignments.",
+    "basicInfo": "Basic Information",
+    "basicInfoDesc": "Identity and contact details.",
+    "workInfo": "Work Information",
+    "workInfoDesc": "Company, department, and position details.",
+    "fields": {
+      "idCard": "ID Card (National ID)",
+      "employeeId": "Employee ID",
+      "prefix": "Prefix",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "nickname": "Nickname",
+      "gender": "Gender",
+      "birthDate": "Birth Date",
+      "maritalStatus": "Marital Status",
+      "address": "Address",
+      "mobile": "Mobile Number",
+      "lineId": "Line ID",
+      "email": "Email",
+      "company": "Company",
+      "unit": "Unit",
+      "department": "Department",
+      "positions": "Positions",
+      "workingShift": "Working Shift",
+      "joinDate": "Join Date",
+      "probationDate": "Probation Date"
     },
-    "form": {
-        "basicInfo": "Basic Information",
-        "idCard": "ID Card (National ID)",
-        "employeeId": "Employee ID",
-        "firstName": "First Name",
-        "lastName": "Last Name",
-        "company": "Company",
-        "department": "Department",
-        "position": "Position",
-        "joinDate": "Join Date"
+    "placeholders": {
+        "selectCompany": "Select a Company",
+        "selectUnit": "Select a Unit",
+        "selectDepartment": "Select a Department",
+        "selectShift": "Select a Shift"
+    },
+    "hints": {
+        "multiPosition": "Hold Ctrl/Cmd to select multiple positions."
     }
+  }, 
+  "Dashboard": {
+      "welcome": "Welcome back",
+      "overview": "Overview",
+      "search": "Search records...",
+      "title": "Dashboard Overview",
+      "subtitle": "Welcome back, here's what's happening today.",
+      "stats": {
+          "totalEmployees": "Total Employees",
+          "presentToday": "Present Today",
+          "onLeaveToday": "On Leave",
+          "pendingApprovals": "Pending Approvals"
+      },
+      "sections": {
+          "pendingRequests": "Pending Requests",
+          "pendingRequestsDesc": "You have {count} pending requests waiting for approval.",
+          "recentActivity": "Recent Activity",
+          "quickLinks": "Quick Links"
+      },
+      "charts": {
+        "employeeGrowth": "Employee Growth",
+        "employeesByDept": "Employees by Department",
+        "employmentStatus": "Employment Status",
+        "joined": "Joined",
+        "resigned": "Resigned"
+      },
+      "activities": {
+          "joinTitle": "New Employee Joined",
+          "joinDesc": "{name} has been added to the system.",
+          "leaveTitle": "Leave Approved",
+          "leaveDesc": "{name} for {type}"
+      },
+      "actions": {
+          "viewAll": "View All",
+          "approve": "Approve",
+          "reject": "Reject",
+          "goToApprovals": "Go to Approvals"
+      }
+  },
+  "EmployeeTable": {
+      "headers": {
+          "name": "Name",
+          "idPosition": "ID / Position",
+          "department": "Department",
+          "status": "Status",
+          "actions": "Actions"
+      }
   },
   "Organization": {
-      "title": "Organization",
-      "subtitle": "Manage companies and subsidiaries.",
-      "addOrganization": "Add Organization",
-      "empty": "No organizations",
-      "emptySubtitle": "Get started by creating a new company or subsidiary."
+      "company": "Company",
+      "department": "Department",
+      "unit": "Unit",
+      "position": "Position",
+      "code": "Code",
+      "name": "Name",
+      "title": "Title",
+      "level": "Level",
+      "taxId": "Tax ID",
+      "parentCompany": "Parent Company",
+      "selectParent": "Select a parent organization",
+      "editTitle": "Edit Organization",
+      "newTitle": "New Organization",
+      "editDesc": "Update company details and hierarchy.",
+      "newDesc": "Register a new company or subsidiary.",
+      "details": "Details",
+      "address": "Address",
+      "phone": "Phone",
+      "headquarters": "Headquarters",
+      "subsidiaryOf": "Sub. of {name}",
+      "employees": "Employees",
+      "depts": "Depts",
+      "units": "Units",
+      "actions": "Actions",
+      "confirmDelete": "Are you sure you want to delete this {item}?"
   },
   "Attendance": {
-    "title": "Employee Attendance Table Audit",
-    "filterMonth": "Month",
-    "filterYear": "Year",
-    "btnHolidayType": "Holiday Types",
-    "btnRecalculate": "Recalculate",
-    "btnSearch": "Search",
-    "colEmployee": "Employee",
-    "colTotal": "Total",
-    "colAction": "Action",
-    "statusNormal": "N",
-    "statusHoliday": "PH",
-    "statusLeave": "V",
-    "viewDetail": "View"
-  },
-  "ChainOfCommand": {
-    "title": "Chain of Command",
-    "subtitle": "Organization structure and reporting lines",
-    "btnAddNode": "Add Top Level",
-    "reset": "Reset",
-    "search": "Search"
-  },
-  "MasterData": {
-    "title": "Master Data Configuration",
-    "subtitle": "Manage core system entities and configurations",
-    "categories": {
-      "recruitment": "Recruitment & Interviews",
-      "employee": "Employee Information",
-      "employeeGroup": "Employee Groups",
-      "employeeType": "Employee Types",
-      "company": "Company / Organization",
-      "unit": "Units / Agencies",
-      "department": "Departments",
-      "position": "Positions",
-      "jobDescription": "Job Descriptions",
-      "leaveType": "Leave Types",
-      "otType": "OT Types",
-      "user": "Users",
-      "permission": "Permissions",
-      "workingShift": "Working Shifts",
-      "companyHoliday": "Company Holidays"
-    }
+      "colEmployee": "Employee",
+      "colTotal": "Total",
+      "colAction": "Action",
+      "viewDetail": "View Detail"
   }
 }

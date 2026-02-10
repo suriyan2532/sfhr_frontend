@@ -71,8 +71,20 @@ export async function getDashboardSummary() {
                 where: { isDeleted: false },
                 orderBy: { createdAt: 'desc' },
                 take: 5,
-                select: { firstName: true, lastName: true, createdAt: true }
-            }),
+                select: { 
+                    createdAt: true,
+                    person: {
+                        select: {
+                            firstName: true,
+                            lastName: true
+                        }
+                    }
+                }
+            }).then(employees => employees.map(e => ({
+                createdAt: e.createdAt,
+                firstName: e.person.firstName,
+                lastName: e.person.lastName
+            }))),
             prisma.leaveRequest.findMany({
                 where: { status: 'APPROVED' },
                 orderBy: { updatedAt: 'desc' },

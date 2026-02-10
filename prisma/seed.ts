@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client'
+import bcrypt from 'bcryptjs'
 
 const prisma = new PrismaClient()
 
@@ -44,7 +45,7 @@ async function main() {
     },
   })
 
-  // Create Positions (Manual check since no unique constraint on [title, departmentId])
+  // Create Positions
   const seTitle = 'Software Engineer';
   const existingSE = await prisma.position.findFirst({
     where: { title: seTitle, departmentId: devDept.id }
@@ -75,6 +76,25 @@ async function main() {
     });
   }
 
+  // Create Admin User
+  const hashedPassword = await bcrypt.hash('P@ssw0rd', 10);
+  
+  await prisma.user.upsert({
+    where: { username: 'admin' },
+    update: {
+      passwordHash: hashedPassword,
+      role: 'SUPER_ADMIN', // Assuming SUPER_ADMIN is a valid role enum
+      isActive: true,
+    },
+    create: {
+      username: 'admin',
+      email: 'admin@safarihr.com',
+      passwordHash: hashedPassword,
+      role: 'SUPER_ADMIN',
+      isActive: true,
+    },
+  });
+  
   console.log('Seeding finished.')
 }
 
