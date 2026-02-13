@@ -44,43 +44,62 @@ const iconTypes = [
   Heart,
 ];
 
+// Macaw Palette
+const macawColors = [
+  { name: "Red", hex: "#ef4444", shadow: "rgba(239, 68, 68, 0.5)" },
+  { name: "Yellow", hex: "#facc15", shadow: "rgba(250, 204, 21, 0.5)" },
+  { name: "Blue", hex: "#3b82f6", shadow: "rgba(59, 130, 246, 0.5)" },
+  { name: "Green", hex: "#22c55e", shadow: "rgba(34, 197, 94, 0.5)" },
+];
+
 interface IconInstance {
   id: number;
-  Icon: any;
+  Icon: React.ElementType;
   x: number;
   y: number;
   duration: number;
+  pulseDuration: number;
   delay: number;
   baseSize: number;
   rotate: number;
   scale: number;
+  color: { hex: string; shadow: string };
 }
 
 export function BackgroundIcons() {
-  const [iconInstances, setIconInstances] = useState<IconInstance[]>([]);
-  const [mounted, setMounted] = useState(false);
+  const [state, setState] = useState<{
+    mounted: boolean;
+    instances: IconInstance[];
+  }>({
+    mounted: false,
+    instances: [],
+  });
 
   useEffect(() => {
-    setMounted(true);
     const instances = [...Array(40)].map((_, i) => ({
       id: i,
       Icon: iconTypes[Math.floor(Math.random() * iconTypes.length)],
       x: Math.random() * 100,
       y: Math.random() * 100,
-      duration: 25 + Math.random() * 25,
+      duration: 30 + Math.random() * 20,
+      pulseDuration: 4 + Math.random() * 6,
       delay: -Math.random() * 50,
-      baseSize: 20 + Math.random() * 30,
+      baseSize: 22 + Math.random() * 28,
       rotate: Math.random() * 360,
       scale: 0.8 + Math.random() * 0.4,
+      color: macawColors[Math.floor(Math.random() * macawColors.length)],
     }));
-    setIconInstances(instances);
+
+    requestAnimationFrame(() => {
+      setState({ mounted: true, instances });
+    });
   }, []);
 
-  if (!mounted || iconInstances.length === 0) return null;
+  if (!state.mounted || state.instances.length === 0) return null;
 
   return (
-    <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none opacity-30 dark:opacity-10 transition-opacity duration-1000 bg-neutral-50 dark:bg-black">
-      {iconInstances.map((instance) => (
+    <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none opacity-50 dark:opacity-30 transition-opacity duration-1000 bg-neutral-50 dark:bg-black">
+      {state.instances.map((instance) => (
         <motion.div
           key={instance.id}
           initial={{
@@ -99,7 +118,7 @@ export function BackgroundIcons() {
               instance.rotate - 15,
               instance.rotate,
             ],
-            opacity: [0.1, 0.4, 0.1],
+            opacity: [0.35, 0.65, 0.35],
           }}
           transition={{
             duration: instance.duration,
@@ -109,15 +128,32 @@ export function BackgroundIcons() {
           }}
           className="absolute"
         >
-          <instance.Icon
-            size={instance.baseSize}
-            className="text-amber-900/40 dark:text-amber-200/40"
-          />
+          <motion.div
+            animate={{
+              filter: [
+                `drop-shadow(0 0 0px transparent)`,
+                `drop-shadow(0 0 15px ${instance.color.shadow})`,
+                `drop-shadow(0 0 0px transparent)`,
+              ],
+            }}
+            transition={{
+              duration: instance.pulseDuration,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+            className="flex items-center justify-center dark:brightness-150"
+          >
+            <instance.Icon
+              size={instance.baseSize}
+              style={{ color: instance.color.hex }}
+              className="opacity-80 dark:opacity-100"
+            />
+          </motion.div>
         </motion.div>
       ))}
 
       {/* Soft gradient overlay */}
-      <div className="absolute inset-0 bg-radial-gradient from-transparent via-transparent to-neutral-50/50 dark:to-black/50" />
+      <div className="absolute inset-0 bg-radial-gradient from-transparent via-transparent to-neutral-50/60 dark:to-black/60" />
     </div>
   );
 }

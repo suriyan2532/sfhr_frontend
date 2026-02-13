@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import LoginForm from "@/components/auth/LoginForm";
 import LanguageSwitcher from "@/components/common/LanguageSwitcher";
 import { ThemeToggle } from "@/components/common/ThemeToggle";
@@ -92,10 +93,13 @@ export default function LoginPage() {
           transition={{ delay: 0.8, duration: 1.2, ease: "easeOut" }}
           className="absolute -right-20 -top-16 z-20 w-64 h-64 pointer-events-none drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)]"
         >
-          <img
+          <Image
             src="/macaw_cartoon.png"
             alt="Macaw"
+            width={256}
+            height={256}
             className="w-full h-full object-contain"
+            priority
           />
         </motion.div>
       </motion.div>

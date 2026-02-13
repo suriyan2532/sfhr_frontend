@@ -12,8 +12,13 @@ import { useRouter } from "@/navigation";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 
+interface Role {
+  id: number;
+  name: string;
+}
+
 export default function EditUserPage({ params }: { params: { id: string } }) {
-  const [roles, setRoles] = useState<any[]>([]);
+  const [roles, setRoles] = useState<Role[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
 
@@ -23,6 +28,7 @@ export default function EditUserPage({ params }: { params: { id: string } }) {
     reset,
     formState: { errors },
   } = useForm<UserFormValues>({
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     resolver: zodResolver(userSchema) as any,
     defaultValues: {
       username: "",
@@ -52,7 +58,7 @@ export default function EditUserPage({ params }: { params: { id: string } }) {
             isActive: userData.isActive,
           });
         }
-      } catch (error) {
+      } catch {
         toast.error("Failed to load data");
       } finally {
         setIsLoading(false);
@@ -88,7 +94,11 @@ export default function EditUserPage({ params }: { params: { id: string } }) {
           <CardTitle>Edit User</CardTitle>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+          <form
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            onSubmit={handleSubmit(onSubmit as any)}
+            className="space-y-6"
+          >
             <div className="space-y-2">
               <Label htmlFor="username">Username</Label>
               <Input

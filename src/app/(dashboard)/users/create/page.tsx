@@ -12,8 +12,13 @@ import { useRouter } from "@/navigation";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 
+interface Role {
+  id: number;
+  name: string;
+}
+
 export default function CreateUserPage() {
-  const [roles, setRoles] = useState<any[]>([]);
+  const [roles, setRoles] = useState<Role[]>([]);
   const router = useRouter();
 
   const {
@@ -21,6 +26,7 @@ export default function CreateUserPage() {
     handleSubmit,
     formState: { errors },
   } = useForm<UserFormValues>({
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     resolver: zodResolver(userSchema) as any,
     defaultValues: {
       username: "",
@@ -36,7 +42,7 @@ export default function CreateUserPage() {
       try {
         const data = await getRoles();
         setRoles(data);
-      } catch (error) {
+      } catch {
         toast.error("Failed to load roles");
       }
     }

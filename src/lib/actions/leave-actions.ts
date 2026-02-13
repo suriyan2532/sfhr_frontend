@@ -4,9 +4,12 @@ import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 import { auth } from "@/auth";
 
-export async function getLeaveSummary() {
+export async function getLeaveSummary(employeeId?: string) {
   // Mock data for now, or calculate from LeaveRequest if rules exist
-  // In a real app, this would query a LeaveBalance table
+  // In a real app, this would query a LeaveBalance table using employeeId
+  if (employeeId)
+    console.log(`Fetching leave summary for employee: ${employeeId}`);
+
   return [
     { type: "Vacation", used: 2, total: 10, code: "V" },
     { type: "Sick Leave", used: 1, total: 30, code: "S" },

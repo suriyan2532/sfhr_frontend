@@ -1,0 +1,149 @@
+
+> sfhr_frontend@0.1.0 lint
+> eslint
+
+
+/Users/suriyan/safari_hr/sfhr_frontend/src/app/(dashboard)/calendar/page.tsx
+  8:3  warning  'CardTitle' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/suriyan/safari_hr/sfhr_frontend/src/app/(dashboard)/employees/page.tsx
+  7:3  warning  'CardDescription' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/suriyan/safari_hr/sfhr_frontend/src/app/(dashboard)/users/[id]/page.tsx
+  16:38  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  26:42  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  55:16  warning  'error' is defined but never used         @typescript-eslint/no-unused-vars
+
+/Users/suriyan/safari_hr/sfhr_frontend/src/app/(dashboard)/users/create/page.tsx
+  16:38  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  24:42  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  39:16  warning  'error' is defined but never used         @typescript-eslint/no-unused-vars
+
+/Users/suriyan/safari_hr/sfhr_frontend/src/app/(dashboard)/users/page.tsx
+  11:3   warning  'MoreHorizontal' is defined but never used  @typescript-eslint/no-unused-vars
+  20:38  error    Unexpected any. Specify a different type    @typescript-eslint/no-explicit-any
+
+/Users/suriyan/safari_hr/sfhr_frontend/src/app/[locale]/(app)/attendance/page.tsx
+  14:42  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/suriyan/safari_hr/sfhr_frontend/src/app/[locale]/(app)/chain-of-command/page.tsx
+  1:10  warning  'useTranslations' is defined but never used  @typescript-eslint/no-unused-vars
+  3:27  warning  'Search' is defined but never used           @typescript-eslint/no-unused-vars
+
+/Users/suriyan/safari_hr/sfhr_frontend/src/app/[locale]/(app)/dashboard/benefits/page.tsx
+  72:53  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/suriyan/safari_hr/sfhr_frontend/src/app/[locale]/(app)/dashboard/page.tsx
+  6:9  warning  'session' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/suriyan/safari_hr/sfhr_frontend/src/app/[locale]/(app)/employees/page.tsx
+  15:22  warning  'totalPages' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/suriyan/safari_hr/sfhr_frontend/src/app/[locale]/(app)/organization/[id]/page.tsx
+  27:17  error  Do not use an `<a>` element to navigate to `/organization/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+  27:17  error  Do not use an `<a>` element to navigate to `/organization/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+  27:17  error  Do not use an `<a>` element to navigate to `/organization/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+  35:29  error  Do not use an `<a>` element to navigate to `/dashboard/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages     @next/next/no-html-link-for-pages
+  35:29  error  Do not use an `<a>` element to navigate to `/dashboard/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages     @next/next/no-html-link-for-pages
+  35:29  error  Do not use an `<a>` element to navigate to `/dashboard/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages     @next/next/no-html-link-for-pages
+  41:29  error  Do not use an `<a>` element to navigate to `/organization/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+  41:29  error  Do not use an `<a>` element to navigate to `/organization/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+  41:29  error  Do not use an `<a>` element to navigate to `/organization/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+
+/Users/suriyan/safari_hr/sfhr_frontend/src/app/[locale]/(app)/organization/create/page.tsx
+  11:17  error  Do not use an `<a>` element to navigate to `/organization/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+  11:17  error  Do not use an `<a>` element to navigate to `/organization/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+  11:17  error  Do not use an `<a>` element to navigate to `/organization/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+  20:29  error  Do not use an `<a>` element to navigate to `/dashboard/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages     @next/next/no-html-link-for-pages
+  20:29  error  Do not use an `<a>` element to navigate to `/dashboard/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages     @next/next/no-html-link-for-pages
+  20:29  error  Do not use an `<a>` element to navigate to `/dashboard/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages     @next/next/no-html-link-for-pages
+  26:29  error  Do not use an `<a>` element to navigate to `/organization/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+  26:29  error  Do not use an `<a>` element to navigate to `/organization/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+  26:29  error  Do not use an `<a>` element to navigate to `/organization/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+
+/Users/suriyan/safari_hr/sfhr_frontend/src/app/[locale]/(app)/organization/page.tsx
+  14:22  warning  'totalCount' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/suriyan/safari_hr/sfhr_frontend/src/app/[locale]/(app)/settings/master/company/page.tsx
+  17:22  warning  'totalCount' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/suriyan/safari_hr/sfhr_frontend/src/app/[locale]/(app)/settings/master/department/page.tsx
+  17:24  warning  'totalCount' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/suriyan/safari_hr/sfhr_frontend/src/app/[locale]/(app)/settings/master/page.tsx
+   3:3  warning  'UserCircle2' is defined but never used  @typescript-eslint/no-unused-vars
+  15:3  warning  'UserPlus' is defined but never used     @typescript-eslint/no-unused-vars
+
+/Users/suriyan/safari_hr/sfhr_frontend/src/app/[locale]/(app)/settings/master/position/page.tsx
+  17:22  warning  'totalCount' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/suriyan/safari_hr/sfhr_frontend/src/app/[locale]/(app)/settings/master/unit/create/page.tsx
+  8:9  warning  't' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/suriyan/safari_hr/sfhr_frontend/src/app/[locale]/(app)/settings/master/unit/page.tsx
+  17:18  warning  'totalCount' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/suriyan/safari_hr/sfhr_frontend/src/app/[locale]/(app)/settings/page.tsx
+  9:33  warning  'Users' is defined but never used      @typescript-eslint/no-unused-vars
+  9:40  warning  'Network' is defined but never used    @typescript-eslint/no-unused-vars
+  9:49  warning  'Briefcase' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/suriyan/safari_hr/sfhr_frontend/src/auth.ts
+  6:8   warning  'bcrypt' is defined but never used   @typescript-eslint/no-unused-vars
+  8:16  warning  'getUser' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/suriyan/safari_hr/sfhr_frontend/src/components/attendance/AttendanceCalendar.tsx
+   4:10  warning  'format' is defined but never used               @typescript-eslint/no-unused-vars
+   4:18  warning  'startOfMonth' is defined but never used         @typescript-eslint/no-unused-vars
+   4:85  warning  'isSameDay' is defined but never used            @typescript-eslint/no-unused-vars
+   7:10  warning  'Clock' is defined but never used                @typescript-eslint/no-unused-vars
+   7:17  warning  'Coffee' is defined but never used               @typescript-eslint/no-unused-vars
+  29:11  warning  'dateLocale' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  37:65  warning  '_' is defined but never used                    @typescript-eslint/no-unused-vars
+  37:68  warning  'i' is defined but never used                    @typescript-eslint/no-unused-vars
+
+/Users/suriyan/safari_hr/sfhr_frontend/src/components/attendance/AttendanceFilters.tsx
+  4:20  warning  'Search' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/suriyan/safari_hr/sfhr_frontend/src/components/benefits/BenefitClaimForm.tsx
+  5:19  warning  'Upload' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/suriyan/safari_hr/sfhr_frontend/src/components/common/BackgroundIcons.tsx
+   57:9   error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      @typescript-eslint/no-explicit-any
+  131:29  error  Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+/Users/suriyan/safari_hr/sfhr_frontend/src/components/common/BackgroundIcons.tsx:131:29
+  129 |             }}
+  130 |             transition={{
+> 131 |               duration: 5 + Math.random() * 5,
+      |                             ^^^^^^^^^^^^^ Cannot call impure function
+  132 |               repeat: Infinity,
+  133 |               ease: "linear",
+  134 |             }}  react-hooks/purity
+
+/Users/suriyan/safari_hr/sfhr_frontend/src/components/employees/EmployeeTable.tsx
+  2:26  warning  'Eye' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/suriyan/safari_hr/sfhr_frontend/src/components/kibo-ui/gantt/index.tsx
+  114:13  warning  '_date' is defined but never used      @typescript-eslint/no-unused-vars
+  855:3   warning  'className' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/suriyan/safari_hr/sfhr_frontend/src/components/organization/ChainOfCommandNode.tsx
+  22:44  warning  'isRoot' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/suriyan/safari_hr/sfhr_frontend/src/components/organization/UnitForm.tsx
+  17:9  warning  't' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/suriyan/safari_hr/sfhr_frontend/src/components/ui/glass-ui.tsx
+  114:34  warning  'options' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/suriyan/safari_hr/sfhr_frontend/src/lib/actions/attendance-actions.ts
+  4:10  warning  'startOfMonth' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/suriyan/safari_hr/sfhr_frontend/src/lib/actions/leave-actions.ts
+  7:39  warning  'employeeId' is defined but never used  @typescript-eslint/no-unused-vars
+
+✖ 67 problems (27 errors, 40 warnings)
+

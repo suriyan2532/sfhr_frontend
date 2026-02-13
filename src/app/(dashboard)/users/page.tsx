@@ -4,20 +4,23 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import {
-  Plus,
-  Search,
-  User as UserIcon,
-  MoreHorizontal,
-  Pencil,
-  Trash,
-} from "lucide-react";
+import { Plus, Search, User as UserIcon, Pencil, Trash } from "lucide-react";
 import { Link } from "@/navigation";
 import { getUsers, deleteUser } from "@/lib/actions/user-actions";
 import { toast } from "sonner";
 
+interface User {
+  id: string;
+  username: string;
+  email: string | null;
+  isActive: boolean;
+  Role: {
+    name: string;
+  } | null;
+}
+
 export default function UsersPage() {
-  const [users, setUsers] = useState<any[]>([]);
+  const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -28,8 +31,8 @@ export default function UsersPage() {
     try {
       const data = await getUsers();
       setUsers(data);
-    } catch (error) {
-      console.error(error);
+    } catch {
+      // Error handling
       toast.error("Failed to load users");
     } finally {
       setLoading(false);
