@@ -63,7 +63,7 @@ export function Sidebar({
         {/* Logo */}
         <div className="flex h-16 items-center justify-between px-6 border-b border-gray-200 dark:border-white/10">
           <Link href="/dashboard" className="flex items-center gap-2">
-            <div className="h-8 w-8 rounded-lg bg-blue-600 dark:bg-blue-500/80 flex items-center justify-center shadow-lg shadow-blue-500/20">
+            <div className="h-8 w-8 rounded-lg bg-amber-600 dark:bg-amber-500/80 flex items-center justify-center shadow-lg shadow-amber-500/20">
               <span className="text-white font-bold text-xl">S</span>
             </div>
             <span className="text-xl font-bold text-gray-900 dark:text-white tracking-tight">
@@ -92,7 +92,7 @@ export function Sidebar({
                   className={clsx(
                     "group flex items-center px-3 py-2.5 text-sm font-medium rounded-xl transition-all duration-300",
                     isActive
-                      ? "bg-blue-50 dark:bg-blue-500/20 text-blue-600 dark:text-blue-200 border border-blue-200 dark:border-blue-500/20 shadow-sm dark:shadow-lg shadow-blue-500/5"
+                      ? "bg-amber-50 dark:bg-amber-500/20 text-amber-600 dark:text-amber-200 border border-amber-200 dark:border-amber-500/20 shadow-sm dark:shadow-lg shadow-amber-500/5"
                       : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/5 hover:text-gray-900 dark:hover:text-white border border-transparent",
                   )}
                 >
@@ -100,8 +100,8 @@ export function Sidebar({
                     className={clsx(
                       "mr-3 h-5 w-5 flex-shrink-0 transition-colors",
                       isActive
-                        ? "text-blue-600 dark:text-blue-400"
-                        : "text-gray-400 dark:text-gray-500 group-hover:text-blue-500 dark:group-hover:text-blue-300",
+                        ? "text-amber-600 dark:text-amber-400"
+                        : "text-gray-400 dark:text-gray-500 group-hover:text-amber-500 dark:group-hover:text-amber-300",
                     )}
                     aria-hidden="true"
                   />

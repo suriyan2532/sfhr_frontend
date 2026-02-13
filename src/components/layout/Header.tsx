@@ -64,10 +64,10 @@ export function Header({ onMenuClick, user }: HeaderProps) {
 
         {/* Right: Notifications & Profile */}
         <div className="flex items-center gap-2">
-          <div className="flex items-center gap-1 bg-secondary/50 p-1 rounded-full border border-border">
-            <LanguageSwitcher />
-            <div className="h-4 w-px bg-border mx-1" />
+          <div className="flex items-center gap-2 bg-white/40 dark:bg-white/10 backdrop-blur-2xl p-1.5 rounded-full border border-white/20 shadow-sm transition-all hover:bg-white/60 dark:hover:bg-white/20">
             <ThemeToggle />
+            <div className="h-4 w-px bg-black/10 dark:bg-white/10 mx-1" />
+            <LanguageSwitcher />
           </div>
 
           <Button variant="ghost" size="icon" className="rounded-full relative">
