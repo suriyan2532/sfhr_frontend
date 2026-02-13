@@ -58,14 +58,24 @@ export default function LoginForm() {
         setErrorMessage(t("invalidCredentials"));
         toast.error(t("loginFailed"), {
           description: t("invalidCredentials"),
+          duration: 4000,
         });
       } else {
-        router.refresh();
+        toast.success(t("loginSuccess"), {
+          duration: 3000,
+        });
+        // Small delay to let the toast be seen before refresh/navigation
+        setTimeout(() => {
+          router.push("/dashboard");
+          router.refresh();
+        }, 1000);
       }
     } catch (error) {
       console.error("Login error:", error);
       setErrorMessage(t("loginFailed"));
-      toast.error(t("loginFailed"));
+      toast.error(t("loginFailed"), {
+        duration: 4000,
+      });
     } finally {
       setIsLoading(false);
     }

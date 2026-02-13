@@ -69,7 +69,8 @@
     "requiredUsername": "Please enter username",
     "requiredPassword": "Please enter password",
     "invalidCredentials": "Invalid username or password",
-    "loginFailed": "Login failed"
+    "loginFailed": "Login failed",
+    "loginSuccess": "Login successful"
   },
   "EmployeeForm": {
     "title": "Employee Information",

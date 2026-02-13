@@ -10,8 +10,9 @@ export async function authenticate(
   try {
     await signIn("credentials", {
       ...Object.fromEntries(formData),
-      redirectTo: "/dashboard",
+      redirect: false,
     });
+    return null; // Success implies null error message
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {

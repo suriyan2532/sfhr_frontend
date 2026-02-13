@@ -70,6 +70,7 @@
     "requiredPassword": "กรุณากรอกรหัสผ่าน",
     "invalidCredentials": "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง",
     "loginFailed": "เข้าสู่ระบบไม่สำเร็จ",
+    "loginSuccess": "เข้าใช้งานสำเร็จ",
     "signOutTitle": "ออกจากระบบ",
     "signOutConfirm": "คุณแน่ใจหรือไม่ว่าต้องการออกจากระบบ?",
     "signOutButton": "ออกจากระบบ",
