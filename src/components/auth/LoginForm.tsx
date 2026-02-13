@@ -88,7 +88,7 @@ export default function LoginForm() {
         <div className="space-y-2">
           <Label
             htmlFor="username"
-            className="text-xs font-bold ml-1 text-white/70 uppercase tracking-widest pl-1"
+            className="text-xs font-bold ml-1 text-zinc-700 dark:text-white/70 uppercase tracking-widest pl-1"
           >
             {t("username")}
           </Label>
@@ -98,9 +98,9 @@ export default function LoginForm() {
             type="text"
             placeholder="admin"
             className={cn(
-              "h-14 px-5 bg-white/10 border-white/20 text-white placeholder:text-white/40 rounded-2xl transition-all duration-300 focus:bg-white/20 focus:border-white/40 focus:ring-4 focus:ring-amber-500/20",
+              "h-14 px-5 bg-black/5 dark:bg-white/10 border-black/10 dark:border-white/20 text-zinc-900 dark:text-white placeholder:text-zinc-500 dark:placeholder:text-white/40 rounded-2xl transition-all duration-300 focus:bg-black/10 dark:focus:bg-white/20 focus:border-amber-500/50 dark:focus:border-white/40 focus:ring-4 focus:ring-amber-500/20",
               errors.username &&
-                "border-red-500/50 bg-red-500/10 focus:ring-red-500/20",
+                "border-red-500/50 bg-red-500/5 focus:ring-red-500/20",
             )}
           />
           {errors.username && (
@@ -117,7 +117,7 @@ export default function LoginForm() {
         <div className="space-y-2">
           <Label
             htmlFor="password"
-            className="text-xs font-bold ml-1 text-white/70 uppercase tracking-widest pl-1"
+            className="text-xs font-bold ml-1 text-zinc-700 dark:text-white/70 uppercase tracking-widest pl-1"
           >
             {t("password")}
           </Label>
@@ -127,7 +127,7 @@ export default function LoginForm() {
             type="password"
             placeholder="••••••"
             className={cn(
-              "h-14 px-5 bg-white/10 border-white/20 text-white placeholder:text-white/40 rounded-2xl transition-all duration-300 focus:bg-white/20 focus:border-white/40 focus:ring-4 focus:ring-amber-500/20",
+              "h-14 px-5 bg-black/5 dark:bg-white/10 border-black/10 dark:border-white/20 text-zinc-900 dark:text-white placeholder:text-zinc-500 dark:placeholder:text-white/40 rounded-2xl transition-all duration-300 focus:bg-black/10 dark:focus:bg-white/20 focus:border-amber-500/50 dark:focus:border-white/40 focus:ring-4 focus:ring-amber-500/20",
               errors.password &&
                 "border-red-500/50 bg-red-500/10 focus:ring-red-500/20",
             )}
@@ -144,16 +144,16 @@ export default function LoginForm() {
         </div>
       </div>
 
-      <div className="flex items-center justify-between px-1 text-white/60">
+      <div className="flex items-center justify-between px-1 text-zinc-600 dark:text-white/60">
         <div className="flex items-center space-x-2">
           <Checkbox
             id="remember-me"
             name="remember-me"
-            className="border-white/20 data-[state=checked]:bg-amber-600 data-[state=checked]:border-amber-600"
+            className="border-zinc-400 dark:border-white/20 data-[state=checked]:bg-amber-600 data-[state=checked]:border-amber-600"
           />
           <Label
             htmlFor="remember-me"
-            className="text-xs font-medium leading-none cursor-pointer hover:text-white transition-colors"
+            className="text-xs font-medium leading-none cursor-pointer hover:text-black dark:hover:text-white transition-colors"
           >
             {t("rememberMe")}
           </Label>
@@ -187,7 +187,7 @@ export default function LoginForm() {
         <Button
           asChild
           variant="ghost"
-          className="w-full h-12 text-white/40 hover:text-white hover:bg-white/5 font-bold text-xs uppercase tracking-widest rounded-2xl transition-all"
+          className="w-full h-12 text-zinc-500 dark:text-white/40 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 font-bold text-xs uppercase tracking-widest rounded-2xl transition-all"
         >
           <Link href="/dashboard">{t("skipToDashboard")}</Link>
         </Button>

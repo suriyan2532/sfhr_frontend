@@ -61,10 +61,10 @@ export default function LoginPage() {
             </motion.div>
 
             <div className="space-y-1.5">
-              <CardTitle className="text-4xl font-black tracking-tighter text-white drop-shadow-sm">
+              <CardTitle className="text-4xl font-black tracking-tighter text-zinc-900 dark:text-white drop-shadow-sm">
                 Safari HR
               </CardTitle>
-              <CardDescription className="text-amber-100/70 font-bold uppercase tracking-[0.3em] text-[0.65rem]">
+              <CardDescription className="text-zinc-700 dark:text-amber-100/70 font-bold uppercase tracking-[0.3em] text-[0.65rem]">
                 {t("loginTitle")}
               </CardDescription>
             </div>
@@ -79,7 +79,7 @@ export default function LoginPage() {
               transition={{ delay: 1 }}
               className="mt-8 text-center"
             >
-              <p className="text-[10px] text-white/30 font-medium uppercase tracking-[0.25em]">
+              <p className="text-[10px] text-zinc-400 dark:text-white/30 font-medium uppercase tracking-[0.25em]">
                 {t("authorizedOnly")}
               </p>
             </motion.div>
