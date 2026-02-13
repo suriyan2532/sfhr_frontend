@@ -1,10 +1,5 @@
-"use client";
-
-import { Link, usePathname } from "@/navigation"; // Use localized Link
-// import Link from 'next/link'; // REMOVED
-// import { usePathname } from 'next/navigation'; // REMOVED - usage in next-intl is slightly different or same but better validation?
-// actually navigation.ts exports usePathname as well.
-
+import Image from "next/image";
+import { Link, usePathname } from "@/navigation";
 import {
   LayoutDashboard,
   Users,
@@ -44,16 +39,7 @@ export function Sidebar({
 
   return (
     <>
-      {/* Mobile backdrop */}
-      <div
-        className={clsx(
-          "fixed inset-0 z-40 bg-zinc-900/50 backdrop-blur-sm transition-opacity md:hidden",
-          isOpen ? "opacity-100" : "opacity-0 pointer-events-none",
-        )}
-        onClick={onClose}
-      />
-
-      {/* Sidebar component */}
+      {/* ... mobile backdrop */}
       <div
         className={clsx(
           "fixed inset-y-0 left-0 z-50 w-72 bg-white/60 dark:bg-zinc-900/40 backdrop-blur-3xl border-r border-gray-200/50 dark:border-white/5 transform transition-transform duration-300 ease-in-out md:translate-x-0 md:static md:inset-auto md:flex md:w-72 md:flex-col",
@@ -61,12 +47,18 @@ export function Sidebar({
         )}
       >
         {/* Logo */}
-        <div className="flex h-16 items-center justify-between px-6 border-b border-gray-200 dark:border-white/10">
-          <Link href="/dashboard" className="flex items-center gap-2">
-            <div className="h-8 w-8 rounded-lg bg-amber-600 dark:bg-amber-500/80 flex items-center justify-center shadow-lg shadow-amber-500/20">
-              <span className="text-white font-bold text-xl">S</span>
+        <div className="flex h-20 items-center justify-between px-6 border-b border-gray-200 dark:border-white/10">
+          <Link href="/dashboard" className="flex items-center gap-3">
+            <div className="relative h-10 w-10 rounded-full overflow-hidden border-2 border-amber-500 shadow-[0_0_15px_rgba(245,158,11,0.4)] bg-white">
+              <Image
+                src="/safari_world_hr_logo.png"
+                alt="Safari World HR Logo"
+                fill
+                className="object-cover"
+                priority
+              />
             </div>
-            <span className="text-xl font-bold text-gray-900 dark:text-white tracking-tight">
+            <span className="text-lg font-black text-zinc-900 dark:text-white tracking-tight drop-shadow-sm">
               Safari HR
             </span>
           </Link>
