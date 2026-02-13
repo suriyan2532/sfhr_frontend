@@ -1,14 +1,14 @@
-import type { NextAuthConfig } from 'next-auth';
- 
+import type { NextAuthConfig } from "next-auth";
+
 export const authConfig = {
   pages: {
-    signIn: '/login',
-    signOut: '/signout',
+    signIn: "/login",
+    signOut: "/signout",
   },
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
-      const isOnDashboard = nextUrl.pathname.startsWith('/dashboard'); // Example protected route
+      const isOnDashboard = nextUrl.pathname.startsWith("/dashboard"); // Example protected route
       if (isOnDashboard) {
         if (isLoggedIn) return true;
         return false; // Redirect unauthenticated users to login page
@@ -16,7 +16,7 @@ export const authConfig = {
         // Redirect to dashboard if trying to access login page while logged in
         // Ideally this should be handled in the login page or middleware logic
         // For now, let's keep it simple.
-        return true; 
+        return true;
       }
       return true;
     },
@@ -26,12 +26,11 @@ export const authConfig = {
         session.user.id = token.sub;
       }
       if (token.role && session.user) {
-        // @ts-ignore
         session.user.role = token.role;
       }
       return session;
     },
-    async jwt({ token, user, trigger, session }) {
+    async jwt({ token, user }) {
       if (user) {
         token.role = user.role;
       }

@@ -1,147 +1,212 @@
-import { 
-    Users, 
-    CalendarCheck, 
-    UserMinus, 
-    Clock, 
-    CheckCircle2,
-    ArrowUpRight,
-    Search
-} from 'lucide-react';
-import { getTranslations } from 'next-intl/server';
-import { Link } from '@/navigation';
-import { StatCard } from './StatCard';
-import { AttendanceChart } from './AttendanceChart';
-import { ActivityList } from './ActivityList';
-import { DashboardLineChart } from './charts/DashboardLineChart';
-import { DashboardBarChart } from './charts/DashboardBarChart';
-import { DashboardDonutChart } from './charts/DashboardDonutChart';
+import {
+  Users,
+  CalendarCheck,
+  UserMinus,
+  Clock,
+  ArrowUpRight,
+  Search,
+} from "lucide-react";
+import { getTranslations } from "next-intl/server";
+import { StatCard } from "./StatCard";
+import { ActivityList } from "./ActivityList";
+import { DashboardLineChart } from "./charts/DashboardLineChart";
+import { DashboardBarChart } from "./charts/DashboardBarChart";
+import { DashboardDonutChart } from "./charts/DashboardDonutChart";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
+import { Link } from "@/navigation";
+
+interface DashboardData {
+  stats: {
+    totalEmployees: number;
+    presentToday: number;
+    onLeaveToday: number;
+    pendingApprovals: number;
+  };
+  trendData: Array<{
+    date: string;
+    fullDate: string;
+    count: number;
+  }>;
+  activities: {
+    recentEmployees: Array<{
+      id?: string;
+      firstName: string;
+      lastName: string;
+      createdAt: Date;
+    }>;
+    recentLeaves: Array<{
+      id: string;
+      employee: { firstName: string; lastName: string };
+      leaveType: { name: string };
+      updatedAt: Date;
+      status: string;
+    }>;
+  };
+}
 
 interface OverviewProps {
-    data: any;
+  data: DashboardData;
 }
 
 export async function DashboardOverview({ data }: OverviewProps) {
-    const t = await getTranslations('Dashboard');
+  const t = await getTranslations("Dashboard");
 
-    // Transform raw data into structured activities
-    const activities = [
-        ...data.activities.recentEmployees.map((emp: any) => ({
-            type: 'JOIN' as const,
-            title: t('activities.joinTitle'),
-            description: t('activities.joinDesc', { name: `${emp.firstName} ${emp.lastName}` }),
-            time: emp.createdAt
-        })),
-        ...data.activities.recentLeaves.map((leave: any) => ({
-            type: 'LEAVE' as const,
-            title: t('activities.leaveTitle'),
-            description: t('activities.leaveDesc', { name: leave.employee.firstName, type: leave.leaveType.name }),
-            time: leave.updatedAt
-        }))
-    ].sort((a: any, b: any) => b.time.getTime() - a.time.getTime()).slice(0, 5);
+  // Transform raw data into structured activities
+  const activities = [
+    ...data.activities.recentEmployees.map((emp) => ({
+      type: "JOIN" as const,
+      title: t("activities.joinTitle"),
+      description: t("activities.joinDesc", {
+        name: `${emp.firstName} ${emp.lastName}`,
+      }),
+      time: new Date(emp.createdAt),
+    })),
+    ...data.activities.recentLeaves.map((leave) => ({
+      type: "LEAVE" as const,
+      title: t("activities.leaveTitle"),
+      description: t("activities.leaveDesc", {
+        name: leave.employee.firstName,
+        type: leave.leaveType.name,
+      }),
+      time: new Date(leave.updatedAt),
+    })),
+  ]
+    .sort((a, b) => b.time.getTime() - a.time.getTime())
+    .slice(0, 5);
 
-    return (
-        <div className="space-y-8 p-6 lg:p-10 bg-white/40 dark:bg-black/20 backdrop-blur-3xl border border-white/20 dark:border-white/5 min-h-screen rounded-[2.5rem] shadow-2xl shadow-black/5">
-            {/* Header */}
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-                <div>
-                    <h1 className="text-3xl font-extrabold text-gray-900 tracking-tight">{t('title')}</h1>
-                    <p className="text-gray-500 mt-2 font-medium">{t('subtitle')}</p>
-                </div>
-                <div className="flex items-center gap-3">
-                    <div className="relative group">
-                        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400 group-focus-within:text-indigo-500 transition-colors" />
-                        <input 
-                            type="text" 
-                            placeholder={t('search')} 
-                            className="pl-10 pr-4 py-2.5 bg-white border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-indigo-500 outline-none w-full md:w-64 shadow-sm transition-all"
-                        />
-                    </div>
-                </div>
-            </div>
-
-            {/* Stats Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <StatCard 
-                    title={t('stats.totalEmployees')} 
-                    value={data.stats.totalEmployees} 
-                    icon={Users} 
-                    color="bg-indigo-50 text-indigo-600"
-                    description="+2% this month"
-                />
-                <StatCard 
-                    title={t('stats.presentToday')} 
-                    value={data.stats.presentToday} 
-                    icon={CalendarCheck} 
-                    color="bg-emerald-50 text-emerald-600"
-                />
-                <StatCard 
-                    title={t('stats.onLeaveToday')} 
-                    value={data.stats.onLeaveToday} 
-                    icon={UserMinus} 
-                    color="bg-rose-50 text-rose-600"
-                />
-                <StatCard 
-                    title={t('stats.pendingApprovals')} 
-                    value={data.stats.pendingApprovals} 
-                    icon={Clock} 
-                    color="bg-amber-50 text-amber-600"
-                />
-            </div>
-
-            {/* Main Content Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                {/* Left Column: Chart & Summary */}
-                <div className="lg:col-span-2 space-y-8">
-                    {/* Charts Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <DashboardLineChart />
-                        <DashboardDonutChart />
-                    </div>
-                    
-                    <DashboardBarChart />
-                    
-                    {/* Quick Access or Summary */}
-                    <div className="bg-gradient-to-br from-indigo-600 to-indigo-700 rounded-3xl p-8 text-white shadow-xl relative overflow-hidden group">
-                        <div className="relative z-10">
-                            <h3 className="text-2xl font-bold mb-2">{t('sections.pendingRequests')}</h3>
-                            <p className="text-indigo-100 mb-6 max-w-sm">{t('sections.pendingRequestsDesc', { count: data.stats.pendingApprovals })}</p>
-                            <button className="bg-white text-indigo-600 px-6 py-3 rounded-xl font-bold text-sm hover:bg-indigo-50 transition-colors flex items-center gap-2 shadow-lg shadow-indigo-900/20">
-                                {t('actions.goToApprovals')} <ArrowUpRight className="h-4 w-4" />
-                            </button>
-                        </div>
-                        {/* Decorative blobs */}
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl group-hover:bg-white/20 transition-all duration-700"></div>
-                        <div className="absolute bottom-0 left-0 w-32 h-32 bg-indigo-400/20 rounded-full translate-y-1/2 -translate-x-1/2 blur-2xl animate-pulse"></div>
-                    </div>
-                </div>
-
-                {/* Right Column: Activities */}
-                <div className="space-y-8">
-                    <ActivityList activities={activities} />
-                    
-
-                    <div className="bg-white dark:bg-[#252525] p-6 rounded-2xl border border-gray-100 dark:border-white/10 shadow-sm dark:shadow-none">
-                        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">{t('sections.quickLinks')}</h3>
-                        <div className="grid grid-cols-1 gap-3">
-                            {[
-                                { label: t('links.requestLeave'), href: '/leaves' },
-                                { label: t('links.employeeList'), href: '/employees' },
-                                { label: t('links.organization'), href: '/organization' },
-                                { label: t('links.settings'), href: '/settings/master' }
-                            ].map((link) => (
-                                <Link
-                                    key={link.href}
-                                    href={link.href}
-                                    className="flex items-center justify-between p-3 rounded-xl hover:bg-gray-50 dark:hover:bg-white/5 transition-colors border border-transparent hover:border-gray-100 dark:hover:border-white/10 text-sm font-medium text-gray-700 dark:text-gray-300"
-                                >
-                                    {link.label}
-                                    <ArrowUpRight className="h-4 w-4 text-gray-400" />
-                                </Link>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </div>
+  return (
+    <div className="space-y-8">
+      {/* Header */}
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+        <div>
+          <h1 className="text-4xl font-black tracking-tight text-foreground">
+            {t("title")}
+          </h1>
+          <p className="text-muted-foreground mt-1 text-lg">{t("subtitle")}</p>
         </div>
-    );
+        <div className="flex items-center gap-3">
+          <div className="relative w-full md:w-80">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <Input
+              type="text"
+              placeholder={t("search")}
+              className="pl-10 h-11"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Stats Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <StatCard
+          title={t("stats.totalEmployees")}
+          value={data.stats.totalEmployees}
+          icon={Users}
+          color="bg-info/10 text-info"
+          description="+2% this month"
+        />
+        <StatCard
+          title={t("stats.presentToday")}
+          value={data.stats.presentToday}
+          icon={CalendarCheck}
+          color="bg-success/10 text-success"
+        />
+        <StatCard
+          title={t("stats.onLeaveToday")}
+          value={data.stats.onLeaveToday}
+          icon={UserMinus}
+          color="bg-destructive/10 text-destructive"
+        />
+        <StatCard
+          title={t("stats.pendingApprovals")}
+          value={data.stats.pendingApprovals}
+          icon={Clock}
+          color="bg-warning/10 text-warning"
+        />
+      </div>
+
+      {/* Main Content Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* Left Column: Charts */}
+        <div className="lg:col-span-2 space-y-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <DashboardLineChart />
+            <DashboardDonutChart />
+          </div>
+
+          <DashboardBarChart />
+
+          {/* Featured Action Card */}
+          <Card className="bg-primary text-primary-foreground overflow-hidden border-none shadow-xl">
+            <CardHeader className="relative z-10">
+              <CardTitle className="text-2xl">
+                {t("sections.pendingRequests")}
+              </CardTitle>
+              <CardDescription className="text-primary-foreground/80 text-lg">
+                {t("sections.pendingRequestsDesc", {
+                  count: data.stats.pendingApprovals,
+                })}
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="relative z-10 pt-4">
+              <Button
+                asChild
+                variant="secondary"
+                size="lg"
+                className="font-bold border-none"
+              >
+                <Link href="/approvals" className="flex items-center gap-2">
+                  {t("actions.goToApprovals")}{" "}
+                  <ArrowUpRight className="h-5 w-5" />
+                </Link>
+              </Button>
+            </CardContent>
+            {/* Decorative background element */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
+          </Card>
+        </div>
+
+        {/* Right Column: Activities & Quick Links */}
+        <div className="space-y-8">
+          <ActivityList activities={activities} />
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg">
+                {t("sections.quickLinks")}
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="grid gap-2">
+              {[
+                { label: t("links.requestLeave"), href: "/leaves" },
+                { label: t("links.employeeList"), href: "/employees" },
+                { label: t("links.organization"), href: "/organization" },
+                { label: t("links.settings"), href: "/settings/master" },
+              ].map((link) => (
+                <Button
+                  key={link.href}
+                  asChild
+                  variant="ghost"
+                  className="justify-between w-full h-12 text-muted-foreground hover:text-foreground"
+                >
+                  <Link href={link.href}>
+                    {link.label}
+                    <ArrowUpRight className="h-4 w-4" />
+                  </Link>
+                </Button>
+              ))}
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    </div>
+  );
 }

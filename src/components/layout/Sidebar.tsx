@@ -1,57 +1,63 @@
-'use client';
+"use client";
 
-import { Link, usePathname } from '@/navigation'; // Use localized Link
+import { Link, usePathname } from "@/navigation"; // Use localized Link
 // import Link from 'next/link'; // REMOVED
-// import { usePathname } from 'next/navigation'; // REMOVED - usage in next-intl is slightly different or same but better validation? 
+// import { usePathname } from 'next/navigation'; // REMOVED - usage in next-intl is slightly different or same but better validation?
 // actually navigation.ts exports usePathname as well.
 
-import { 
-  LayoutDashboard, 
-  Users, 
-  Building2, 
-  Clock, 
-  CalendarDays, 
-  Banknote, 
+import {
+  LayoutDashboard,
+  Users,
+  Building2,
+  Clock,
+  CalendarDays,
+  Banknote,
   GitGraph,
   Settings,
-  X
-} from 'lucide-react';
-import { clsx } from 'clsx';
-import { useTranslations } from 'next-intl';
+  X,
+} from "lucide-react";
+import { clsx } from "clsx";
+import { useTranslations } from "next-intl";
 
-export function Sidebar({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
+export function Sidebar({
+  isOpen,
+  onClose,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+}) {
   const pathname = usePathname();
-  const t = useTranslations('Sidebar');
+  const t = useTranslations("Sidebar");
 
   const navigation = [
-    { name: t('dashboard'), href: '/dashboard', icon: LayoutDashboard },
-    { name: t('employeeManagement'), href: '/employees', icon: Users },
-    { name: t('organization'), href: '/organization', icon: Building2 },
-    { name: t('chainOfCommand'), href: '/chain-of-command', icon: GitGraph },
-    { name: t('masterData'), href: '/settings/master', icon: Settings },
-    { name: t('timeAttendance'), href: '/attendance', icon: Clock },
-    { name: t('leaveManagement'), href: '/leaves', icon: CalendarDays },
-    { name: t('benefits'), href: '/dashboard/benefits', icon: Banknote },
-    { name: t('userInformation'), href: '/users', icon: Users },
-    { name: t('settings'), href: '/settings', icon: Settings },
+    { name: t("dashboard"), href: "/dashboard", icon: LayoutDashboard },
+    { name: t("employeeManagement"), href: "/employees", icon: Users },
+    { name: t("organization"), href: "/organization", icon: Building2 },
+    { name: t("chainOfCommand"), href: "/chain-of-command", icon: GitGraph },
+    { name: t("masterData"), href: "/settings/master", icon: Settings },
+    { name: t("timeAttendance"), href: "/attendance", icon: Clock },
+    { name: t("leaveManagement"), href: "/leaves", icon: CalendarDays },
+    { name: t("benefits"), href: "/dashboard/benefits", icon: Banknote },
+    { name: t("userInformation"), href: "/users", icon: Users },
+    { name: t("settings"), href: "/settings", icon: Settings },
   ];
 
   return (
     <>
       {/* Mobile backdrop */}
-      <div 
+      <div
         className={clsx(
-          "fixed inset-0 z-40 bg-gray-900/50 backdrop-blur-sm transition-opacity md:hidden",
-          isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+          "fixed inset-0 z-40 bg-zinc-900/50 backdrop-blur-sm transition-opacity md:hidden",
+          isOpen ? "opacity-100" : "opacity-0 pointer-events-none",
         )}
         onClick={onClose}
       />
 
       {/* Sidebar component */}
-      <div 
+      <div
         className={clsx(
-          "fixed inset-y-0 left-0 z-50 w-72 bg-white/60 dark:bg-[#1e1e1e]/40 backdrop-blur-3xl border-r border-gray-200/50 dark:border-white/5 transform transition-transform duration-300 ease-in-out md:translate-x-0 md:static md:inset-auto md:flex md:w-72 md:flex-col",
-          isOpen ? "translate-x-0" : "-translate-x-full"
+          "fixed inset-y-0 left-0 z-50 w-72 bg-white/60 dark:bg-zinc-900/40 backdrop-blur-3xl border-r border-gray-200/50 dark:border-white/5 transform transition-transform duration-300 ease-in-out md:translate-x-0 md:static md:inset-auto md:flex md:w-72 md:flex-col",
+          isOpen ? "translate-x-0" : "-translate-x-full",
         )}
       >
         {/* Logo */}
@@ -60,11 +66,13 @@ export function Sidebar({ isOpen, onClose }: { isOpen: boolean; onClose: () => v
             <div className="h-8 w-8 rounded-lg bg-blue-600 dark:bg-blue-500/80 flex items-center justify-center shadow-lg shadow-blue-500/20">
               <span className="text-white font-bold text-xl">S</span>
             </div>
-            <span className="text-xl font-bold text-gray-900 dark:text-white tracking-tight">Safari HR</span>
+            <span className="text-xl font-bold text-gray-900 dark:text-white tracking-tight">
+              Safari HR
+            </span>
           </Link>
-          <button 
-            type="button" 
-            className="md:hidden p-1 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+          <button
+            type="button"
+            className="md:hidden p-1 text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-white"
             onClick={onClose}
           >
             <X className="h-6 w-6" />
@@ -72,25 +80,28 @@ export function Sidebar({ isOpen, onClose }: { isOpen: boolean; onClose: () => v
         </div>
 
         {/* Navigation Links */}
-        <div className="flex-1 overflow-y-auto py-6 px-3 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-white/10 scrollbar-track-transparent">
+        <div className="flex-1 overflow-y-auto py-6 px-3 scrollbar-thin scrollbar-thumb-stone-300 dark:scrollbar-thumb-white/10 scrollbar-track-transparent">
           <nav className="space-y-1">
             {navigation.map((item) => {
-              const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
+              const isActive =
+                pathname === item.href || pathname.startsWith(`${item.href}/`);
               return (
                 <Link
                   key={item.href}
                   href={item.href}
                   className={clsx(
                     "group flex items-center px-3 py-2.5 text-sm font-medium rounded-xl transition-all duration-300",
-                    isActive 
-                      ? "bg-blue-50 dark:bg-blue-500/20 text-blue-600 dark:text-blue-200 border border-blue-200 dark:border-blue-500/20 shadow-sm dark:shadow-lg shadow-blue-500/5" 
-                      : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/5 hover:text-gray-900 dark:hover:text-white border border-transparent"
+                    isActive
+                      ? "bg-blue-50 dark:bg-blue-500/20 text-blue-600 dark:text-blue-200 border border-blue-200 dark:border-blue-500/20 shadow-sm dark:shadow-lg shadow-blue-500/5"
+                      : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/5 hover:text-gray-900 dark:hover:text-white border border-transparent",
                   )}
                 >
-                  <item.icon 
+                  <item.icon
                     className={clsx(
                       "mr-3 h-5 w-5 flex-shrink-0 transition-colors",
-                      isActive ? "text-blue-600 dark:text-blue-400" : "text-gray-400 dark:text-gray-500 group-hover:text-blue-500 dark:group-hover:text-blue-300"
+                      isActive
+                        ? "text-blue-600 dark:text-blue-400"
+                        : "text-gray-400 dark:text-gray-500 group-hover:text-blue-500 dark:group-hover:text-blue-300",
                     )}
                     aria-hidden="true"
                   />

@@ -1,12 +1,14 @@
-'use client';
+"use client";
 
-import { useTranslations } from 'next-intl';
-import { createDepartment } from '@/lib/actions/organization-actions';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { departmentSchema, DepartmentFormValues } from '@/lib/validators/organization-schema';
-import { useState } from 'react';
-import { Loader2 } from 'lucide-react';
+import { createDepartment } from "@/lib/actions/organization-actions";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  departmentSchema,
+  DepartmentFormValues,
+} from "@/lib/validators/organization-schema";
+import { useState } from "react";
+import { Loader2 } from "lucide-react";
 
 interface SelectOption {
   id: string;
@@ -19,7 +21,11 @@ interface DepartmentFormProps {
   parents: SelectOption[];
 }
 
-export function DepartmentForm({ companies, units, parents }: DepartmentFormProps) {
+export function DepartmentForm({
+  companies,
+  units,
+  parents,
+}: DepartmentFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const {
@@ -33,8 +39,10 @@ export function DepartmentForm({ companies, units, parents }: DepartmentFormProp
   const onSubmit = async (data: DepartmentFormValues) => {
     setIsSubmitting(true);
     const formData = new FormData();
-    Object.entries(data).forEach(([key, value]) => formData.append(key, value as string));
-    
+    Object.entries(data).forEach(([key, value]) =>
+      formData.append(key, value as string),
+    );
+
     try {
       await createDepartment(formData);
     } catch (error) {
@@ -45,32 +53,45 @@ export function DepartmentForm({ companies, units, parents }: DepartmentFormProp
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 bg-white p-8 rounded-xl border border-gray-200 shadow-sm max-w-2xl mx-auto">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="space-y-6 bg-white p-8 rounded-xl border border-gray-200 shadow-sm max-w-2xl mx-auto"
+    >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-1">Department Code</label>
+          <label className="block text-sm font-semibold text-gray-700 mb-1">
+            Department Code
+          </label>
           <input
-            {...register('code')}
+            {...register("code")}
             className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
             placeholder="e.g. DEPT-HR"
           />
-          {errors.code && <p className="mt-1 text-xs text-red-500">{errors.code.message}</p>}
+          {errors.code && (
+            <p className="mt-1 text-xs text-red-500">{errors.code.message}</p>
+          )}
         </div>
 
         <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-1">Department Name</label>
+          <label className="block text-sm font-semibold text-gray-700 mb-1">
+            Department Name
+          </label>
           <input
-            {...register('name')}
+            {...register("name")}
             className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
             placeholder="e.g. Human Resources"
           />
-          {errors.name && <p className="mt-1 text-xs text-red-500">{errors.name.message}</p>}
+          {errors.name && (
+            <p className="mt-1 text-xs text-red-500">{errors.name.message}</p>
+          )}
         </div>
 
         <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-1">Company</label>
+          <label className="block text-sm font-semibold text-gray-700 mb-1">
+            Company
+          </label>
           <select
-            {...register('companyId')}
+            {...register("companyId")}
             className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all bg-white"
           >
             <option value="">Select Company</option>
@@ -80,13 +101,19 @@ export function DepartmentForm({ companies, units, parents }: DepartmentFormProp
               </option>
             ))}
           </select>
-          {errors.companyId && <p className="mt-1 text-xs text-red-500">{errors.companyId.message}</p>}
+          {errors.companyId && (
+            <p className="mt-1 text-xs text-red-500">
+              {errors.companyId.message}
+            </p>
+          )}
         </div>
 
         <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-1">Unit (Optional)</label>
+          <label className="block text-sm font-semibold text-gray-700 mb-1">
+            Unit (Optional)
+          </label>
           <select
-            {...register('unitId')}
+            {...register("unitId")}
             className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all bg-white"
           >
             <option value="">None</option>
@@ -99,9 +126,11 @@ export function DepartmentForm({ companies, units, parents }: DepartmentFormProp
         </div>
 
         <div className="md:col-span-2">
-          <label className="block text-sm font-semibold text-gray-700 mb-1">Parent Department (Optional)</label>
+          <label className="block text-sm font-semibold text-gray-700 mb-1">
+            Parent Department (Optional)
+          </label>
           <select
-            {...register('parentId')}
+            {...register("parentId")}
             className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all bg-white"
           >
             <option value="">None</option>

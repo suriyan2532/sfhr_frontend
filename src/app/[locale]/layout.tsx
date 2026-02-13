@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Kanit } from "next/font/google";
 import "../globals.css"; // Fixed import path
-import {NextIntlClientProvider} from 'next-intl';
-import {getMessages} from 'next-intl/server';
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
 
 const kanit = Kanit({
   subsets: ["latin", "thai"],
@@ -16,31 +16,31 @@ export const metadata: Metadata = {
 };
 
 import { ThemeProvider } from "@/components/common/ThemeProvider";
+import { Toaster } from "@/components/ui/sonner";
 
 export default async function RootLayout({
   children,
-  params
+  params,
 }: {
   children: React.ReactNode;
-  params: Promise<{locale: string}>;
+  params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
   const messages = await getMessages();
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body
-        className={`${kanit.className} antialiased`}
-      >
+      <body className={`${kanit.className} antialiased`}>
         <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <NextIntlClientProvider messages={messages}>
-              {children}
-            </NextIntlClientProvider>
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <NextIntlClientProvider messages={messages}>
+            {children}
+            <Toaster />
+          </NextIntlClientProvider>
         </ThemeProvider>
       </body>
     </html>
