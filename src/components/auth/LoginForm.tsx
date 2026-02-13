@@ -8,7 +8,15 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
-import { AlertCircle, Loader2 } from "lucide-react";
+import {
+  AlertCircle,
+  Loader2,
+  Bird,
+  Fish,
+  Turtle,
+  PawPrint,
+  Leaf,
+} from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema, LoginFormValues } from "@/lib/validators/login-schema";
@@ -20,6 +28,7 @@ export default function LoginForm() {
   const t = useTranslations("Auth");
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | undefined>();
 
   const {
@@ -170,16 +179,87 @@ export default function LoginForm() {
       </div>
 
       <div className="space-y-4 pt-4">
-        <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+        <motion.div
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          onHoverStart={() => setIsHovered(true)}
+          onHoverEnd={() => setIsHovered(false)}
+          className="relative"
+        >
           <Button
             type="submit"
-            className="w-full h-14 text-base font-black bg-linear-to-r from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-600 text-white border-none rounded-2xl transition-all shadow-[0_10px_40px_-10px_rgba(180,83,9,0.5)] active:shadow-none"
+            className="w-full h-14 text-base font-black bg-linear-to-r from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-600 text-white border-none rounded-2xl transition-all shadow-[0_10px_40px_-10px_rgba(180,83,9,0.5)] active:shadow-none relative overflow-hidden"
             disabled={isLoading}
           >
             {isLoading ? (
               <Loader2 className="h-6 w-6 animate-spin" />
             ) : (
-              t("signIn")
+              <>
+                <span className="relative z-10">{t("signIn")}</span>
+
+                {/* Safari Background-Style Floating Animation */}
+                <AnimatePresence>
+                  {isHovered && (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.2 }} // Fast fade in
+                      className="absolute inset-0 overflow-hidden pointer-events-none z-0"
+                    >
+                      {[Bird, Fish, Turtle, PawPrint, Leaf].map(
+                        (Icon, index) => {
+                          // Spread the 5 icons across the area
+                          const randomX = [10, 85, 20, 75, 45][index];
+                          const randomY = [15, 20, 75, 70, 45][index];
+                          const duration = 4 + (index % 3);
+                          const delay = -(index * 0.5);
+                          const initialRotate = (index * 72) % 360; // 360 / 5 = 72
+
+                          return (
+                            <motion.div
+                              key={index}
+                              initial={{
+                                opacity: 0,
+                                scale: 0.5,
+                                x: 0,
+                                y: 0,
+                                rotate: initialRotate,
+                              }}
+                              animate={{
+                                opacity: [0.4, 0.9, 0.4],
+                                scale: [0.8, 1.1, 0.9],
+                                x: [0, index % 2 === 0 ? 15 : -15, 0],
+                                y: [0, index % 3 === 0 ? -15 : 15, 0],
+                                rotate: [
+                                  initialRotate,
+                                  initialRotate + 20,
+                                  initialRotate - 10,
+                                  initialRotate,
+                                ],
+                              }}
+                              exit={{ opacity: 0, scale: 0.5 }}
+                              transition={{
+                                duration: duration,
+                                ease: "easeInOut",
+                                repeat: Infinity,
+                                delay: delay,
+                              }}
+                              className="absolute"
+                              style={{
+                                left: `${randomX}%`,
+                                top: `${randomY}%`,
+                              }}
+                            >
+                              <Icon className="text-white h-8 w-8 drop-shadow-sm" />
+                            </motion.div>
+                          );
+                        },
+                      )}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </>
             )}
           </Button>
         </motion.div>
