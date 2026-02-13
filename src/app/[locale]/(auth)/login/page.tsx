@@ -57,7 +57,7 @@ export default function LoginPage() {
           <CardHeader className="relative z-10 space-y-4 text-center pt-12 pb-6">
             <motion.div
               whileHover={{ scale: 1.1, rotate: 5 }}
-              className="mx-auto h-16 w-16 rounded-[1.25rem] bg-linear-to-br from-blue-600 to-indigo-700 flex items-center justify-center shadow-[0_0_30px_rgba(37,99,235,0.4)] border border-white/30"
+              className="mx-auto h-16 w-16 rounded-[1.25rem] bg-linear-to-br from-amber-500 to-amber-700 flex items-center justify-center shadow-[0_0_30px_rgba(180,83,9,0.4)] border border-white/30"
             >
               <span className="text-white font-black text-3xl tracking-tight drop-shadow-md">
                 S
@@ -68,7 +68,7 @@ export default function LoginPage() {
               <CardTitle className="text-4xl font-black tracking-tighter text-white drop-shadow-sm">
                 Safari HR
               </CardTitle>
-              <CardDescription className="text-blue-100/70 font-bold uppercase tracking-[0.3em] text-[0.65rem]">
+              <CardDescription className="text-amber-100/70 font-bold uppercase tracking-[0.3em] text-[0.65rem]">
                 {t("loginTitle")}
               </CardDescription>
             </div>
@@ -92,8 +92,8 @@ export default function LoginPage() {
       </motion.div>
 
       {/* Decorative accent */}
-      <div className="fixed -bottom-24 -left-24 w-96 h-96 bg-blue-600/20 rounded-full blur-[120px] pointer-events-none" />
-      <div className="fixed -top-24 -right-24 w-96 h-96 bg-indigo-600/20 rounded-full blur-[120px] pointer-events-none" />
+      <div className="fixed -bottom-24 -left-24 w-96 h-96 bg-amber-600/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="fixed -top-24 -right-24 w-96 h-96 bg-amber-500/10 rounded-full blur-[120px] pointer-events-none" />
     </main>
   );
 }

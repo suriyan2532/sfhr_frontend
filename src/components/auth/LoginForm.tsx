@@ -98,7 +98,7 @@ export default function LoginForm() {
             type="text"
             placeholder="admin"
             className={cn(
-              "h-14 px-5 bg-white/5 border-white/10 text-white placeholder:text-white/20 rounded-2xl transition-all duration-300 focus:bg-white/10 focus:border-white/30 focus:ring-4 focus:ring-blue-500/20",
+              "h-14 px-5 bg-white/5 border-white/10 text-white placeholder:text-white/20 rounded-2xl transition-all duration-300 focus:bg-white/10 focus:border-white/30 focus:ring-4 focus:ring-amber-500/20",
               errors.username &&
                 "border-red-500/50 bg-red-500/5 focus:ring-red-500/20",
             )}
@@ -127,7 +127,7 @@ export default function LoginForm() {
             type="password"
             placeholder="••••••"
             className={cn(
-              "h-14 px-5 bg-white/5 border-white/10 text-white placeholder:text-white/20 rounded-2xl transition-all duration-300 focus:bg-white/10 focus:border-white/30 focus:ring-4 focus:ring-blue-500/20",
+              "h-14 px-5 bg-white/5 border-white/10 text-white placeholder:text-white/20 rounded-2xl transition-all duration-300 focus:bg-white/10 focus:border-white/30 focus:ring-4 focus:ring-amber-500/20",
               errors.password &&
                 "border-red-500/50 bg-red-500/5 focus:ring-red-500/20",
             )}
@@ -149,7 +149,7 @@ export default function LoginForm() {
           <Checkbox
             id="remember-me"
             name="remember-me"
-            className="border-white/20 data-[state=checked]:bg-blue-600 data-[state=checked]:border-blue-600"
+            className="border-white/20 data-[state=checked]:bg-amber-600 data-[state=checked]:border-amber-600"
           />
           <Label
             htmlFor="remember-me"
@@ -162,7 +162,7 @@ export default function LoginForm() {
         <div className="text-xs">
           <Link
             href="/forgot-password"
-            className="font-bold text-blue-400 hover:text-blue-300 transition-colors"
+            className="font-bold text-amber-400 hover:text-amber-300 transition-colors"
           >
             {t("forgotPassword")}
           </Link>
@@ -173,7 +173,7 @@ export default function LoginForm() {
         <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
           <Button
             type="submit"
-            className="w-full h-14 text-base font-black bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white border-none rounded-2xl transition-all shadow-[0_10px_40px_-10px_rgba(37,99,235,0.5)] active:shadow-none"
+            className="w-full h-14 text-base font-black bg-linear-to-r from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-600 text-white border-none rounded-2xl transition-all shadow-[0_10px_40px_-10px_rgba(180,83,9,0.5)] active:shadow-none"
             disabled={isLoading}
           >
             {isLoading ? (
