@@ -66,6 +66,10 @@
     "signingIn": "กำลังเข้าสู่ระบบ...",
     "skipToDashboard": "ข้ามไปยังแดชบอร์ด",
     "authorizedOnly": "สำหรับเจ้าหน้าที่ที่ได้รับอนุญาตเท่านั้น",
+    "requiredUsername": "กรุณากรอกชื่อผู้ใช้",
+    "requiredPassword": "กรุณากรอกรหัสผ่าน",
+    "invalidCredentials": "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง",
+    "loginFailed": "เข้าสู่ระบบไม่สำเร็จ",
     "signOutTitle": "ออกจากระบบ",
     "signOutConfirm": "คุณแน่ใจหรือไม่ว่าต้องการออกจากระบบ?",
     "signOutButton": "ออกจากระบบ",
@@ -101,94 +105,94 @@
       "probationDate": "วันที่ผ่านโปร"
     },
     "placeholders": {
-        "selectCompany": "เลือกบริษัท",
-        "selectUnit": "เลือกหน่วยงาน",
-        "selectDepartment": "เลือกแผนก",
-        "selectShift": "เลือกกะการทำงาน"
+      "selectCompany": "เลือกบริษัท",
+      "selectUnit": "เลือกหน่วยงาน",
+      "selectDepartment": "เลือกแผนก",
+      "selectShift": "เลือกกะการทำงาน"
     },
     "hints": {
-        "multiPosition": "กด Ctrl/Cmd ค้างเพื่อเลือกหลายตำแหน่ง"
+      "multiPosition": "กด Ctrl/Cmd ค้างเพื่อเลือกหลายตำแหน่ง"
     }
   },
   "Dashboard": {
-      "welcome": "ยินดีต้อนรับกลับ",
-      "overview": "ภาพรวม",
-      "search": "ค้นหาข้อมูล...",
-      "title": "ภาพรวมแดชบอร์ด",
-      "subtitle": "ยินดีต้อนรับกลับ, นี่คือสิ่งที่เกิดขึ้นในวันนี้",
-      "stats": {
-          "totalEmployees": "พนักงานทั้งหมด",
-          "presentToday": "เข้างานวันนี้",
-          "onLeaveToday": "ลางาน",
-          "pendingApprovals": "รอการอนุมัติ"
-      },
-      "sections": {
-          "pendingRequests": "คำขอที่รอดำเนินการ",
-          "pendingRequestsDesc": "คุณมีคำขอที่รอการอนุมัติ {count} รายการ",
-          "recentActivity": "กิจกรรมล่าสุด",
-          "quickLinks": "เมนูทางลัด"
-      },
-      "links": {
-          "requestLeave": "ยื่นใบขอลา",
-          "employeeList": "รายชื่อพนักงาน",
-          "attendance": "การลงเวลา",
-          "settings": "ตั้งค่า"
-      },
-      "charts": {
-        "employeeGrowth": "การเติบโตของพนักงาน",
-        "employeesByDept": "พนักงานแยกตามแผนก",
-        "employmentStatus": "สถานะการจ้างงาน",
-        "joined": "เข้าใหม่",
-        "resigned": "ลาออก"
-      },
-      "activities": {
-          "joinTitle": "พนักงานใหม่",
-          "joinDesc": "{name} ได้ถูกเพิ่มเข้าในระบบแล้ว",
-          "leaveTitle": "อนุมัติการลา",
-          "leaveDesc": "{name} ลาเนื่องจาก {type}"
-      },
-      "actions": {
-          "viewAll": "ดูทั้งหมด",
-          "approve": "อนุมัติ",
-          "reject": "ปฏิเสธ",
-          "goToApprovals": "ไปที่การอนุมัติ"
-      }
+    "welcome": "ยินดีต้อนรับกลับ",
+    "overview": "ภาพรวม",
+    "search": "ค้นหาข้อมูล...",
+    "title": "ภาพรวมแดชบอร์ด",
+    "subtitle": "ยินดีต้อนรับกลับ, นี่คือสิ่งที่เกิดขึ้นในวันนี้",
+    "stats": {
+      "totalEmployees": "พนักงานทั้งหมด",
+      "presentToday": "เข้างานวันนี้",
+      "onLeaveToday": "ลางาน",
+      "pendingApprovals": "รอการอนุมัติ"
+    },
+    "sections": {
+      "pendingRequests": "คำขอที่รอดำเนินการ",
+      "pendingRequestsDesc": "คุณมีคำขอที่รอการอนุมัติ {count} รายการ",
+      "recentActivity": "กิจกรรมล่าสุด",
+      "quickLinks": "เมนูทางลัด"
+    },
+    "links": {
+      "requestLeave": "ยื่นใบขอลา",
+      "employeeList": "รายชื่อพนักงาน",
+      "attendance": "การลงเวลา",
+      "settings": "ตั้งค่า"
+    },
+    "charts": {
+      "employeeGrowth": "การเติบโตของพนักงาน",
+      "employeesByDept": "พนักงานแยกตามแผนก",
+      "employmentStatus": "สถานะการจ้างงาน",
+      "joined": "เข้าใหม่",
+      "resigned": "ลาออก"
+    },
+    "activities": {
+      "joinTitle": "พนักงานใหม่",
+      "joinDesc": "{name} ได้ถูกเพิ่มเข้าในระบบแล้ว",
+      "leaveTitle": "อนุมัติการลา",
+      "leaveDesc": "{name} ลาเนื่องจาก {type}"
+    },
+    "actions": {
+      "viewAll": "ดูทั้งหมด",
+      "approve": "อนุมัติ",
+      "reject": "ปฏิเสธ",
+      "goToApprovals": "ไปที่การอนุมัติ"
+    }
   },
   "EmployeeTable": {
-      "headers": {
-          "name": "ชื่อ",
-          "idPosition": "รหัส / ตำแหน่ง",
-          "department": "แผนก",
-          "status": "สถานะ",
-          "actions": "การดำเนินการ"
-      }
+    "headers": {
+      "name": "ชื่อ",
+      "idPosition": "รหัส / ตำแหน่ง",
+      "department": "แผนก",
+      "status": "สถานะ",
+      "actions": "การดำเนินการ"
+    }
   },
   "Organization": {
-      "company": "บริษัท",
-      "department": "แผนก",
-      "unit": "หน่วยงาน",
-      "position": "ตำแหน่ง",
-      "code": "รหัส",
-      "name": "ชื่อ",
-      "title": "ชื่อตำแหน่ง",
-      "level": "ระดับ",
-      "taxId": "เลขประจำตัวผู้เสียภาษี",
-      "parentCompany": "บริษัทแม่",
-      "selectParent": "เลือกองค์กรแม่",
-      "editTitle": "แก้ไของค์กร",
-      "newTitle": "องค์กรใหม่",
-      "editDesc": "อัปเดตรายละเอียดบริษัทและโครงสร้าง",
-      "newDesc": "ลงทะเบียนบริษัทใหม่หรือสาขา",
-      "details": "รายละเอียด",
-      "address": "ที่อยู่",
-      "phone": "โทรศัพท์",
-      "headquarters": "สำนักงานใหญ่",
-      "subsidiaryOf": "สาขาของ {name}",
-      "employees": "พนักงาน",
-      "depts": "แผนก",
-      "units": "หน่วยงาน",
-      "actions": "การดำเนินการ",
-      "confirmDelete": "คุณแน่ใจหรือไม่ว่าต้องการลบ {item} นี้?"
+    "company": "บริษัท",
+    "department": "แผนก",
+    "unit": "หน่วยงาน",
+    "position": "ตำแหน่ง",
+    "code": "รหัส",
+    "name": "ชื่อ",
+    "title": "ชื่อตำแหน่ง",
+    "level": "ระดับ",
+    "taxId": "เลขประจำตัวผู้เสียภาษี",
+    "parentCompany": "บริษัทแม่",
+    "selectParent": "เลือกองค์กรแม่",
+    "editTitle": "แก้ไของค์กร",
+    "newTitle": "องค์กรใหม่",
+    "editDesc": "อัปเดตรายละเอียดบริษัทและโครงสร้าง",
+    "newDesc": "ลงทะเบียนบริษัทใหม่หรือสาขา",
+    "details": "รายละเอียด",
+    "address": "ที่อยู่",
+    "phone": "โทรศัพท์",
+    "headquarters": "สำนักงานใหญ่",
+    "subsidiaryOf": "สาขาของ {name}",
+    "employees": "พนักงาน",
+    "depts": "แผนก",
+    "units": "หน่วยงาน",
+    "actions": "การดำเนินการ",
+    "confirmDelete": "คุณแน่ใจหรือไม่ว่าต้องการลบ {item} นี้?"
   },
   "Attendance": {
     "title": "ประวัติการลงเวลา",
@@ -258,34 +262,34 @@
     "savedSuccessfully": "บันทึกการตั้งค่าเรียบร้อยแล้ว",
     "mins": "นาที",
     "tabs": {
-        "general": "ข้อมูลทั่วไป",
-        "workingConditions": "เงื่อนไขการทำงาน",
-        "masterData": "ข้อมูลหลัก"
+      "general": "ข้อมูลทั่วไป",
+      "workingConditions": "เงื่อนไขการทำงาน",
+      "masterData": "ข้อมูลหลัก"
     },
     "general": {
-        "title": "ตั้งค่าทั่วไป",
-        "description": "กำหนดข้อมูลพื้นฐานของระบบ",
-        "appName": "ชื่อแอปพลิเคชัน",
-        "dateFormat": "รูปแบบวันที่",
-        "defaultLanguage": "ภาษาเริ่มต้น"
+      "title": "ตั้งค่าทั่วไป",
+      "description": "กำหนดข้อมูลพื้นฐานของระบบ",
+      "appName": "ชื่อแอปพลิเคชัน",
+      "dateFormat": "รูปแบบวันที่",
+      "defaultLanguage": "ภาษาเริ่มต้น"
     },
     "workingConditions": {
-        "title": "เงื่อนไขการทำงาน",
-        "description": "กำหนดวันและเวลาทำงานมาตรฐาน",
-        "standardWorkDays": "วันทำงานมาตรฐาน",
-        "startTime": "เวลาเข้างาน",
-        "endTime": "เวลาเลิกงาน",
-        "lateThreshold": "เกณฑ์สาย",
-        "lateThresholdDesc": "จำนวนนาทีหลังจากเวลาเข้างานที่จะถูกนับว่าสาย"
+      "title": "เงื่อนไขการทำงาน",
+      "description": "กำหนดวันและเวลาทำงานมาตรฐาน",
+      "standardWorkDays": "วันทำงานมาตรฐาน",
+      "startTime": "เวลาเข้างาน",
+      "endTime": "เวลาเลิกงาน",
+      "lateThreshold": "เกณฑ์สาย",
+      "lateThresholdDesc": "จำนวนนาทีหลังจากเวลาเข้างานที่จะถูกนับว่าสาย"
     },
     "days": {
-        "monday": "จันทร์",
-        "tuesday": "อังคาร",
-        "wednesday": "พุธ",
-        "thursday": "พฤหัสบดี",
-        "friday": "ศุกร์",
-        "saturday": "เสาร์",
-        "sunday": "อาทิตย์"
+      "monday": "จันทร์",
+      "tuesday": "อังคาร",
+      "wednesday": "พุธ",
+      "thursday": "พฤหัสบดี",
+      "friday": "ศุกร์",
+      "saturday": "เสาร์",
+      "sunday": "อาทิตย์"
     }
   }
 }

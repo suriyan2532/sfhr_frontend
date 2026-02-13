@@ -65,7 +65,11 @@
     "signIn": "Sign In",
     "signingIn": "Signing In...",
     "skipToDashboard": "Skip to Dashboard",
-    "authorizedOnly": "Authorized Personnel Only"
+    "authorizedOnly": "Authorized Personnel Only",
+    "requiredUsername": "Please enter username",
+    "requiredPassword": "Please enter password",
+    "invalidCredentials": "Invalid username or password",
+    "loginFailed": "Login failed"
   },
   "EmployeeForm": {
     "title": "Employee Information",
@@ -97,94 +101,94 @@
       "probationDate": "Probation Date"
     },
     "placeholders": {
-        "selectCompany": "Select a Company",
-        "selectUnit": "Select a Unit",
-        "selectDepartment": "Select a Department",
-        "selectShift": "Select a Shift"
+      "selectCompany": "Select a Company",
+      "selectUnit": "Select a Unit",
+      "selectDepartment": "Select a Department",
+      "selectShift": "Select a Shift"
     },
     "hints": {
-        "multiPosition": "Hold Ctrl/Cmd to select multiple positions."
+      "multiPosition": "Hold Ctrl/Cmd to select multiple positions."
     }
-  }, 
+  },
   "Dashboard": {
-      "welcome": "Welcome back",
-      "overview": "Overview",
-      "search": "Search records...",
-      "title": "Dashboard Overview",
-      "subtitle": "Welcome back, here's what's happening today.",
-      "stats": {
-          "totalEmployees": "Total Employees",
-          "presentToday": "Present Today",
-          "onLeaveToday": "On Leave",
-          "pendingApprovals": "Pending Approvals"
-      },
-      "sections": {
-          "pendingRequests": "Pending Requests",
-          "pendingRequestsDesc": "You have {count} pending requests waiting for approval.",
-          "recentActivity": "Recent Activity",
-          "quickLinks": "Quick Links"
-      },
-      "links": {
-          "requestLeave": "Request Leave",
-          "employeeList": "Employee List",
-          "attendance": "Attendance",
-          "settings": "Settings"
-      },
-      "charts": {
-        "employeeGrowth": "Employee Growth",
-        "employeesByDept": "Employees by Department",
-        "employmentStatus": "Employment Status",
-        "joined": "Joined",
-        "resigned": "Resigned"
-      },
-      "activities": {
-          "joinTitle": "New Employee Joined",
-          "joinDesc": "{name} has been added to the system.",
-          "leaveTitle": "Leave Approved",
-          "leaveDesc": "{name} for {type}"
-      },
-      "actions": {
-          "viewAll": "View All",
-          "approve": "Approve",
-          "reject": "Reject",
-          "goToApprovals": "Go to Approvals"
-      }
+    "welcome": "Welcome back",
+    "overview": "Overview",
+    "search": "Search records...",
+    "title": "Dashboard Overview",
+    "subtitle": "Welcome back, here's what's happening today.",
+    "stats": {
+      "totalEmployees": "Total Employees",
+      "presentToday": "Present Today",
+      "onLeaveToday": "On Leave",
+      "pendingApprovals": "Pending Approvals"
+    },
+    "sections": {
+      "pendingRequests": "Pending Requests",
+      "pendingRequestsDesc": "You have {count} pending requests waiting for approval.",
+      "recentActivity": "Recent Activity",
+      "quickLinks": "Quick Links"
+    },
+    "links": {
+      "requestLeave": "Request Leave",
+      "employeeList": "Employee List",
+      "attendance": "Attendance",
+      "settings": "Settings"
+    },
+    "charts": {
+      "employeeGrowth": "Employee Growth",
+      "employeesByDept": "Employees by Department",
+      "employmentStatus": "Employment Status",
+      "joined": "Joined",
+      "resigned": "Resigned"
+    },
+    "activities": {
+      "joinTitle": "New Employee Joined",
+      "joinDesc": "{name} has been added to the system.",
+      "leaveTitle": "Leave Approved",
+      "leaveDesc": "{name} for {type}"
+    },
+    "actions": {
+      "viewAll": "View All",
+      "approve": "Approve",
+      "reject": "Reject",
+      "goToApprovals": "Go to Approvals"
+    }
   },
   "EmployeeTable": {
-      "headers": {
-          "name": "Name",
-          "idPosition": "ID / Position",
-          "department": "Department",
-          "status": "Status",
-          "actions": "Actions"
-      }
+    "headers": {
+      "name": "Name",
+      "idPosition": "ID / Position",
+      "department": "Department",
+      "status": "Status",
+      "actions": "Actions"
+    }
   },
   "Organization": {
-      "company": "Company",
-      "department": "Department",
-      "unit": "Unit",
-      "position": "Position",
-      "code": "Code",
-      "name": "Name",
-      "title": "Title",
-      "level": "Level",
-      "taxId": "Tax ID",
-      "parentCompany": "Parent Company",
-      "selectParent": "Select a parent organization",
-      "editTitle": "Edit Organization",
-      "newTitle": "New Organization",
-      "editDesc": "Update company details and hierarchy.",
-      "newDesc": "Register a new company or subsidiary.",
-      "details": "Details",
-      "address": "Address",
-      "phone": "Phone",
-      "headquarters": "Headquarters",
-      "subsidiaryOf": "Sub. of {name}",
-      "employees": "Employees",
-      "depts": "Depts",
-      "units": "Units",
-      "actions": "Actions",
-      "confirmDelete": "Are you sure you want to delete this {item}?"
+    "company": "Company",
+    "department": "Department",
+    "unit": "Unit",
+    "position": "Position",
+    "code": "Code",
+    "name": "Name",
+    "title": "Title",
+    "level": "Level",
+    "taxId": "Tax ID",
+    "parentCompany": "Parent Company",
+    "selectParent": "Select a parent organization",
+    "editTitle": "Edit Organization",
+    "newTitle": "New Organization",
+    "editDesc": "Update company details and hierarchy.",
+    "newDesc": "Register a new company or subsidiary.",
+    "details": "Details",
+    "address": "Address",
+    "phone": "Phone",
+    "headquarters": "Headquarters",
+    "subsidiaryOf": "Sub. of {name}",
+    "employees": "Employees",
+    "depts": "Depts",
+    "units": "Units",
+    "actions": "Actions",
+    "confirmDelete": "Are you sure you want to delete this {item}?"
   },
   "Attendance": {
     "title": "Attendance History",
@@ -254,34 +258,34 @@
     "savedSuccessfully": "Settings saved successfully.",
     "mins": "mins",
     "tabs": {
-        "general": "General",
-        "workingConditions": "Working Conditions",
-        "masterData": "Master Data"
+      "general": "General",
+      "workingConditions": "Working Conditions",
+      "masterData": "Master Data"
     },
     "general": {
-        "title": "General Settings",
-        "description": "Configure basic system information.",
-        "appName": "Application Name",
-        "dateFormat": "Date Format",
-        "defaultLanguage": "Default Language"
+      "title": "General Settings",
+      "description": "Configure basic system information.",
+      "appName": "Application Name",
+      "dateFormat": "Date Format",
+      "defaultLanguage": "Default Language"
     },
     "workingConditions": {
-        "title": "Working Conditions",
-        "description": "Set up standard working days and hours.",
-        "standardWorkDays": "Standard Working Days",
-        "startTime": "Work Start Time",
-        "endTime": "Work End Time",
-        "lateThreshold": "Late Threshold",
-        "lateThresholdDesc": "Minutes after start time before marked as late."
+      "title": "Working Conditions",
+      "description": "Set up standard working days and hours.",
+      "standardWorkDays": "Standard Working Days",
+      "startTime": "Work Start Time",
+      "endTime": "Work End Time",
+      "lateThreshold": "Late Threshold",
+      "lateThresholdDesc": "Minutes after start time before marked as late."
     },
     "days": {
-        "monday": "Mon",
-        "tuesday": "Tue",
-        "wednesday": "Wed",
-        "thursday": "Thu",
-        "friday": "Fri",
-        "saturday": "Sat",
-        "sunday": "Sun"
+      "monday": "Mon",
+      "tuesday": "Tue",
+      "wednesday": "Wed",
+      "thursday": "Thu",
+      "friday": "Fri",
+      "saturday": "Sat",
+      "sunday": "Sun"
     }
   }
 }
