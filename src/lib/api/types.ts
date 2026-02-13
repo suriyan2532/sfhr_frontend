@@ -36,19 +36,30 @@ export enum EmpStatus {
 
 export interface Employee {
   id: string;
-  employeeId: string; // Employee code
+  employeeId: string;
   firstName: string;
   lastName: string;
-  email?: string;
-  phone?: string;
-  position?: string;
-  department?: string;
-  company?: string;
-  unit?: string;
+  nickname?: string;
+  idCard: string;
+  birthDate?: Date | null;
+  gender?: string;
+  maritalStatus?: string;
+  address?: string;
+  mobile?: string;
+  lineId?: string;
+  companyId: string;
+  company?: Company;
+  unitId?: string | null;
+  unit?: Unit;
+  departmentId: string;
+  department?: Department;
+  positionIds?: string[];
+  positions?: Position[];
+  workingShiftId?: string | null;
+  joinDate: Date;
   status: EmpStatus;
-  joinDate: string;
-  createdAt: string;
-  updatedAt: string;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 export interface CreateEmployeeData {
@@ -65,7 +76,7 @@ export interface CreateEmployeeData {
   mobile?: string;
   lineId?: string;
   companyId: string;
-  unitId?: string;
+  unitId?: string | null;
   departmentId: string;
   positionIds: string[];
   workingShiftId?: string | null;

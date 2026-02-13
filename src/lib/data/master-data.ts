@@ -1,31 +1,30 @@
-import { prisma } from '@/lib/prisma';
+// TODO: Migrate to API calls
+// This file has been temporarily stubbed out to remove Prisma dependency
+// Use the API services instead: organizationService
+
+import * as organizationService from "@/lib/api/services/organization.service";
 
 export async function getDepartments() {
-  return await prisma.department.findMany({
-    orderBy: { name: 'asc' },
-  });
+  const result = await organizationService.getDepartments();
+  return result.departments;
 }
 
 export async function getPositions() {
-  return await prisma.position.findMany({
-    orderBy: { title: 'asc' },
-  });
+  const result = await organizationService.getPositions();
+  return result.positions;
 }
 
 export async function getCompanies() {
-  return await prisma.company.findMany({
-    orderBy: { name: 'asc' },
-  });
+  const result = await organizationService.getCompanies();
+  return result.companies;
 }
 
 export async function getUnits() {
-  return await prisma.unit.findMany({
-    orderBy: { name: 'asc' },
-  });
+  const result = await organizationService.getUnits();
+  return result.units;
 }
 
 export async function getWorkingShifts() {
-  return await prisma.workingShift.findMany({
-    orderBy: { name: 'asc' },
-  });
+  // TODO: Add WorkingShift to API types and backend
+  return [];
 }

@@ -1,24 +1,11 @@
-import {
-  Employee,
-  Department,
-  Position,
-  Person,
-  EmployeePosition,
-} from "@prisma/client";
+import { Employee } from "@/lib/api/types";
 import { Pencil, Trash2, Eye } from "lucide-react";
 import { Link } from "@/navigation";
 import { deleteEmployee } from "@/lib/actions/employee-actions";
 import { getTranslations } from "next-intl/server";
 
-// Extended type to include relations
-type EmployeeWithRelations = Employee & {
-  person: Person;
-  department: Department;
-  positions: (EmployeePosition & { position: Position })[];
-};
-
 interface EmployeeTableProps {
-  employees: EmployeeWithRelations[];
+  employees: Employee[];
 }
 
 export async function EmployeeTable({ employees }: EmployeeTableProps) {
@@ -65,13 +52,13 @@ export async function EmployeeTable({ employees }: EmployeeTableProps) {
                 <div className="flex items-center">
                   <div className="h-10 w-10 flex-shrink-0">
                     <div className="h-10 w-10 rounded-full bg-amber-100 dark:bg-amber-900/30 flex items-center justify-center text-amber-700 dark:text-amber-400 font-bold">
-                      {employee.person.firstName[0]}
-                      {employee.person.lastName[0]}
+                      {employee.firstName[0]}
+                      {employee.lastName[0]}
                     </div>
                   </div>
                   <div className="ml-4">
                     <div className="text-sm font-medium text-gray-900 dark:text-white">
-                      {employee.person.firstName} {employee.person.lastName}
+                      {employee.firstName} {employee.lastName}
                     </div>
                     <div className="text-sm text-gray-500 dark:text-gray-400">
                       {employee.employeeId}
@@ -81,7 +68,7 @@ export async function EmployeeTable({ employees }: EmployeeTableProps) {
               </td>
               <td className="px-6 py-4 whitespace-nowrap">
                 <div className="text-sm text-gray-900 dark:text-white">
-                  {employee.positions.map((p) => p.position.title).join(", ")}
+                  {/* TODO: Add positions when available from API */}-
                 </div>
                 <div className="text-sm text-gray-500 dark:text-gray-400">
                   {employee.employeeId}
@@ -89,7 +76,8 @@ export async function EmployeeTable({ employees }: EmployeeTableProps) {
               </td>
               <td className="px-6 py-4 whitespace-nowrap">
                 <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400">
-                  {employee.department.name}
+                  {/* TODO: Add department name when available from API */}
+                  {employee.departmentId}
                 </span>
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">

@@ -4,7 +4,7 @@ import {
   createCompany,
   updateCompany,
 } from "@/lib/actions/organization-actions";
-import { Company } from "@prisma/client";
+import { Company } from "@/lib/api/types";
 import { Link } from "@/navigation";
 import { Save, X, Building2 } from "lucide-react";
 import { useForm } from "react-hook-form";

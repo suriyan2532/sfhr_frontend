@@ -5,9 +5,9 @@ import {
   Department,
   Position,
   Company,
-  WorkingShift,
   Unit,
-} from "@prisma/client";
+  EmpStatus,
+} from "@/lib/api/types";
 import { Link } from "@/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -31,7 +31,7 @@ interface EmployeeFormProps {
   positions: Position[];
   companies: Company[];
   units: Unit[];
-  workingShifts: WorkingShift[];
+  // workingShifts: WorkingShift[]; // TODO: Add to API types
 }
 
 export function EmployeeForm({
@@ -39,7 +39,7 @@ export function EmployeeForm({
   positions,
   companies,
   units,
-  workingShifts,
+  // workingShifts,
 }: EmployeeFormProps) {
   const t = useTranslations("EmployeeForm");
   const tCommon = useTranslations("Common");
@@ -53,7 +53,7 @@ export function EmployeeForm({
   } = useForm<EmployeeFormValues>({
     resolver: zodResolver(employeeSchema) as never,
     defaultValues: {
-      status: "PROBATION",
+      status: EmpStatus.PROBATION,
       positionIds: [],
     },
   });
@@ -274,6 +274,7 @@ export function EmployeeForm({
               </GlassSelect>
             </div>
 
+            {/* TODO: Re-enable when WorkingShift is added to API types
             <div className="sm:col-span-3">
               <GlassLabel htmlFor="workingShiftId">
                 {t("fields.workingShift")}
@@ -293,6 +294,7 @@ export function EmployeeForm({
                 ))}
               </GlassSelect>
             </div>
+            */}
 
             <div className="sm:col-span-6">
               <GlassLabel htmlFor="positionIds">
