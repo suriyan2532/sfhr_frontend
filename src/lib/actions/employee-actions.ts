@@ -1,26 +1,29 @@
 "use server";
 
-import { prisma } from "@/lib/prisma";
 import { employeeSchema } from "@/lib/validators/employee-schema";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import * as employeeService from "@/lib/api/services/employee.service";
+import { APIError } from "@/lib/api/client";
 
 export async function getEmployees(query: string, currentPage: number = 1) {
-  const pageSize = 10;
-  const skip = (currentPage - 1) * pageSize;
-
   try {
-    // TODO: Fix Prisma schema mismatch with remote database
-    // Temporarily returning empty data to unblock the page
-    console.warn("Employee data temporarily disabled due to schema mismatch");
+    const result = await employeeService.getEmployees({
+      query,
+      page: currentPage,
+      pageSize: 10,
+    });
 
     return {
-      employees: [],
-      totalCount: 0,
-      totalPages: 0,
+      employees: result.employees,
+      totalCount: result.total,
+      totalPages: result.totalPages,
     };
   } catch (error) {
-    console.error("Database Error:", error);
+    console.error("API Error:", error);
+    if (error instanceof APIError) {
+      throw new Error(`Failed to fetch employees: ${error.message}`);
+    }
     throw new Error("Failed to fetch employees.");
   }
 }
@@ -45,58 +48,18 @@ export async function createEmployee(formData: FormData) {
   }
 
   const { data } = validatedFields;
-  const { positionIds } = data;
 
   try {
-    // 1. Handle Person (Find or Create)
-    let person = await prisma.person.findUnique({
-      where: { idCard: data.idCard },
-    });
-
-    if (!person) {
-      person = await prisma.person.create({
-        data: {
-          idCard: data.idCard,
-          prefix: data.prefix,
-          firstName: data.firstName,
-          lastName: data.lastName,
-          nickname: data.nickname,
-          birthDate: data.birthDate,
-          gender: data.gender,
-          maritalStatus: data.maritalStatus,
-          address: data.address,
-          mobile: data.mobile,
-          lineId: data.lineId,
-        },
-      });
-    }
-
-    // 2. Create Employee
-    const employee = await prisma.employee.create({
-      data: {
-        employeeId: data.employeeId,
-        personId: person.id,
-        companyId: data.companyId,
-        unitId: data.unitId,
-        departmentId: data.departmentId,
-        workingShiftId: data.workingShiftId,
-        joinDate: data.joinDate,
-        status: data.status,
-      },
-    });
-
-    // 3. Create Position assignments
-    await prisma.employeePosition.createMany({
-      data: positionIds.map((pid, index) => ({
-        employeeId: employee.id,
-        positionId: pid,
-        isPrimary: index === 0, // Assume first one is primary for now
-      })),
-    });
+    await employeeService.createEmployee(data);
   } catch (error) {
-    console.error("Database Error:", error);
+    console.error("API Error:", error);
+    if (error instanceof APIError) {
+      return {
+        message: `API Error: ${error.message}`,
+      };
+    }
     return {
-      message: "Database Error: Failed to Create Employee.",
+      message: "API Error: Failed to Create Employee.",
     };
   }
 
@@ -106,17 +69,14 @@ export async function createEmployee(formData: FormData) {
 
 export async function deleteEmployee(id: string) {
   try {
-    await prisma.employee.update({
-      where: { id },
-      data: {
-        isDeleted: true,
-        deletedAt: new Date(),
-      },
-    });
+    await employeeService.deleteEmployee(id);
     revalidatePath("/employees");
     return { message: "Deleted Employee." };
   } catch (error) {
-    console.error("Database Error:", error);
-    return { message: "Database Error: Failed to Delete Employee." };
+    console.error("API Error:", error);
+    if (error instanceof APIError) {
+      return { message: `API Error: ${error.message}` };
+    }
+    return { message: "API Error: Failed to Delete Employee." };
   }
 }
