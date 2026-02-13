@@ -46,7 +46,7 @@ export default function LoginPage() {
         transition={{ duration: 0.8, ease: "circOut" }}
         className="relative z-10 w-full max-w-md px-4"
       >
-        <Card className="bg-white/10 dark:bg-zinc-900/40 backdrop-blur-3xl border-white/20 dark:border-white/10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.5)] rounded-[2.5rem] overflow-hidden group">
+        <Card className="bg-white/25 dark:bg-zinc-900/60 backdrop-blur-3xl border-white/40 dark:border-white/20 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.5)] rounded-[2.5rem] overflow-hidden group">
           {/* Subtle Inner Glow */}
           <div className="absolute inset-0 pointer-events-none bg-linear-to-tr from-white/5 to-transparent z-0" />
 

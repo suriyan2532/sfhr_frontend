@@ -98,9 +98,9 @@ export default function LoginForm() {
             type="text"
             placeholder="admin"
             className={cn(
-              "h-14 px-5 bg-white/5 border-white/10 text-white placeholder:text-white/20 rounded-2xl transition-all duration-300 focus:bg-white/10 focus:border-white/30 focus:ring-4 focus:ring-amber-500/20",
+              "h-14 px-5 bg-white/10 border-white/20 text-white placeholder:text-white/40 rounded-2xl transition-all duration-300 focus:bg-white/20 focus:border-white/40 focus:ring-4 focus:ring-amber-500/20",
               errors.username &&
-                "border-red-500/50 bg-red-500/5 focus:ring-red-500/20",
+                "border-red-500/50 bg-red-500/10 focus:ring-red-500/20",
             )}
           />
           {errors.username && (
@@ -127,9 +127,9 @@ export default function LoginForm() {
             type="password"
             placeholder="••••••"
             className={cn(
-              "h-14 px-5 bg-white/5 border-white/10 text-white placeholder:text-white/20 rounded-2xl transition-all duration-300 focus:bg-white/10 focus:border-white/30 focus:ring-4 focus:ring-amber-500/20",
+              "h-14 px-5 bg-white/10 border-white/20 text-white placeholder:text-white/40 rounded-2xl transition-all duration-300 focus:bg-white/20 focus:border-white/40 focus:ring-4 focus:ring-amber-500/20",
               errors.password &&
-                "border-red-500/50 bg-red-500/5 focus:ring-red-500/20",
+                "border-red-500/50 bg-red-500/10 focus:ring-red-500/20",
             )}
           />
           {errors.password && (
