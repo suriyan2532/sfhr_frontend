@@ -52,16 +52,21 @@ export default function LoginPage() {
 
           <CardHeader className="relative z-10 space-y-4 text-center pt-12 pb-6">
             <motion.div
-              whileHover={{ scale: 1.1, rotate: 5 }}
-              className="mx-auto h-16 w-16 rounded-[1.25rem] bg-linear-to-br from-amber-500 to-amber-700 flex items-center justify-center shadow-[0_0_30px_rgba(180,83,9,0.4)] border border-white/30"
+              whileHover={{ scale: 1.05 }}
+              className="mx-auto h-24 w-24 relative rounded-full overflow-hidden border-4 border-amber-500 shadow-[0_0_30px_rgba(245,158,11,0.4)] bg-white"
             >
-              <span className="text-white font-black text-3xl tracking-tight drop-shadow-md">
-                S
-              </span>
+              <Image
+                src="/safari_world_hr_logo.png"
+                alt="Safari World HR Logo"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 96px, 96px"
+                priority
+              />
             </motion.div>
 
             <div className="space-y-1.5">
-              <CardTitle className="text-4xl font-black tracking-tighter text-zinc-900 dark:text-white drop-shadow-sm">
+              <CardTitle className="text-3xl font-black tracking-tight text-zinc-900 dark:text-white drop-shadow-md">
                 Safari HR
               </CardTitle>
               <CardDescription className="text-zinc-700 dark:text-amber-100/70 font-bold uppercase tracking-[0.3em] text-[0.65rem]">
