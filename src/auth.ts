@@ -49,6 +49,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
               name: user.name || user.fullName || username,
               email: user.email || `${username}@safarihr.com`,
               role: user.role || "USER",
+              accessToken: user.accessToken || user.token, // Ensure we capture the token
             };
           }
         }

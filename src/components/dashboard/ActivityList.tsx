@@ -1,5 +1,5 @@
 import { UserPlus, CalendarCheck, Clock } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -11,8 +11,8 @@ interface Activity {
   time: Date;
 }
 
-export function ActivityList({ activities }: { activities: Activity[] }) {
-  const t = useTranslations("Dashboard");
+export async function ActivityList({ activities }: { activities: Activity[] }) {
+  const t = await getTranslations("Dashboard");
   return (
     <Card className="hover:shadow-md transition-shadow">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
