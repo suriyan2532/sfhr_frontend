@@ -3,6 +3,7 @@
 import LoginForm from "@/components/auth/LoginForm";
 import LanguageSwitcher from "@/components/common/LanguageSwitcher";
 import { ThemeToggle } from "@/components/common/ThemeToggle";
+import { BackgroundIcons } from "@/components/common/BackgroundIcons";
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import {
@@ -18,13 +19,8 @@ export default function LoginPage() {
 
   return (
     <main className="relative min-h-screen w-full overflow-hidden flex items-center justify-center transition-colors duration-300">
-      {/* Background Image with Parallax-like scale effect */}
-      <motion.div
-        initial={{ scale: 1.1, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 1.5, ease: "easeOut" }}
-        className="fixed inset-0 z-0 bg-[url('/safari_bg_cartoon.png')] bg-cover bg-center"
-      />
+      {/* Animated Icon Background */}
+      <BackgroundIcons />
 
       {/* Modern gradient overlay - Neutral blacks to let safari colors pop */}
       <div className="fixed inset-0 z-0 bg-linear-to-t from-black/70 via-black/30 to-black/10 transition-colors duration-500" />
@@ -88,6 +84,20 @@ export default function LoginPage() {
             </motion.div>
           </CardContent>
         </Card>
+
+        {/* Isolated Cute Cartoon Macaw - Top Right */}
+        <motion.div
+          initial={{ x: 50, y: -50, opacity: 0, rotate: -10 }}
+          animate={{ x: 0, y: 0, opacity: 1, rotate: 0 }}
+          transition={{ delay: 0.8, duration: 1.2, ease: "easeOut" }}
+          className="absolute -right-20 -top-16 z-20 w-64 h-64 pointer-events-none drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)]"
+        >
+          <img
+            src="/macaw_cartoon.png"
+            alt="Macaw"
+            className="w-full h-full object-contain"
+          />
+        </motion.div>
       </motion.div>
 
       {/* Decorative accent */}
