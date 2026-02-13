@@ -50,10 +50,10 @@ export default function LoginPage() {
           {/* Subtle Inner Glow */}
           <div className="absolute inset-0 pointer-events-none bg-linear-to-tr from-white/5 to-transparent z-0" />
 
-          <CardHeader className="relative z-10 space-y-4 text-center pt-12 pb-6">
+          <CardHeader className="relative z-10 space-y-4 text-center pt-8 pb-4 md:pt-12 md:pb-6">
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="mx-auto h-24 w-24 relative rounded-full overflow-hidden border-4 border-amber-500 shadow-[0_0_30px_rgba(245,158,11,0.4)] bg-white"
+              className="mx-auto h-20 w-20 md:h-24 md:w-24 relative rounded-full overflow-hidden border-4 border-amber-500 shadow-[0_0_30px_rgba(245,158,11,0.4)] bg-white"
             >
               <Image
                 src="/safari_world_hr_logo.png"
@@ -66,7 +66,7 @@ export default function LoginPage() {
             </motion.div>
 
             <div className="space-y-1.5">
-              <CardTitle className="text-3xl font-black tracking-tight text-zinc-900 dark:text-white drop-shadow-md">
+              <CardTitle className="text-2xl md:text-3xl font-black tracking-tight text-zinc-900 dark:text-white drop-shadow-md">
                 Safari HR
               </CardTitle>
               <CardDescription className="text-zinc-700 dark:text-amber-100/70 font-bold uppercase tracking-[0.3em] text-[0.65rem]">
@@ -75,7 +75,7 @@ export default function LoginPage() {
             </div>
           </CardHeader>
 
-          <CardContent className="relative z-10 px-10 pb-12">
+          <CardContent className="relative z-10 px-6 pb-8 md:px-10 md:pb-12">
             <LoginForm />
 
             <motion.div
@@ -96,7 +96,7 @@ export default function LoginPage() {
           initial={{ x: 50, y: -50, opacity: 0, rotate: -10 }}
           animate={{ x: 0, y: 0, opacity: 1, rotate: 0 }}
           transition={{ delay: 0.8, duration: 1.2, ease: "easeOut" }}
-          className="absolute -right-20 -top-16 z-20 w-64 h-64 pointer-events-none drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)]"
+          className="absolute -right-20 -top-16 z-20 w-48 h-48 md:w-64 md:h-64 pointer-events-none drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)] hidden md:block"
         >
           <Image
             src="/macaw_cartoon.png"
