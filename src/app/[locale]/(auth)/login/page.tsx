@@ -20,26 +20,25 @@ export default function LoginPage() {
     <main className="relative min-h-screen w-full overflow-hidden flex items-center justify-center transition-colors duration-300">
       {/* Background Image with Parallax-like scale effect */}
       <motion.div
-        initial={{ scale: 1.1 }}
-        animate={{ scale: 1 }}
+        initial={{ scale: 1.1, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
-        className="fixed inset-0 z-0 bg-[url('/background.jpg')] bg-cover bg-center"
-        style={{ filter: "brightness(0.7) contrast(1.1)" }}
+        className="fixed inset-0 z-0 bg-[url('/safari_bg_cartoon.png')] bg-cover bg-center"
       />
 
       {/* Modern gradient overlay - Neutral blacks to let safari colors pop */}
       <div className="fixed inset-0 z-0 bg-linear-to-t from-black/70 via-black/30 to-black/10 transition-colors duration-500" />
-      <div className="fixed inset-0 z-0 bg-blue-900/10 backdrop-blur-[1px]" />
+      <div className="fixed inset-0 z-0 bg-amber-900/10 backdrop-blur-[1px]" />
 
       {/* Top Controls - Floating Glass Pill */}
       <motion.div
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.5, duration: 0.8 }}
-        className="absolute top-8 right-8 z-20 flex items-center gap-4 bg-white/10 dark:bg-black/20 backdrop-blur-2xl px-4 py-2 rounded-2xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.1)] transition-all hover:bg-white/20"
+        className="absolute top-8 right-8 z-20 flex items-center gap-2 bg-white/10 dark:bg-black/20 backdrop-blur-2xl p-1.5 rounded-full border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.1)] transition-all hover:bg-white/20"
       >
         <ThemeToggle />
-        <div className="h-4 w-px bg-white/10" />
+        <div className="h-4 w-px bg-white/10 mx-1" />
         <LanguageSwitcher />
       </motion.div>
 
