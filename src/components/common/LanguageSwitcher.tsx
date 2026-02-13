@@ -32,7 +32,7 @@ export default function LanguageSwitcher() {
       <button
         onClick={() => setIsOpen(!isOpen)}
         disabled={isPending}
-        className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-all text-sm font-medium text-gray-200 hover:text-white"
+        className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 hover:bg-black/5 dark:hover:bg-white/10 transition-all text-sm font-medium text-zinc-700 dark:text-gray-200 hover:text-black dark:hover:text-white"
       >
         <span className="text-lg">{currentLanguage.flag}</span>
         <span className="uppercase">{currentLanguage.code}</span>
