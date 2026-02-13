@@ -42,7 +42,7 @@ export function Sidebar({
       {/* ... mobile backdrop */}
       <div
         className={clsx(
-          "fixed inset-y-0 left-0 z-50 w-72 bg-white/60 dark:bg-zinc-900/40 backdrop-blur-3xl border-r border-gray-200/50 dark:border-white/5 transform transition-transform duration-300 ease-in-out md:translate-x-0 md:static md:inset-auto md:flex md:w-72 md:flex-col",
+          "fixed inset-y-0 left-0 z-50 w-72 min-h-screen bg-white/60 dark:bg-zinc-900/40 backdrop-blur-3xl border-r border-gray-200/50 dark:border-white/5 transform transition-transform duration-300 ease-in-out md:translate-x-0 md:static md:inset-auto md:flex md:w-72 md:flex-col",
           isOpen ? "translate-x-0" : "-translate-x-full",
         )}
       >
