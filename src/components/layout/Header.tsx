@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  Bell,
   Search,
   Menu,
   ChevronDown,
@@ -11,6 +10,8 @@ import {
   UserCircle,
 } from "lucide-react";
 import { signOut } from "next-auth/react";
+import { useTranslations } from "next-intl";
+import { NotificationDropdown } from "./NotificationDropdown";
 import LanguageSwitcher from "../common/LanguageSwitcher";
 import { ThemeToggle } from "../common/ThemeToggle";
 import { Button } from "@/components/ui/button";
@@ -37,6 +38,8 @@ interface HeaderProps {
 }
 
 export function Header({ onMenuClick, user }: HeaderProps) {
+  const t = useTranslations("Header");
+
   return (
     <header className="sticky top-0 z-40 w-full border-b border-white/10 bg-white/70 dark:bg-black/70 backdrop-blur-xl transition-all duration-300 shadow-sm">
       <div className="flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -49,14 +52,14 @@ export function Header({ onMenuClick, user }: HeaderProps) {
             onClick={onMenuClick}
           >
             <Menu className="h-6 w-6" />
-            <span className="sr-only">Open sidebar</span>
+            <span className="sr-only">{t("openSidebar")}</span>
           </Button>
 
           <div className="hidden sm:flex items-center group relative">
             <Search className="absolute left-3 h-4 w-4 text-muted-foreground group-focus-within:text-amber-500 transition-colors duration-300" />
             <Input
               className="w-64 pl-10 h-10 rounded-full bg-secondary/50 border-transparent focus:border-amber-500/50 focus:bg-background focus:ring-0 transition-all duration-300 shadow-inner"
-              placeholder="Search..."
+              placeholder={t("search")}
               type="search"
             />
           </div>
@@ -72,18 +75,7 @@ export function Header({ onMenuClick, user }: HeaderProps) {
           </div>
 
           {/* Notification */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="rounded-full relative text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-colors"
-          >
-            <Bell className="h-5 w-5" />
-            <span className="absolute top-2.5 right-2.5 flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500 border border-background"></span>
-            </span>
-            <span className="sr-only">Notifications</span>
-          </Button>
+          <NotificationDropdown />
 
           {/* Divider */}
           <div className="h-8 w-px bg-border/50 hidden md:block" />
@@ -118,18 +110,23 @@ export function Header({ onMenuClick, user }: HeaderProps) {
               forceMount
             >
               <DropdownMenuLabel className="font-bold px-3 py-2 text-xs uppercase tracking-wider text-muted-foreground">
-                My Account
+                {t("myAccount")}
               </DropdownMenuLabel>
               <DropdownMenuSeparator className="bg-border/50 my-1" />
-              <DropdownMenuItem className="gap-2 cursor-pointer font-medium h-10 rounded-lg focus:bg-amber-500/10 focus:text-amber-600 dark:focus:text-amber-400">
-                <UserCircle className="h-4 w-4" /> Your Profile
+              <DropdownMenuItem
+                className="gap-2 cursor-pointer font-medium h-10 rounded-lg focus:bg-amber-500/10 focus:text-amber-600 dark:focus:text-amber-400"
+                asChild
+              >
+                <Link href="/profile">
+                  <UserCircle className="h-4 w-4" /> {t("yourProfile")}
+                </Link>
               </DropdownMenuItem>
               <DropdownMenuItem
                 className="gap-2 cursor-pointer font-medium h-10 rounded-lg focus:bg-amber-500/10 focus:text-amber-600 dark:focus:text-amber-400"
                 asChild
               >
-                <Link href="/settings/master">
-                  <Settings className="h-4 w-4" /> Settings
+                <Link href="/settings">
+                  <Settings className="h-4 w-4" /> {t("settings")}
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuSeparator className="bg-border/50 my-1" />
@@ -137,7 +134,7 @@ export function Header({ onMenuClick, user }: HeaderProps) {
                 className="gap-2 cursor-pointer text-red-500 focus:text-red-600 focus:bg-red-50 dark:focus:bg-red-900/10 font-bold h-10 rounded-lg"
                 onClick={() => signOut({ callbackUrl: "/login" })}
               >
-                <LogOut className="h-4 w-4" /> Sign out
+                <LogOut className="h-4 w-4" /> {t("signOut")}
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

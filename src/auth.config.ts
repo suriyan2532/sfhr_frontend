@@ -31,12 +31,16 @@ export const authConfig = {
       if (token.accessToken && session.user) {
         session.user.accessToken = token.accessToken as string;
       }
+      if (token.name && session.user) {
+        session.user.name = token.name;
+      }
       return session;
     },
     async jwt({ token, user }) {
       if (user) {
         token.role = user.role;
         token.accessToken = user.accessToken;
+        token.name = user.name;
       }
       return token;
     },

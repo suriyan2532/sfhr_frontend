@@ -103,6 +103,23 @@
     "emailSentDescription": "We have sent password reset instructions to your email.",
     "requestFailed": "Request failed"
   },
+  "Profile": {
+    "title": "My Profile",
+    "email": "Email Address",
+    "role": "Role",
+    "department": "Department",
+    "phone": "Phone Number"
+  },
+
+  "Header": {
+    "myAccount": "My Account",
+    "yourProfile": "Your Profile",
+    "settings": "Settings",
+    "signOut": "Sign out",
+    "openSidebar": "Open sidebar",
+    "search": "Search...",
+    "notifications": "Notifications"
+  },
   "EmployeeForm": {
     "title": "Employee Information",
     "subtitle": "Manage employee details and assignments.",
@@ -286,10 +303,17 @@
   },
   "Settings": {
     "title": "System Settings",
+    "preferences": "Preferences",
+    "preferencesDesc": "Manage your application appearance and language.",
+    "theme": "Theme",
+    "themeDesc": "Select your preferred light or dark mode.",
+    "language": "Language",
+    "languageDesc": "Choose your preferred language.",
     "subtitle": "Manage all system configurations and master data.",
     "savedSuccessfully": "Settings saved successfully.",
     "mins": "mins",
     "tabs": {
+      "preferences": "Preferences",
       "general": "General",
       "workingConditions": "Working Conditions",
       "masterData": "Master Data"

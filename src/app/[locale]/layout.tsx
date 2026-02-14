@@ -17,6 +17,7 @@ export const metadata: Metadata = {
 
 import { ThemeProvider } from "@/components/common/ThemeProvider";
 import { Toaster } from "@/components/ui/sonner";
+import { SessionProvider } from "@/components/providers/SessionProvider";
 
 export default async function RootLayout({
   children,
@@ -38,7 +39,7 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           <NextIntlClientProvider messages={messages}>
-            {children}
+            <SessionProvider>{children}</SessionProvider>
             <Toaster />
           </NextIntlClientProvider>
         </ThemeProvider>
