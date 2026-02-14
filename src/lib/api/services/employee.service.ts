@@ -33,7 +33,7 @@ export interface GetEmployeesResponse {
 export async function getEmployees(
   params: GetEmployeesParams = {},
 ): Promise<GetEmployeesResponse> {
-  const queryString = buildQueryString(params);
+  const queryString = buildQueryString(params as Record<string, unknown>);
   const response = await apiGet<Employee[]>(`/employees${queryString}`);
 
   // Backend returns array directly, transform to expected format

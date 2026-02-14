@@ -37,7 +37,7 @@ export interface GetCompaniesParams {
 export async function getCompanies(
   params: GetCompaniesParams = {},
 ): Promise<{ companies: Company[]; total: number }> {
-  const queryString = buildQueryString(params);
+  const queryString = buildQueryString(params as Record<string, unknown>);
   const response = await apiGet<Company[]>(`/companies${queryString}`);
 
   return {
@@ -101,7 +101,7 @@ export interface GetUnitsParams {
 export async function getUnits(
   params: GetUnitsParams = {},
 ): Promise<{ units: Unit[]; total: number }> {
-  const queryString = buildQueryString(params);
+  const queryString = buildQueryString(params as Record<string, unknown>);
   const response = await apiGet<Unit[]>(`/units${queryString}`);
 
   return {
@@ -162,7 +162,7 @@ export interface GetDepartmentsParams {
 export async function getDepartments(
   params: GetDepartmentsParams = {},
 ): Promise<{ departments: Department[]; total: number }> {
-  const queryString = buildQueryString(params);
+  const queryString = buildQueryString(params as Record<string, unknown>);
   const response = await apiGet<Department[]>(`/departments${queryString}`);
 
   return {
@@ -224,7 +224,7 @@ export interface GetPositionsParams {
 export async function getPositions(
   params: GetPositionsParams = {},
 ): Promise<{ positions: Position[]; total: number }> {
-  const queryString = buildQueryString(params);
+  const queryString = buildQueryString(params as Record<string, unknown>);
   const response = await apiGet<Position[]>(`/positions${queryString}`);
 
   return {
