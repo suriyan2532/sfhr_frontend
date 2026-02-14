@@ -41,7 +41,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
           // Call backend API for authentication
           const user = await authenticateWithBackend(username, password);
-          console.log(user);
           if (user) {
             return {
               id: user.id || user.userId || "user-id",
