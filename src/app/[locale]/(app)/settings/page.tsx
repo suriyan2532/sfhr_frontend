@@ -44,13 +44,13 @@ export default function SettingsPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               <Link
                 href="/settings/master"
-                className="group p-6 bg-white border border-gray-200 rounded-xl hover:shadow-md hover:border-indigo-300 transition-all"
+                className="group p-6 bg-white border border-gray-200 rounded-xl hover:shadow-md hover:border-green-300 transition-all"
               >
                 <div className="flex items-center justify-between mb-4">
-                  <div className="p-3 bg-indigo-50 text-indigo-600 rounded-lg group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                  <div className="p-3 bg-green-50 text-green-600 rounded-lg group-hover:bg-green-600 group-hover:text-white transition-colors">
                     <Building2 className="w-6 h-6" />
                   </div>
-                  <ArrowRight className="w-5 h-5 text-gray-300 group-hover:text-indigo-500 transition-colors" />
+                  <ArrowRight className="w-5 h-5 text-gray-300 group-hover:text-green-500 transition-colors" />
                 </div>
                 <h4 className="font-semibold text-gray-900 mb-1">
                   Go to Master Data

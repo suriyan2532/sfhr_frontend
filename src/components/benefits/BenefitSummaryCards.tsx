@@ -32,7 +32,7 @@ const getColor = (code: string) => {
         case 'MEDICAL': return 'bg-rose-500';
         case 'TRAINING': return 'bg-amber-500';
         case 'DENTAL': return 'bg-emerald-500';
-        default: return 'bg-indigo-500';
+        default: return 'bg-green-500';
     }
 };
 

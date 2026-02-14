@@ -27,12 +27,12 @@ export function ChainOfCommandNode({ node, isRoot = false }: ChainOfCommandNodeP
       {/* Node Card */}
       <div className={clsx(
         "relative flex flex-col items-center p-4 min-w-[200px] rounded-xl border-2 transition-all hover:shadow-lg",
-        isManager ? "bg-white border-indigo-600 shadow-sm" : "bg-gray-50 border-emerald-500 shadow-sm"
+        isManager ? "bg-white border-green-600 shadow-sm" : "bg-gray-50 border-emerald-500 shadow-sm"
       )}>
         {/* Top Icon Decoration */}
         <div className={clsx(
           "absolute -top-4 w-8 h-8 rounded-lg flex items-center justify-center text-white",
-          isManager ? "bg-indigo-600" : "bg-emerald-500"
+          isManager ? "bg-green-600" : "bg-emerald-500"
         )}>
            {isManager ? <ShieldCheck className="h-4 w-4" /> : <User className="h-4 w-4" />}
         </div>
@@ -40,7 +40,7 @@ export function ChainOfCommandNode({ node, isRoot = false }: ChainOfCommandNodeP
         {/* Avatar/Initials */}
         <div className={clsx(
             "w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-sm mb-3",
-            isManager ? "bg-indigo-500" : "bg-emerald-400"
+            isManager ? "bg-green-500" : "bg-emerald-400"
         )}>
           {node.initials || node.name.charAt(0)}
         </div>

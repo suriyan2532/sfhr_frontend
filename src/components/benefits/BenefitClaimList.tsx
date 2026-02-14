@@ -51,7 +51,7 @@ export function BenefitClaimList({ claims }: BenefitClaimListProps) {
         <div className="bg-white dark:bg-[#252525] rounded-3xl border border-gray-100 dark:border-white/10 shadow-sm overflow-hidden">
             <div className="p-6 border-b border-gray-100 dark:border-white/5 flex items-center justify-between">
                 <h2 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
-                    <FileText className="h-5 w-5 text-indigo-500" />
+                    <FileText className="h-5 w-5 text-green-500" />
                     {t('claimHistory')}
                 </h2>
                 <span className="px-3 py-1 bg-gray-100 dark:bg-white/5 text-gray-500 dark:text-gray-400 text-xs font-bold rounded-full">

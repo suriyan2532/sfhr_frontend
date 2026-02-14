@@ -30,7 +30,7 @@ export function CompanyTable({ companies }: CompanyTableProps) {
           <div className="w-full flex items-center justify-between p-6 space-x-6 border-b border-gray-100">
             <div className="flex-1 truncate">
               <div className="flex items-center space-x-3">
-                <span className="shrink-0 inline-block p-2 rounded-lg bg-indigo-50 text-indigo-600">
+                <span className="shrink-0 inline-block p-2 rounded-lg bg-green-50 text-green-600">
                   <Building2 className="h-6 w-6" aria-hidden="true" />
                 </span>
                 <h3

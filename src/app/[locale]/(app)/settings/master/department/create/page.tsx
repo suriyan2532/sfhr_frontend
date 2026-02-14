@@ -19,7 +19,7 @@ export default async function CreateDepartmentPage() {
       <div>
         <Link
           href="/settings/master/department"
-          className="inline-flex items-center text-sm font-medium text-gray-500 hover:text-indigo-600 transition-colors mb-4"
+          className="inline-flex items-center text-sm font-medium text-gray-500 hover:text-green-600 transition-colors mb-4"
         >
           <ChevronLeft className="h-4 w-4 mr-1" />
           Back to Departments

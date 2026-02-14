@@ -57,7 +57,7 @@ export function WorkingConditionsForm() {
                                 value={day.id}
                                 {...register('standardWorkDays')}
                                 defaultChecked={['mon', 'tue', 'wed', 'thu', 'fri'].includes(day.id)}
-                                className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                                className="focus:ring-green-500 h-4 w-4 text-green-600 border-gray-300 rounded"
                             />
                             </div>
                             <div className="ml-3 text-sm">
@@ -78,7 +78,7 @@ export function WorkingConditionsForm() {
                             type="time"
                             {...register('workStartTime')}
                             defaultValue="08:00"
-                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm"
                         />
                      </div>
                 </div>
@@ -90,7 +90,7 @@ export function WorkingConditionsForm() {
                             type="time"
                             {...register('workEndTime')}
                             defaultValue="17:00"
-                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm"
                         />
                      </div>
                 </div>
@@ -103,7 +103,7 @@ export function WorkingConditionsForm() {
                         type="number"
                         {...register('lateThresholdMinutes')}
                         defaultValue={15}
-                        className="block w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm pr-8"
+                        className="block w-full rounded-md border-gray-300 focus:border-green-500 focus:ring-green-500 sm:text-sm pr-8"
                     />
                     <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                         <span className="text-gray-500 sm:text-sm">{t('mins')}</span>
@@ -120,7 +120,7 @@ export function WorkingConditionsForm() {
                 <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 flex items-center"
+                    className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 disabled:opacity-50 flex items-center"
                 >
                     {isSubmitting ? tCommon('saving') : (
                         <>

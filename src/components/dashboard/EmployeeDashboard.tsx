@@ -263,7 +263,7 @@ export function EmployeeDashboard({ data }: EmployeeDashboardProps) {
           animate={{ opacity: 1, y: 0 }}
           className="lg:col-span-2"
         >
-          <Card className="h-full bg-linear-to-br from-indigo-600 to-purple-700 text-white border-none shadow-xl overflow-hidden relative">
+          <Card className="h-full bg-linear-to-br from-green-600 to-emerald-700 text-white border-none shadow-xl overflow-hidden relative">
             <div className="absolute top-0 right-0 p-12 opacity-10 transform translate-x-1/4 -translate-y-1/4 pointer-events-none">
               <Briefcase className="w-64 h-64" />
             </div>
@@ -279,12 +279,12 @@ export function EmployeeDashboard({ data }: EmployeeDashboardProps) {
                   <h1 className="text-3xl font-bold tracking-tight">
                     {t(greetingKey as any)}, {profile.fullName}
                   </h1>
-                  <p className="text-indigo-100 opacity-90 mt-1">
+                  <p className="text-green-100 opacity-90 mt-1">
                     {profile.nickname && `(${profile.nickname})`}
                   </p>
                 </div>
 
-                <div className="flex flex-wrap gap-3 text-sm text-indigo-100">
+                <div className="flex flex-wrap gap-3 text-sm text-green-100">
                   <div className="flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-full backdrop-blur-sm">
                     <Briefcase className="w-3.5 h-3.5" />
                     <span>{profile.employmentInfo.position}</span>
@@ -321,10 +321,10 @@ export function EmployeeDashboard({ data }: EmployeeDashboardProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
         >
-          <Card className="h-full border-l-4 border-l-amber-500 shadow-md flex flex-col justify-center">
+          <Card className="h-full border-l-4 border-l-green-500 shadow-md flex flex-col justify-center">
             <CardHeader className="pb-2">
               <CardTitle className="text-lg flex items-center gap-2">
-                <Clock className="w-5 h-5 text-amber-500" />
+                <Clock className="w-5 h-5 text-green-500" />
                 {t("currentShift")}
               </CardTitle>
             </CardHeader>
@@ -338,7 +338,7 @@ export function EmployeeDashboard({ data }: EmployeeDashboardProps) {
                     <span className="text-2xl font-bold text-foreground">
                       {shiftInfo.time}
                     </span>
-                    <span className="text-amber-600 font-medium">
+                    <span className="text-green-600 font-medium">
                       {shiftInfo.name}
                     </span>
                   </div>
@@ -354,7 +354,7 @@ export function EmployeeDashboard({ data }: EmployeeDashboardProps) {
                             key={day}
                             className={`text-xs px-2 py-1 rounded-md ${
                               shiftInfo.workDays.includes(day)
-                                ? "bg-amber-100 text-amber-700 font-medium"
+                                ? "bg-green-100 text-green-700 font-medium"
                                 : "text-muted-foreground bg-gray-100"
                             }`}
                           >
@@ -451,7 +451,7 @@ export function EmployeeDashboard({ data }: EmployeeDashboardProps) {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Briefcase className="w-5 h-5 text-purple-500" />
+                <Briefcase className="w-5 h-5 text-emerald-500" />
                 {t("employmentDetails")}
               </CardTitle>
             </CardHeader>
@@ -685,7 +685,7 @@ export function EmployeeDashboard({ data }: EmployeeDashboardProps) {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <GraduationCap className="w-5 h-5 text-indigo-500" />
+                  <GraduationCap className="w-5 h-5 text-green-500" />
                   {t("educationHistory")}
                 </CardTitle>
               </CardHeader>
@@ -727,7 +727,7 @@ export function EmployeeDashboard({ data }: EmployeeDashboardProps) {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <FileText className="w-5 h-5 text-orange-500" />
+                  <FileText className="w-5 h-5 text-emerald-500" />
                   {t("documents")}
                 </CardTitle>
               </CardHeader>
@@ -739,7 +739,7 @@ export function EmployeeDashboard({ data }: EmployeeDashboardProps) {
                       className="flex items-center justify-between p-3 border rounded-lg hover:bg-secondary/20 transition-colors"
                     >
                       <div className="flex items-center gap-3 min-w-0">
-                        <FileText className="w-5 h-5 text-orange-500 shrink-0" />
+                        <FileText className="w-5 h-5 text-emerald-500 shrink-0" />
                         <div className="min-w-0">
                           <p className="font-medium text-sm truncate">
                             {doc.documentName}
@@ -774,8 +774,8 @@ export function EmployeeDashboard({ data }: EmployeeDashboardProps) {
             label: t("totalWorkingDays"),
             value: attendanceStats.totalWorkingDays,
             icon: Briefcase,
-            color: "text-indigo-500",
-            bg: "bg-indigo-500/10",
+            color: "text-green-500",
+            bg: "bg-green-500/10",
           },
           {
             label: t("present"),
@@ -1013,7 +1013,7 @@ export function EmployeeDashboard({ data }: EmployeeDashboardProps) {
                     let bgClass = "hover:bg-accent cursor-pointer";
                     if (isTodayDate)
                       bgClass =
-                        "bg-indigo-600 text-white font-bold hover:bg-indigo-700";
+                        "bg-green-600 text-white font-bold hover:bg-green-700";
                     else if (isHoliday)
                       bgClass = "bg-pink-100 text-pink-700 font-medium";
                     else if (attendance) {

@@ -66,7 +66,7 @@ export default function CalendarPage() {
                             {dayEvents.map((event, idx) => (
                                 <div key={idx} className={`text-xs px-2 py-1 rounded truncate ${
                                     event.type === 'holiday' ? 'bg-red-100 text-red-700' :
-                                    event.type === 'launch' ? 'bg-purple-100 text-purple-700' :
+                                    event.type === 'launch' ? 'bg-emerald-100 text-emerald-700' :
                                     'bg-blue-50 text-blue-700'
                                 }`}>
                                     {event.title}

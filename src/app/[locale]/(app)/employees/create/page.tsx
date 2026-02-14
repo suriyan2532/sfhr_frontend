@@ -14,7 +14,7 @@ export default async function CreateEmployeePage() {
       <div className="max-w-3xl mx-auto">
         <Link
           href="/employees"
-          className="inline-flex items-center text-sm font-medium text-gray-500 hover:text-indigo-600 transition-colors mb-4"
+          className="inline-flex items-center text-sm font-medium text-gray-500 hover:text-green-600 transition-colors mb-4"
         >
           &larr; Back to Employees
         </Link>

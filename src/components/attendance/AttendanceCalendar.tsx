@@ -72,7 +72,7 @@ export function AttendanceCalendar({ record, month, year }: AttendanceCalendarPr
                             <div className="flex justify-between items-start">
                                 <span className={clsx(
                                     "text-sm font-bold h-6 w-6 flex items-center justify-center rounded-full",
-                                    isTdy ? "bg-indigo-600 text-white" : "text-gray-400 dark:text-gray-500"
+                                    isTdy ? "bg-green-600 text-white" : "text-gray-400 dark:text-gray-500"
                                 )}>
                                     {date.getDate()}
                                 </span>

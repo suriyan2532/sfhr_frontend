@@ -45,7 +45,7 @@ export function BenefitClaimForm({ benefitTypes }: BenefitClaimFormProps) {
         return (
             <button
                 onClick={() => setIsOpen(true)}
-                className="flex items-center gap-2 px-6 py-3 bg-indigo-600 dark:bg-indigo-500 text-white font-bold rounded-2xl hover:bg-indigo-700 dark:hover:bg-indigo-600 transition-all shadow-lg shadow-indigo-600/20 active:scale-95"
+                className="flex items-center gap-2 px-6 py-3 bg-green-600 dark:bg-green-500 text-white font-bold rounded-2xl hover:bg-green-700 dark:hover:bg-green-600 transition-all shadow-lg shadow-green-600/20 active:scale-95"
             >
                 <Plus className="h-5 w-5" />
                 {t('submitClaim')}
@@ -83,7 +83,7 @@ export function BenefitClaimForm({ benefitTypes }: BenefitClaimFormProps) {
                         <select
                             name="benefitTypeId"
                             required
-                            className="w-full px-4 py-3 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-all cursor-pointer font-medium"
+                            className="w-full px-4 py-3 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl text-gray-900 dark:text-white focus:ring-2 focus:ring-green-500 outline-none transition-all cursor-pointer font-medium"
                         >
                             <option value="">{t('selectType')}</option>
                             {benefitTypes.map((type) => (
@@ -106,7 +106,7 @@ export function BenefitClaimForm({ benefitTypes }: BenefitClaimFormProps) {
                                 required
                                 step="0.01"
                                 placeholder="0.00"
-                                className="w-full pl-10 pr-4 py-3 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-all font-bold text-lg"
+                                className="w-full pl-10 pr-4 py-3 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl text-gray-900 dark:text-white focus:ring-2 focus:ring-green-500 outline-none transition-all font-bold text-lg"
                             />
                         </div>
                     </div>
@@ -119,7 +119,7 @@ export function BenefitClaimForm({ benefitTypes }: BenefitClaimFormProps) {
                             name="description"
                             rows={3}
                             placeholder={t('descriptionPlaceholder')}
-                            className="w-full px-4 py-3 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 outline-none transition-all resize-none text-sm font-medium"
+                            className="w-full px-4 py-3 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl text-gray-900 dark:text-white focus:ring-2 focus:ring-green-500 outline-none transition-all resize-none text-sm font-medium"
                         />
                     </div>
 
@@ -128,8 +128,8 @@ export function BenefitClaimForm({ benefitTypes }: BenefitClaimFormProps) {
                             type="submit"
                             disabled={isSubmitting}
                             className={clsx(
-                                "w-full py-4 rounded-2xl font-extrabold text-white uppercase tracking-widest transition-all shadow-xl shadow-indigo-600/10 active:scale-95",
-                                isSubmitting ? "bg-indigo-400 cursor-not-allowed" : "bg-indigo-600 dark:bg-indigo-500 hover:bg-indigo-700 dark:hover:bg-indigo-600"
+                                "w-full py-4 rounded-2xl font-extrabold text-white uppercase tracking-widest transition-all shadow-xl shadow-green-600/10 active:scale-95",
+                                isSubmitting ? "bg-green-400 cursor-not-allowed" : "bg-green-600 dark:bg-green-500 hover:bg-green-700 dark:hover:bg-green-600"
                             )}
                         >
                             {isSubmitting ? t('submitting') : t('submitNow')}

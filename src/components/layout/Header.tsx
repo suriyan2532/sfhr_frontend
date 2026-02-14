@@ -56,9 +56,9 @@ export function Header({ onMenuClick, user }: HeaderProps) {
           </Button>
 
           <div className="hidden sm:flex items-center group relative">
-            <Search className="absolute left-3 h-4 w-4 text-muted-foreground group-focus-within:text-amber-500 transition-colors duration-300" />
+            <Search className="absolute left-3 h-4 w-4 text-muted-foreground group-focus-within:text-green-500 transition-colors duration-300" />
             <Input
-              className="w-64 pl-10 h-10 rounded-full bg-secondary/50 border-transparent focus:border-amber-500/50 focus:bg-background focus:ring-0 transition-all duration-300 shadow-inner"
+              className="w-64 pl-10 h-10 rounded-full bg-secondary/50 border-transparent focus:border-green-500/50 focus:bg-background focus:ring-0 transition-all duration-300 shadow-inner"
               placeholder={t("search")}
               type="search"
             />
@@ -89,12 +89,12 @@ export function Header({ onMenuClick, user }: HeaderProps) {
               >
                 <Avatar className="h-9 w-9 border-2 border-white dark:border-zinc-800 shadow-sm transition-transform group-hover:scale-105">
                   <AvatarImage src={user?.image || ""} alt={user?.name || ""} />
-                  <AvatarFallback className="bg-linear-to-br from-amber-500 to-orange-600 text-white font-bold">
+                  <AvatarFallback className="bg-linear-to-br from-green-500 to-emerald-600 text-white font-bold">
                     {user?.name?.charAt(0) || <User className="h-4 w-4" />}
                   </AvatarFallback>
                 </Avatar>
                 <div className="hidden sm:flex flex-col items-start text-left">
-                  <span className="text-sm font-bold leading-none text-foreground group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                  <span className="text-sm font-bold leading-none text-foreground group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
                     {user?.name || "User"}
                   </span>
                   <span className="text-[10px] text-muted-foreground font-medium uppercase tracking-wider">
@@ -114,7 +114,7 @@ export function Header({ onMenuClick, user }: HeaderProps) {
               </DropdownMenuLabel>
               <DropdownMenuSeparator className="bg-border/50 my-1" />
               <DropdownMenuItem
-                className="gap-2 cursor-pointer font-medium h-10 rounded-lg focus:bg-amber-500/10 focus:text-amber-600 dark:focus:text-amber-400"
+                className="gap-2 cursor-pointer font-medium h-10 rounded-lg focus:bg-green-500/10 focus:text-green-600 dark:focus:text-green-400"
                 asChild
               >
                 <Link href="/profile">
@@ -122,7 +122,7 @@ export function Header({ onMenuClick, user }: HeaderProps) {
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem
-                className="gap-2 cursor-pointer font-medium h-10 rounded-lg focus:bg-amber-500/10 focus:text-amber-600 dark:focus:text-amber-400"
+                className="gap-2 cursor-pointer font-medium h-10 rounded-lg focus:bg-green-500/10 focus:text-green-600 dark:focus:text-green-400"
                 asChild
               >
                 <Link href="/settings">

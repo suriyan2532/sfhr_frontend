@@ -23,7 +23,7 @@ export function AttendanceFilters({ month, year, onFilterChange }: AttendanceFil
     <div className="bg-white dark:bg-[#252525] p-6 rounded-2xl border border-gray-200 dark:border-white/10 shadow-sm mb-6">
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
         <div className="flex items-center gap-4">
-          <div className="h-12 w-12 rounded-2xl bg-indigo-50 dark:bg-indigo-500/10 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+          <div className="h-12 w-12 rounded-2xl bg-green-50 dark:bg-green-500/10 flex items-center justify-center text-green-600 dark:text-green-400">
             <Calendar className="h-6 w-6" />
           </div>
           <div>
@@ -37,7 +37,7 @@ export function AttendanceFilters({ month, year, onFilterChange }: AttendanceFil
             <select 
               value={month}
               onChange={(e) => onFilterChange(Number(e.target.value), year)}
-              className="bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white text-sm rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none p-2.5 min-w-[140px] transition-all"
+              className="bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white text-sm rounded-xl focus:ring-2 focus:ring-green-500 outline-none p-2.5 min-w-[140px] transition-all"
             >
               {months.map(m => (
                 <option key={m.value} value={m.value}>{m.label}</option>
@@ -46,7 +46,7 @@ export function AttendanceFilters({ month, year, onFilterChange }: AttendanceFil
             <select 
               value={year}
               onChange={(e) => onFilterChange(month, Number(e.target.value))}
-              className="bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white text-sm rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none p-2.5 transition-all"
+              className="bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white text-sm rounded-xl focus:ring-2 focus:ring-green-500 outline-none p-2.5 transition-all"
             >
               {years.map(y => (
                 <option key={y} value={y}>{y}</option>
@@ -55,7 +55,7 @@ export function AttendanceFilters({ month, year, onFilterChange }: AttendanceFil
           </div>
 
           <div className="flex items-center gap-3">
-            <button className="flex items-center gap-2 px-5 py-2.5 text-sm font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-500/10 rounded-xl hover:bg-indigo-100 dark:hover:bg-indigo-500/20 transition-all border border-transparent">
+            <button className="flex items-center gap-2 px-5 py-2.5 text-sm font-bold text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-500/10 rounded-xl hover:bg-green-100 dark:hover:bg-green-500/20 transition-all border border-transparent">
               <Settings2 className="h-4 w-4" />
               {t('btnHolidayType')}
             </button>

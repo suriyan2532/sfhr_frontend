@@ -27,7 +27,7 @@ export default function AuthCard({ children, title, subtitle }: AuthCardProps) {
 
       {/* Modern gradient overlay */}
       <div className="fixed inset-0 z-0 bg-linear-to-t from-white/80 via-white/40 to-white/10 dark:from-black/40 dark:via-black/20 dark:to-transparent transition-colors duration-500" />
-      <div className="fixed inset-0 z-0 bg-amber-100/40 dark:bg-amber-900/5 backdrop-blur-[1px]" />
+      <div className="fixed inset-0 z-0 bg-green-100/40 dark:bg-green-900/5 backdrop-blur-[1px]" />
 
       {/* Top Controls */}
       <motion.div
@@ -54,7 +54,7 @@ export default function AuthCard({ children, title, subtitle }: AuthCardProps) {
           <CardHeader className="relative z-10 space-y-4 text-center pt-8 pb-4 md:pt-12 md:pb-6">
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="mx-auto h-16 w-16 md:h-20 md:w-20 relative rounded-full overflow-hidden border-4 border-amber-500 shadow-[0_0_30px_rgba(245,158,11,0.4)] bg-white"
+              className="mx-auto h-16 w-16 md:h-20 md:w-20 relative rounded-full overflow-hidden border-4 border-green-500 shadow-[0_0_30px_rgba(34,197,94,0.4)] bg-white"
             >
               <Image
                 src="/safari_world_hr_logo.png"
@@ -70,7 +70,7 @@ export default function AuthCard({ children, title, subtitle }: AuthCardProps) {
               <CardTitle className="text-2xl md:text-3xl font-black tracking-tight text-zinc-900 dark:text-white drop-shadow-md">
                 {title}
               </CardTitle>
-              <CardDescription className="text-zinc-700 dark:text-amber-100/70 font-bold uppercase tracking-[0.3em] text-[0.65rem]">
+              <CardDescription className="text-zinc-700 dark:text-green-100/70 font-bold uppercase tracking-[0.3em] text-[0.65rem]">
                 {subtitle}
               </CardDescription>
             </div>

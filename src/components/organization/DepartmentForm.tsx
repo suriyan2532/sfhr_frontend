@@ -64,7 +64,7 @@ export function DepartmentForm({
           </label>
           <input
             {...register("code")}
-            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
+            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-all"
             placeholder="e.g. DEPT-HR"
           />
           {errors.code && (
@@ -78,7 +78,7 @@ export function DepartmentForm({
           </label>
           <input
             {...register("name")}
-            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
+            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-all"
             placeholder="e.g. Human Resources"
           />
           {errors.name && (
@@ -92,7 +92,7 @@ export function DepartmentForm({
           </label>
           <select
             {...register("companyId")}
-            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all bg-white"
+            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-all bg-white"
           >
             <option value="">Select Company</option>
             {companies.map((company) => (
@@ -114,7 +114,7 @@ export function DepartmentForm({
           </label>
           <select
             {...register("unitId")}
-            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all bg-white"
+            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-all bg-white"
           >
             <option value="">None</option>
             {units.map((unit) => (
@@ -131,7 +131,7 @@ export function DepartmentForm({
           </label>
           <select
             {...register("parentId")}
-            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all bg-white"
+            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none transition-all bg-white"
           >
             <option value="">None</option>
             {parents.map((p) => (
@@ -147,7 +147,7 @@ export function DepartmentForm({
         <button
           type="submit"
           disabled={isSubmitting}
-          className="px-6 py-2.5 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 focus:ring-4 focus:ring-indigo-200 transition-all flex items-center gap-2 disabled:opacity-50"
+          className="px-6 py-2.5 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 focus:ring-4 focus:ring-green-200 transition-all flex items-center gap-2 disabled:opacity-50"
         >
           {isSubmitting && <Loader2 className="h-4 w-4 animate-spin" />}
           Create Department

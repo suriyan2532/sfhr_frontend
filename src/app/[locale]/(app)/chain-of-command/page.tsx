@@ -73,10 +73,10 @@ export default async function ChainOfCommandPage() {
                 </div>
                 
                 <div className="flex items-center gap-3">
-                    <button className="p-2 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors">
+                    <button className="p-2 text-gray-400 hover:text-green-600 hover:bg-green-50 rounded-lg transition-colors">
                         <RotateCcw className="h-5 w-5" />
                     </button>
-                    <button className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 transition-colors shadow-sm">
+                    <button className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-green-600 rounded-lg hover:bg-green-700 transition-colors shadow-sm">
                         <Plus className="h-4 w-4" />
                         {t('btnAddNode')}
                     </button>

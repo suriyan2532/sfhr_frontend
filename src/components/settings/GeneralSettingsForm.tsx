@@ -47,7 +47,7 @@ export function GeneralSettingsForm() {
                     <input
                         type="text"
                         {...register('appName')}
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm"
                         defaultValue="Safari HR"
                     />
                 </div>
@@ -58,7 +58,7 @@ export function GeneralSettingsForm() {
                 <div className="mt-1">
                     <select
                         {...register('dateFormat')}
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm"
                         defaultValue="DD/MM/YYYY"
                     >
                         <option value="DD/MM/YYYY">DD/MM/YYYY</option>
@@ -73,7 +73,7 @@ export function GeneralSettingsForm() {
                 <div className="mt-1">
                     <select
                         {...register('defaultLanguage')}
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm"
                         defaultValue="th"
                     >
                         <option value="th">Thai</option>
@@ -91,7 +91,7 @@ export function GeneralSettingsForm() {
             <button
                 type="submit"
                 disabled={isSubmitting}
-                className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 flex items-center"
+                className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 disabled:opacity-50 flex items-center"
             >
                 {isSubmitting ? tCommon('saving') : (
                     <>

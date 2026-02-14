@@ -36,7 +36,7 @@ export function SettingsTabs({ activeTab, onTabChange }: SettingsTabsProps) {
                 group inline-flex items-center py-4 px-1 border-b-2 font-medium text-sm
                 ${
                   isActive
-                    ? "border-indigo-500 text-indigo-600"
+                    ? "border-green-500 text-green-600"
                     : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
                 }
               `}
@@ -45,7 +45,7 @@ export function SettingsTabs({ activeTab, onTabChange }: SettingsTabsProps) {
               <tab.icon
                 className={`
                   -ml-0.5 mr-2 h-5 w-5
-                  ${isActive ? "text-indigo-500" : "text-gray-400 group-hover:text-gray-500"}
+                  ${isActive ? "text-green-500" : "text-gray-400 group-hover:text-gray-500"}
                 `}
                 aria-hidden="true"
               />

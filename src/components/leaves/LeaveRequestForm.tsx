@@ -62,7 +62,7 @@ export function LeaveRequestForm({ leaveTypes }: { leaveTypes: LeaveType[] }) {
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className="flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition-colors shadow-sm"
+        className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-xl hover:bg-green-700 transition-colors shadow-sm"
       >
         <Plus className="h-4 w-4" />
         {t("newRequest")}

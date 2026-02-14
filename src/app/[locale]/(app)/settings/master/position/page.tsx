@@ -30,7 +30,7 @@ export default async function PositionListPage() {
         </div>
         <Link
           href="/settings/master/position/create"
-          className="inline-flex items-center justify-center rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700 transition-all focus:ring-4 focus:ring-indigo-100"
+          className="inline-flex items-center justify-center rounded-lg bg-green-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-green-700 transition-all focus:ring-4 focus:ring-green-100"
         >
           <Plus className="-ml-1 mr-2 h-4 w-4" />
           Add Position
@@ -53,7 +53,7 @@ export default async function PositionListPage() {
           <div className="mt-6">
             <Link
               href="/settings/master/position/create"
-              className="inline-flex items-center px-4 py-2 rounded-lg bg-indigo-600 text-sm font-semibold text-white hover:bg-indigo-700 transition-all shadow-sm"
+              className="inline-flex items-center px-4 py-2 rounded-lg bg-green-600 text-sm font-semibold text-white hover:bg-green-700 transition-all shadow-sm"
             >
               <Plus className="-ml-1 mr-2 h-4 w-4" />
               Add Position

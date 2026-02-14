@@ -26,11 +26,11 @@ export function MainLayout({ children, user }: MainLayoutProps) {
 
       {/* Modern gradient overlay - Neutral blacks to let safari colors pop */}
       <div className="fixed inset-0 z-0 bg-linear-to-t from-white/80 via-white/40 to-white/10 dark:from-black/40 dark:via-black/20 dark:to-transparent transition-colors duration-500" />
-      <div className="fixed inset-0 z-0 bg-amber-100/40 dark:bg-amber-900/5 backdrop-blur-[1px]" />
+      <div className="fixed inset-0 z-0 bg-green-100/40 dark:bg-green-900/5 backdrop-blur-[1px]" />
 
       {/* Decorative accents */}
-      <div className="fixed -bottom-24 -left-24 w-96 h-96 bg-amber-600/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="fixed -top-24 -right-24 w-96 h-96 bg-amber-500/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="fixed -bottom-24 -left-24 w-96 h-96 bg-green-600/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="fixed -top-24 -right-24 w-96 h-96 bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none" />
 
       {/* Sidebar needs to be compatible or updated separately. For now, let's keep it but it might look out of place without update. 
           Assuming User wants the MAIN CONTENT area to accept the Glass Forms.

@@ -100,7 +100,7 @@ export function AttendanceTable({ records, month, year }: AttendanceTableProps) 
                       )}
                       
                       {(day.timeIn || day.timeOut) && (
-                        <div className="text-[9px] mt-1 text-indigo-600 dark:text-indigo-400 font-bold leading-tight">
+                        <div className="text-[9px] mt-1 text-green-600 dark:text-green-400 font-bold leading-tight">
                           {day.timeIn} <br/> {day.timeOut}
                         </div>
                       )}

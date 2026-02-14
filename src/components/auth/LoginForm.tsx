@@ -117,7 +117,7 @@ export default function LoginForm() {
             type="text"
             placeholder="admin"
             className={cn(
-              "h-14 px-5 bg-black/5 dark:bg-white/10 border-black/10 dark:border-white/20 text-zinc-900 dark:text-white placeholder:text-zinc-500 dark:placeholder:text-white/40 rounded-2xl transition-all duration-300 focus:bg-black/10 dark:focus:bg-white/20 focus:border-amber-500/50 dark:focus:border-white/40 focus:ring-4 focus:ring-amber-500/20",
+              "h-14 px-5 bg-black/5 dark:bg-white/10 border-black/10 dark:border-white/20 text-zinc-900 dark:text-white placeholder:text-zinc-500 dark:placeholder:text-white/40 rounded-2xl transition-all duration-300 focus:bg-black/10 dark:focus:bg-white/20 focus:border-green-500/50 dark:focus:border-white/40 focus:ring-4 focus:ring-green-500/20",
               errors.username &&
                 "border-red-500/50 bg-red-500/5 focus:ring-red-500/20",
             )}
@@ -146,7 +146,7 @@ export default function LoginForm() {
             type="password"
             placeholder="••••••"
             className={cn(
-              "h-14 px-5 bg-black/5 dark:bg-white/10 border-black/10 dark:border-white/20 text-zinc-900 dark:text-white placeholder:text-zinc-500 dark:placeholder:text-white/40 rounded-2xl transition-all duration-300 focus:bg-black/10 dark:focus:bg-white/20 focus:border-amber-500/50 dark:focus:border-white/40 focus:ring-4 focus:ring-amber-500/20",
+              "h-14 px-5 bg-black/5 dark:bg-white/10 border-black/10 dark:border-white/20 text-zinc-900 dark:text-white placeholder:text-zinc-500 dark:placeholder:text-white/40 rounded-2xl transition-all duration-300 focus:bg-black/10 dark:focus:bg-white/20 focus:border-green-500/50 dark:focus:border-white/40 focus:ring-4 focus:ring-green-500/20",
               errors.password &&
                 "border-red-500/50 bg-red-500/10 focus:ring-red-500/20",
             )}
@@ -168,7 +168,7 @@ export default function LoginForm() {
           <Checkbox
             id="remember-me"
             name="remember-me"
-            className="border-zinc-400 dark:border-white/20 data-[state=checked]:bg-amber-600 data-[state=checked]:border-amber-600"
+            className="border-zinc-400 dark:border-white/20 data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600"
           />
           <Label
             htmlFor="remember-me"
@@ -181,7 +181,7 @@ export default function LoginForm() {
         <div className="text-xs">
           <Link
             href="/forgot-password"
-            className="font-bold text-amber-400 hover:text-amber-300 transition-colors"
+            className="font-bold text-green-500 hover:text-green-400 transition-colors"
           >
             {t("forgotPassword")}
           </Link>
@@ -198,7 +198,7 @@ export default function LoginForm() {
         >
           <Button
             type="submit"
-            className="w-full h-14 text-base font-black bg-linear-to-r from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-600 text-white border-none rounded-2xl transition-all shadow-[0_10px_40px_-10px_rgba(180,83,9,0.5)] active:shadow-none relative overflow-hidden"
+            className="w-full h-14 text-base font-black bg-linear-to-r from-green-600 to-emerald-700 hover:from-green-500 hover:to-emerald-600 text-white border-none rounded-2xl transition-all shadow-[0_10px_40px_-10px_rgba(34,197,94,0.5)] active:shadow-none relative overflow-hidden"
             disabled={isLoading}
           >
             {isLoading ? (
@@ -280,7 +280,7 @@ export default function LoginForm() {
           </span>
           <Link
             href="/register"
-            className="font-bold text-amber-600 dark:text-amber-400 hover:underline"
+            className="font-bold text-green-600 dark:text-green-400 hover:underline"
           >
             {t("registerNow")}
           </Link>

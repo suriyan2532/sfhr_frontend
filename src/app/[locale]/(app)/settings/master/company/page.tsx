@@ -34,7 +34,7 @@ export default async function CompanyMasterPage({
         </div>
         <Link
           href="/settings/master/company/create"
-          className="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto"
+          className="inline-flex items-center justify-center rounded-md border border-transparent bg-green-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 sm:w-auto"
         >
           <Plus className="-ml-1 mr-2 h-4 w-4" />
           Add Company
@@ -57,7 +57,7 @@ export default async function CompanyMasterPage({
           <div className="mt-6">
             <Link
               href="/settings/master/company/create"
-              className="inline-flex items-center px-4 py-2 rounded-lg bg-indigo-600 text-sm font-semibold text-white hover:bg-indigo-700 transition-all shadow-sm"
+              className="inline-flex items-center px-4 py-2 rounded-lg bg-green-600 text-sm font-semibold text-white hover:bg-green-700 transition-all shadow-sm"
             >
               <Plus className="-ml-1 mr-2 h-4 w-4" />
               Add Company

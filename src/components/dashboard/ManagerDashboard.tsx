@@ -76,8 +76,8 @@ export function ManagerDashboard({ data }: ManagerDashboardProps) {
             label: t("totalTeam"),
             value: stats.totalTeamMembers,
             icon: Users,
-            color: "text-indigo-500",
-            bg: "bg-indigo-500/10",
+            color: "text-green-500",
+            bg: "bg-green-500/10",
           },
           {
             label: t("presentToday"),
@@ -250,7 +250,7 @@ export function ManagerDashboard({ data }: ManagerDashboardProps) {
           <Card className="h-full shadow-md">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Users className="w-5 h-5 text-indigo-500" />
+                <Users className="w-5 h-5 text-green-500" />
                 {t("myTeam")}
               </CardTitle>
               <CardDescription>

@@ -19,7 +19,7 @@ export function AttendanceViewToggle({ view, onViewChange }: ViewToggleProps) {
                 className={clsx(
                     "flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-all",
                     view === 'self' 
-                        ? "bg-white dark:bg-indigo-600 text-indigo-600 dark:text-white shadow-sm" 
+                        ? "bg-white dark:bg-green-600 text-green-600 dark:text-white shadow-sm" 
                         : "text-gray-500 hover:text-gray-700 dark:text-gray-400"
                 )}
             >
@@ -31,7 +31,7 @@ export function AttendanceViewToggle({ view, onViewChange }: ViewToggleProps) {
                 className={clsx(
                     "flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-all",
                     view === 'team' 
-                        ? "bg-white dark:bg-indigo-600 text-indigo-600 dark:text-white shadow-sm" 
+                        ? "bg-white dark:bg-green-600 text-green-600 dark:text-white shadow-sm" 
                         : "text-gray-500 hover:text-gray-700 dark:text-gray-400"
                 )}
             >
