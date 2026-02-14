@@ -72,6 +72,22 @@ export async function deleteCompany(id: string) {
   }
 }
 
+// Helper function for select options
+export async function getAllCompaniesForSelect() {
+  try {
+    const result = await organizationService.getCompanies({ page: 1 });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return result.companies.map((company: any) => ({
+      id: company.id,
+      name: company.name,
+      code: company.code,
+    }));
+  } catch (error) {
+    console.error("Error fetching companies for select:", error);
+    return [];
+  }
+}
+
 // Units
 export async function getUnits() {
   try {
@@ -95,6 +111,22 @@ export async function deleteUnit(id: string) {
   revalidatePath("/organization");
 }
 
+// Helper function for select options
+export async function getAllUnitsForSelect() {
+  try {
+    const result = await organizationService.getUnits();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return result.units.map((unit: any) => ({
+      id: unit.id,
+      name: unit.name,
+      code: unit.code,
+    }));
+  } catch (error) {
+    console.error("Error fetching units for select:", error);
+    return [];
+  }
+}
+
 // Departments
 export async function getDepartments() {
   try {
@@ -116,6 +148,22 @@ export async function updateDepartment(id: string, formData: FormData) {
 
 export async function deleteDepartment(id: string) {
   revalidatePath("/organization");
+}
+
+// Helper function for select options
+export async function getAllDepartmentsForSelect() {
+  try {
+    const result = await organizationService.getDepartments();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return result.departments.map((dept: any) => ({
+      id: dept.id,
+      name: dept.name,
+      code: dept.code,
+    }));
+  } catch (error) {
+    console.error("Error fetching departments for select:", error);
+    return [];
+  }
 }
 
 // Positions
