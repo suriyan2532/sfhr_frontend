@@ -12,6 +12,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
+import { Separator } from "@/components/ui/separator";
 import {
   CalendarDays,
   Clock,
@@ -24,6 +25,18 @@ import {
   Stethoscope,
   PartyPopper,
   Calendar,
+  MapPin,
+  Phone,
+  Mail,
+  Building2,
+  Wallet,
+  GraduationCap,
+  FileText,
+  AlertCircle,
+  Heart,
+  IdCard,
+  Users,
+  Landmark,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "@/navigation";
@@ -36,13 +49,115 @@ import {
   isToday,
 } from "date-fns";
 
+// Interfaces
+interface PersonalInfo {
+  prefix_th?: string;
+  prefix_en?: string;
+  first_name_th: string;
+  last_name_th: string;
+  first_name_en?: string;
+  last_name_en?: string;
+  gender?: string;
+  birthDate?: string;
+  nationality?: string;
+  nationalityTh?: string;
+  religion?: string;
+  religionTh?: string;
+  maritalStatus?: string;
+  maritalStatusTh?: string;
+  bloodGroup?: string;
+  nationalId?: string;
+  passportNo?: string;
+  idCardExpiry?: string;
+  passportExpiry?: string;
+}
+
+interface EmploymentInfo {
+  employeeType?: string;
+  status: string;
+  hireDate?: string;
+  probationEndDate?: string;
+  confirmationDate?: string;
+  workType?: string;
+  company?: string;
+  unit?: string;
+  department: string;
+  position: string;
+  positionLevel?: string;
+  workLocation?: string;
+  supervisor?: {
+    id: string;
+    name: string;
+  };
+}
+
+interface ContactInfo {
+  registeredAddress?: string;
+  currentAddress?: string;
+  phonePersonal?: string;
+  phoneMobile?: string;
+  emailPersonal?: string;
+  emailCompany?: string;
+  lineId?: string;
+  otherContact?: string;
+}
+
+interface Compensation {
+  salaryBase?: number;
+  salaryType?: string;
+  otRate?: number;
+  taxId?: string;
+  bank?: string;
+  bankAccountNo?: string;
+  bankBranch?: string;
+  insuranceNo?: string;
+}
+
+interface HealthInfo {
+  bloodGroup?: string;
+  chronicDiseases?: string;
+  workLimitations?: string;
+}
+
 interface Profile {
   fullName: string;
-  position: string;
-  department: string;
+  fullNameEn?: string;
+  nickname?: string;
   employeeCode: string;
-  startDate?: string;
   avatar?: string;
+  personalInfo: PersonalInfo;
+  employmentInfo: EmploymentInfo;
+  contactInfo: ContactInfo;
+  compensation: Compensation;
+  healthInfo: HealthInfo;
+}
+
+interface EmergencyContact {
+  id: string;
+  name: string;
+  relationship: string;
+  phoneNumber: string;
+  address?: string;
+  isPrimary: boolean;
+}
+
+interface Education {
+  id: string;
+  level?: string;
+  institution: string;
+  fieldOfStudy?: string;
+  degree?: string;
+  graduationYear?: number;
+  gpa?: number;
+}
+
+interface Document {
+  id: string;
+  documentType: string;
+  documentName: string;
+  fileUrl: string;
+  uploadedAt: string;
+  expiryDate?: string;
 }
 
 interface LeaveQuota {
@@ -90,6 +205,9 @@ interface CalendarEvent {
 interface EmployeeDashboardProps {
   data: {
     profile: Profile;
+    emergencyContacts: EmergencyContact[];
+    education: Education[];
+    documents: Document[];
     leaveQuotas: LeaveQuota[];
     attendanceStats: AttendanceStats;
     activities: Activity[];
@@ -112,6 +230,9 @@ export function EmployeeDashboard({ data }: EmployeeDashboardProps) {
 
   const {
     profile,
+    emergencyContacts,
+    education,
+    documents,
     leaveQuotas,
     attendanceStats,
     activities,
@@ -159,28 +280,35 @@ export function EmployeeDashboard({ data }: EmployeeDashboardProps) {
                     {t(greetingKey as any)}, {profile.fullName}
                   </h1>
                   <p className="text-indigo-100 opacity-90 mt-1">
-                    {t("welcomeBackMessage")}
+                    {profile.nickname && `(${profile.nickname})`}
                   </p>
                 </div>
 
                 <div className="flex flex-wrap gap-3 text-sm text-indigo-100">
                   <div className="flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-full backdrop-blur-sm">
                     <Briefcase className="w-3.5 h-3.5" />
-                    <span>{profile.position}</span>
+                    <span>{profile.employmentInfo.position}</span>
                   </div>
                   <div className="flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-full backdrop-blur-sm">
                     <User className="w-3.5 h-3.5" />
-                    <span>{profile.department}</span>
+                    <span>{profile.employmentInfo.department}</span>
                   </div>
                   <div className="flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-full backdrop-blur-sm">
-                    <Calendar className="w-3.5 h-3.5" />
-                    <span>
-                      Since{" "}
-                      {profile.startDate
-                        ? format(new Date(profile.startDate), "MMM yyyy")
-                        : "-"}
-                    </span>
+                    <IdCard className="w-3.5 h-3.5" />
+                    <span>{profile.employeeCode}</span>
                   </div>
+                  {profile.employmentInfo.hireDate && (
+                    <div className="flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-full backdrop-blur-sm">
+                      <Calendar className="w-3.5 h-3.5" />
+                      <span>
+                        Since{" "}
+                        {format(
+                          new Date(profile.employmentInfo.hireDate),
+                          "MMM yyyy",
+                        )}
+                      </span>
+                    </div>
+                  )}
                 </div>
               </div>
             </CardContent>
@@ -197,7 +325,7 @@ export function EmployeeDashboard({ data }: EmployeeDashboardProps) {
             <CardHeader className="pb-2">
               <CardTitle className="text-lg flex items-center gap-2">
                 <Clock className="w-5 h-5 text-amber-500" />
-                {t("currentShift")} & Schedule
+                {t("currentShift")}
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -205,7 +333,7 @@ export function EmployeeDashboard({ data }: EmployeeDashboardProps) {
                 <div className="space-y-4">
                   <div className="flex flex-col">
                     <span className="text-sm text-muted-foreground uppercase tracking-wider font-semibold">
-                      Today&apos;s Shift
+                      {t("currentShift")}
                     </span>
                     <span className="text-2xl font-bold text-foreground">
                       {shiftInfo.time}
@@ -248,7 +376,398 @@ export function EmployeeDashboard({ data }: EmployeeDashboardProps) {
         </motion.div>
       </div>
 
-      {/* 2. Stats Overview */}
+      {/* 2. Comprehensive Information Sections */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Personal Information */}
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.2 }}
+        >
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <User className="w-5 h-5 text-blue-500" />
+                {t("personalInformation")}
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <InfoRow
+                label="Full Name (TH)"
+                value={`${profile.personalInfo.prefix_th || ""} ${profile.personalInfo.first_name_th} ${profile.personalInfo.last_name_th}`}
+              />
+              <InfoRow
+                label="Full Name (EN)"
+                value={`${profile.personalInfo.prefix_en || ""} ${profile.personalInfo.first_name_en || ""} ${profile.personalInfo.last_name_en || ""}`}
+              />
+              <InfoRow label="Gender" value={profile.personalInfo.gender} />
+              <InfoRow
+                label="Date of Birth"
+                value={
+                  profile.personalInfo.birthDate
+                    ? format(
+                        new Date(profile.personalInfo.birthDate),
+                        "dd MMM yyyy",
+                      )
+                    : undefined
+                }
+              />
+              <InfoRow
+                label="Nationality"
+                value={profile.personalInfo.nationalityTh}
+              />
+              <InfoRow
+                label="Religion"
+                value={profile.personalInfo.religionTh}
+              />
+              <InfoRow
+                label="Marital Status"
+                value={profile.personalInfo.maritalStatusTh}
+              />
+              <InfoRow
+                label="Blood Group"
+                value={profile.personalInfo.bloodGroup}
+              />
+              <Separator className="my-2" />
+              <InfoRow
+                label="National ID"
+                value={profile.personalInfo.nationalId}
+                masked
+              />
+              <InfoRow
+                label="Passport No."
+                value={profile.personalInfo.passportNo}
+              />
+            </CardContent>
+          </Card>
+        </motion.div>
+
+        {/* Employment Details */}
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.2 }}
+        >
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Briefcase className="w-5 h-5 text-purple-500" />
+                {t("employmentDetails")}
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <InfoRow
+                label="Employee Type"
+                value={profile.employmentInfo.employeeType}
+              />
+              <InfoRow label="Status" value={profile.employmentInfo.status}>
+                <Badge
+                  variant={
+                    profile.employmentInfo.status === "ACTIVE"
+                      ? "success"
+                      : "secondary"
+                  }
+                >
+                  {profile.employmentInfo.status}
+                </Badge>
+              </InfoRow>
+              <InfoRow
+                label="Work Type"
+                value={profile.employmentInfo.workType}
+              />
+              <InfoRow
+                label="Hire Date"
+                value={
+                  profile.employmentInfo.hireDate
+                    ? format(
+                        new Date(profile.employmentInfo.hireDate),
+                        "dd MMM yyyy",
+                      )
+                    : undefined
+                }
+              />
+              <InfoRow
+                label="Probation End"
+                value={
+                  profile.employmentInfo.probationEndDate
+                    ? format(
+                        new Date(profile.employmentInfo.probationEndDate),
+                        "dd MMM yyyy",
+                      )
+                    : undefined
+                }
+              />
+              <Separator className="my-2" />
+              <InfoRow label="Company" value={profile.employmentInfo.company} />
+              <InfoRow label="Unit" value={profile.employmentInfo.unit} />
+              <InfoRow
+                label="Department"
+                value={profile.employmentInfo.department}
+              />
+              <InfoRow
+                label="Position"
+                value={profile.employmentInfo.position}
+              />
+              <InfoRow
+                label="Work Location"
+                value={profile.employmentInfo.workLocation}
+              />
+              <InfoRow
+                label="Supervisor"
+                value={profile.employmentInfo.supervisor?.name}
+              />
+            </CardContent>
+          </Card>
+        </motion.div>
+
+        {/* Contact Information */}
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.25 }}
+        >
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Phone className="w-5 h-5 text-green-500" />
+                {t("contactInformation")}
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <InfoRow
+                label="Mobile Phone"
+                value={profile.contactInfo.phoneMobile}
+                icon={<Phone className="w-4 h-4" />}
+              />
+              <InfoRow
+                label="Personal Phone"
+                value={profile.contactInfo.phonePersonal}
+              />
+              <InfoRow
+                label="Company Email"
+                value={profile.contactInfo.emailCompany}
+                icon={<Mail className="w-4 h-4" />}
+              />
+              <InfoRow
+                label="Personal Email"
+                value={profile.contactInfo.emailPersonal}
+              />
+              <InfoRow label="Line ID" value={profile.contactInfo.lineId} />
+              <Separator className="my-2" />
+              <InfoRow
+                label="Registered Address"
+                value={profile.contactInfo.registeredAddress}
+                icon={<MapPin className="w-4 h-4" />}
+              />
+              <InfoRow
+                label="Current Address"
+                value={profile.contactInfo.currentAddress}
+              />
+            </CardContent>
+          </Card>
+        </motion.div>
+
+        {/* Compensation & Benefits */}
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.25 }}
+        >
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Wallet className="w-5 h-5 text-emerald-500" />
+                {t("compensationBenefits")}
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <InfoRow
+                label="Base Salary"
+                value={
+                  profile.compensation.salaryBase
+                    ? `฿${Number(profile.compensation.salaryBase).toLocaleString()}`
+                    : undefined
+                }
+              />
+              <InfoRow
+                label="Salary Type"
+                value={profile.compensation.salaryType}
+              />
+              <InfoRow
+                label="OT Rate"
+                value={
+                  profile.compensation.otRate
+                    ? `฿${Number(profile.compensation.otRate).toLocaleString()}`
+                    : undefined
+                }
+              />
+              <Separator className="my-2" />
+              <InfoRow label="Bank" value={profile.compensation.bank} />
+              <InfoRow
+                label="Account No."
+                value={profile.compensation.bankAccountNo}
+                masked
+              />
+              <InfoRow label="Branch" value={profile.compensation.bankBranch} />
+              <InfoRow
+                label="Tax ID"
+                value={profile.compensation.taxId}
+                masked
+              />
+              <InfoRow
+                label="Insurance No."
+                value={profile.compensation.insuranceNo}
+              />
+            </CardContent>
+          </Card>
+        </motion.div>
+      </div>
+
+      {/* 3. Emergency Contacts */}
+      {emergencyContacts && emergencyContacts.length > 0 && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+        >
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <AlertCircle className="w-5 h-5 text-red-500" />
+                {t("emergencyContacts")}
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid gap-4 md:grid-cols-2">
+                {emergencyContacts.map((contact) => (
+                  <div
+                    key={contact.id}
+                    className="p-4 border rounded-lg space-y-2 bg-secondary/20"
+                  >
+                    <div className="flex items-center justify-between">
+                      <h4 className="font-semibold text-lg">{contact.name}</h4>
+                      {contact.isPrimary && (
+                        <Badge variant="default" className="text-xs">
+                          Primary
+                        </Badge>
+                      )}
+                    </div>
+                    <p className="text-sm text-muted-foreground">
+                      {contact.relationship}
+                    </p>
+                    <div className="flex items-center gap-2 text-sm">
+                      <Phone className="w-4 h-4 text-green-600" />
+                      <span>{contact.phoneNumber}</span>
+                    </div>
+                    {contact.address && (
+                      <div className="flex items-start gap-2 text-sm text-muted-foreground">
+                        <MapPin className="w-4 h-4 mt-0.5" />
+                        <span className="text-xs">{contact.address}</span>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
+      )}
+
+      {/* 4. Education & Documents Row */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Education History */}
+        {education && education.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.35 }}
+          >
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <GraduationCap className="w-5 h-5 text-indigo-500" />
+                  {t("educationHistory")}
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {education.map((edu) => (
+                    <div
+                      key={edu.id}
+                      className="p-4 border rounded-lg space-y-1 bg-secondary/20"
+                    >
+                      <h4 className="font-semibold">{edu.institution}</h4>
+                      <p className="text-sm text-muted-foreground">
+                        {edu.level} {edu.degree && `- ${edu.degree}`}
+                      </p>
+                      {edu.fieldOfStudy && (
+                        <p className="text-sm">{edu.fieldOfStudy}</p>
+                      )}
+                      <div className="flex items-center gap-4 text-xs text-muted-foreground pt-1">
+                        {edu.graduationYear && (
+                          <span>Graduated: {edu.graduationYear}</span>
+                        )}
+                        {edu.gpa && <span>GPA: {edu.gpa}</span>}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        )}
+
+        {/* Documents */}
+        {documents && documents.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.35 }}
+          >
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <FileText className="w-5 h-5 text-orange-500" />
+                  {t("documents")}
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3">
+                  {documents.map((doc) => (
+                    <div
+                      key={doc.id}
+                      className="flex items-center justify-between p-3 border rounded-lg hover:bg-secondary/20 transition-colors"
+                    >
+                      <div className="flex items-center gap-3 min-w-0">
+                        <FileText className="w-5 h-5 text-orange-500 shrink-0" />
+                        <div className="min-w-0">
+                          <p className="font-medium text-sm truncate">
+                            {doc.documentName}
+                          </p>
+                          <p className="text-xs text-muted-foreground">
+                            {doc.documentType}
+                          </p>
+                        </div>
+                      </div>
+                      <Button variant="ghost" size="sm" asChild>
+                        <a
+                          href={doc.fileUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          View
+                        </a>
+                      </Button>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        )}
+      </div>
+
+      {/* 5. Stats Overview */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {[
           {
@@ -284,7 +803,7 @@ export function EmployeeDashboard({ data }: EmployeeDashboardProps) {
             key={i}
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2 + i * 0.05 }}
+            transition={{ delay: 0.4 + i * 0.05 }}
           >
             <Card className="hover:shadow-md transition-shadow cursor-default border-none bg-white/50 dark:bg-zinc-900/50 backdrop-blur-sm">
               <CardContent className="p-5 flex items-center justify-between">
@@ -306,13 +825,13 @@ export function EmployeeDashboard({ data }: EmployeeDashboardProps) {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* 3. Leave Quotas & Holidays (2/3 width) */}
+        {/* 6. Leave Quotas & Holidays (2/3 width) */}
         <div className="lg:col-span-2 space-y-6">
           {/* Quotas */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.3 }}
+            transition={{ delay: 0.5 }}
           >
             <Card className="shadow-sm">
               <CardHeader className="flex flex-row items-center justify-between">
@@ -399,7 +918,7 @@ export function EmployeeDashboard({ data }: EmployeeDashboardProps) {
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.35 }}
+            transition={{ delay: 0.55 }}
           >
             <Card>
               <CardHeader>
@@ -449,13 +968,13 @@ export function EmployeeDashboard({ data }: EmployeeDashboardProps) {
           </motion.div>
         </div>
 
-        {/* 4. Right Column: Calendar & Activities */}
+        {/* 7. Right Column: Calendar & Activities */}
         <div className="space-y-6">
           {/* Mini Calendar View */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.4 }}
+            transition={{ delay: 0.6 }}
           >
             <Card>
               <CardHeader className="pb-2">
@@ -538,7 +1057,7 @@ export function EmployeeDashboard({ data }: EmployeeDashboardProps) {
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.45 }}
+            transition={{ delay: 0.65 }}
           >
             <Card className="flex flex-col h-full">
               <CardHeader className="pb-3">
@@ -593,6 +1112,41 @@ export function EmployeeDashboard({ data }: EmployeeDashboardProps) {
           </motion.div>
         </div>
       </div>
+    </div>
+  );
+}
+
+// Helper component for displaying info rows
+function InfoRow({
+  label,
+  value,
+  icon,
+  masked = false,
+  children,
+}: {
+  label: string;
+  value?: string | number;
+  icon?: React.ReactNode;
+  masked?: boolean;
+  children?: React.ReactNode;
+}) {
+  if (!value && !children) return null;
+
+  return (
+    <div className="flex justify-between items-start py-1">
+      <span className="text-sm text-muted-foreground flex items-center gap-2">
+        {icon}
+        {label}
+      </span>
+      {children ? (
+        children
+      ) : (
+        <span className="text-sm font-medium text-right">
+          {masked && typeof value === "string" && value.length > 4
+            ? `${"*".repeat(value.length - 4)}${value.slice(-4)}`
+            : value}
+        </span>
+      )}
     </div>
   );
 }
