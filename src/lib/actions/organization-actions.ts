@@ -40,7 +40,10 @@ export async function createCompany(formData: FormData) {
     return { message: "Company created successfully" };
   } catch (error) {
     console.error("Error creating company:", error);
-    return { message: "Failed to create company" };
+    return {
+      message: "Failed to create company",
+      errors: { root: [(error as Error).message] },
+    };
   }
 }
 
@@ -58,7 +61,10 @@ export async function updateCompany(id: string, formData: FormData) {
     return { message: "Company updated successfully" };
   } catch (error) {
     console.error("Error updating company:", error);
-    return { message: "Failed to update company" };
+    return {
+      message: "Failed to update company",
+      errors: { root: [(error as Error).message] },
+    };
   }
 }
 
@@ -100,12 +106,12 @@ export async function getUnits() {
 
 export async function createUnit(formData: FormData) {
   console.log(formData);
-  return { message: "Feature temporarily disabled" };
+  return { message: "Feature temporarily disabled", errors: undefined };
 }
 
 export async function updateUnit(id: string, formData: FormData) {
   console.log(id, formData);
-  return { message: "Feature temporarily disabled" };
+  return { message: "Feature temporarily disabled", errors: undefined };
 }
 
 export async function deleteUnit(id: string) {
@@ -145,12 +151,12 @@ export async function createDepartment(
   _id: string | null,
 ) {
   console.log(_formData, _id);
-  return { message: "Feature temporarily disabled" };
+  return { message: "Feature temporarily disabled", errors: undefined };
 }
 
 export async function updateDepartment(_id: string, _formData: FormData) {
   console.log(_id, _formData);
-  return { message: "Feature temporarily disabled" };
+  return { message: "Feature temporarily disabled", errors: undefined };
 }
 
 export async function deleteDepartment(id: string) {
@@ -190,12 +196,12 @@ export async function createPosition(
   _id: string | null,
 ) {
   console.log(_formData, _id);
-  return { message: "Feature temporarily disabled" };
+  return { message: "Feature temporarily disabled", errors: undefined };
 }
 
 export async function updatePosition(_id: string, _formData: FormData) {
   console.log(_id, _formData);
-  return { message: "Feature temporarily disabled" };
+  return { message: "Feature temporarily disabled", errors: undefined };
 }
 
 export async function deletePosition(id: string) {
