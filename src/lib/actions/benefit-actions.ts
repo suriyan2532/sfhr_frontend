@@ -7,7 +7,8 @@ export async function getBenefits() {
   return [];
 }
 
-export async function getBenefitById(id: string) {
+export async function getBenefitById(_id: string) {
+  console.log(_id);
   return null;
 }
 
@@ -21,4 +22,9 @@ export async function updateBenefit() {
 
 export async function deleteBenefit() {
   return { success: false, message: "Feature temporarily disabled" };
+}
+
+export async function submitBenefitClaim(_formData: FormData) {
+  console.log(_formData);
+  return { success: false, error: "Feature temporarily disabled" };
 }
