@@ -274,13 +274,17 @@ export default function LoginForm() {
           </Button>
         </motion.div>
 
-        <Button
-          asChild
-          variant="ghost"
-          className="w-full h-12 text-zinc-500 dark:text-white/40 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 font-bold text-xs uppercase tracking-widest rounded-2xl transition-all"
-        >
-          <Link href="/dashboard">{t("skipToDashboard")}</Link>
-        </Button>
+        <div className="text-center text-xs">
+          <span className="text-zinc-500 dark:text-white/40 mr-1">
+            {t("noAccount")}
+          </span>
+          <Link
+            href="/register"
+            className="font-bold text-amber-600 dark:text-amber-400 hover:underline"
+          >
+            {t("registerNow")}
+          </Link>
+        </div>
       </div>
     </form>
   );
