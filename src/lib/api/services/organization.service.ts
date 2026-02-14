@@ -36,9 +36,12 @@ export interface GetCompaniesParams {
  */
 export async function getCompanies(
   params: GetCompaniesParams = {},
+  token?: string,
 ): Promise<{ companies: Company[]; total: number }> {
   const queryString = buildQueryString(params as Record<string, unknown>);
-  const response = await apiGet<Company[]>(`/companies${queryString}`);
+  const response = await apiGet<Company[]>(`/companies${queryString}`, {
+    token,
+  });
 
   return {
     companies: Array.isArray(response) ? response : [],
@@ -49,8 +52,10 @@ export async function getCompanies(
 /**
  * Get companies for select dropdown
  */
-export async function getCompaniesForSelect(): Promise<SelectOption[]> {
-  return apiGet<SelectOption[]>("/companies/select");
+export async function getCompaniesForSelect(
+  token?: string,
+): Promise<SelectOption[]> {
+  return apiGet<SelectOption[]>("/companies/select", { token });
 }
 
 /**
@@ -100,9 +105,10 @@ export interface GetUnitsParams {
  */
 export async function getUnits(
   params: GetUnitsParams = {},
+  token?: string,
 ): Promise<{ units: Unit[]; total: number }> {
   const queryString = buildQueryString(params as Record<string, unknown>);
-  const response = await apiGet<Unit[]>(`/units${queryString}`);
+  const response = await apiGet<Unit[]>(`/units${queryString}`, { token });
 
   return {
     units: Array.isArray(response) ? response : [],
@@ -115,9 +121,10 @@ export async function getUnits(
  */
 export async function getUnitsForSelect(
   companyId?: string,
+  token?: string,
 ): Promise<SelectOption[]> {
   const queryString = companyId ? buildQueryString({ companyId }) : "";
-  return apiGet<SelectOption[]>(`/units/select${queryString}`);
+  return apiGet<SelectOption[]>(`/units/select${queryString}`, { token });
 }
 
 /**
@@ -161,9 +168,12 @@ export interface GetDepartmentsParams {
  */
 export async function getDepartments(
   params: GetDepartmentsParams = {},
+  token?: string,
 ): Promise<{ departments: Department[]; total: number }> {
   const queryString = buildQueryString(params as Record<string, unknown>);
-  const response = await apiGet<Department[]>(`/departments${queryString}`);
+  const response = await apiGet<Department[]>(`/departments${queryString}`, {
+    token,
+  });
 
   return {
     departments: Array.isArray(response) ? response : [],
@@ -176,9 +186,10 @@ export async function getDepartments(
  */
 export async function getDepartmentsForSelect(
   companyId?: string,
+  token?: string,
 ): Promise<SelectOption[]> {
   const queryString = companyId ? buildQueryString({ companyId }) : "";
-  return apiGet<SelectOption[]>(`/departments/select${queryString}`);
+  return apiGet<SelectOption[]>(`/departments/select${queryString}`, { token });
 }
 
 /**
@@ -223,9 +234,12 @@ export interface GetPositionsParams {
  */
 export async function getPositions(
   params: GetPositionsParams = {},
+  token?: string,
 ): Promise<{ positions: Position[]; total: number }> {
   const queryString = buildQueryString(params as Record<string, unknown>);
-  const response = await apiGet<Position[]>(`/positions${queryString}`);
+  const response = await apiGet<Position[]>(`/positions${queryString}`, {
+    token,
+  });
 
   return {
     positions: Array.isArray(response) ? response : [],
@@ -238,9 +252,10 @@ export async function getPositions(
  */
 export async function getPositionsForSelect(
   departmentId?: string,
+  token?: string,
 ): Promise<SelectOption[]> {
   const queryString = departmentId ? buildQueryString({ departmentId }) : "";
-  return apiGet<SelectOption[]>(`/positions/select${queryString}`);
+  return apiGet<SelectOption[]>(`/positions/select${queryString}`, { token });
 }
 
 /**

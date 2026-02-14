@@ -4,6 +4,7 @@ import { getEmployees } from "@/lib/actions/employee-actions";
 import { Link } from "@/navigation";
 import { getTranslations } from "next-intl/server";
 import { EmployeeFilters } from "@/components/employees/EmployeeFilters";
+import { auth } from "@/auth";
 
 export default async function EmployeeListPage({
   searchParams,
@@ -24,6 +25,8 @@ export default async function EmployeeListPage({
   const companyId = params.companyId;
   const departmentId = params.departmentId;
   const positionId = params.positionId;
+  const session = await auth();
+  const token = session?.user?.accessToken;
 
   const { employees } = await getEmployees(
     query,
@@ -55,7 +58,7 @@ export default async function EmployeeListPage({
         </div>
       </div>
 
-      <EmployeeFilters />
+      <EmployeeFilters token={token} />
 
       {/* Search Bar could go here */}
 

@@ -35,6 +35,11 @@ interface EmployeeFormProps {
   workingShifts: WorkingShift[];
 }
 
+import { ImageUpload } from "../ui/image-upload";
+import { FileUpload } from "../ui/file-upload";
+
+// ... existing imports
+
 export function EmployeeForm({
   departments,
   positions,
@@ -51,13 +56,24 @@ export function EmployeeForm({
     handleSubmit,
     formState: { errors },
     setError,
+    setValue,
+    watch,
   } = useForm<EmployeeFormValues>({
     resolver: zodResolver(employeeSchema) as never,
     defaultValues: {
       status: EmpStatus.PROBATION,
       positionIds: [],
+      // Defaults for new required fields
+      firstNameTh: "",
+      lastNameTh: "",
+      firstNameEn: "",
+      lastNameEn: "",
+      idCard: "",
     },
   });
+
+  const photo = watch("photo");
+  const document = watch("document");
 
   const onSubmit = async (data: EmployeeFormValues) => {
     setIsLoading(true);
@@ -69,6 +85,8 @@ export function EmployeeForm({
     ).forEach(([key, value]) => {
       if (Array.isArray(value)) {
         value.forEach((v) => formData.append(key, v.toString()));
+      } else if (value instanceof File) {
+        formData.append(key, value);
       } else if (value !== null && value !== undefined) {
         formData.append(
           key,
@@ -76,6 +94,8 @@ export function EmployeeForm({
         );
       }
     });
+
+    // ... existing onSubmit logic ...
 
     const result = await createEmployee(formData);
 
@@ -97,59 +117,54 @@ export function EmployeeForm({
       </div>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
+        {/* Profile Image - New Field */}
+        <div className="flex justify-center mb-8">
+          <div className="w-48">
+            <ImageUpload
+              value={photo}
+              onChange={(file) => setValue("photo", file)}
+              onRemove={() => setValue("photo", null)}
+              label="Profile Picture"
+              error={errors.photo?.message as string}
+            />
+          </div>
+        </div>
+
         {/* Basic Information */}
         <div className="space-y-6">
+          {/* ... existing fields ... */}
           <div className="border-b border-white/10 pb-2 mb-4">
             <h4 className="text-lg font-medium text-white">{t("basicInfo")}</h4>
             <p className="text-xs text-white/50">{t("basicInfoDesc")}</p>
           </div>
 
           <div className="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
-            <div className="sm:col-span-3">
-              <GlassLabel htmlFor="idCard">{t("fields.idCard")} *</GlassLabel>
+            {/* Thai Name */}
+            <div className="sm:col-span-1">
+              <GlassLabel htmlFor="prefixTh">Prefix (TH)</GlassLabel>
               <GlassInput
-                id="idCard"
-                {...register("idCard")}
-                error={errors.idCard?.message}
-                placeholder="1234567890123"
+                id="prefixTh"
+                {...register("prefixTh")}
+                placeholder="นาย/นาง/..."
               />
             </div>
-
-            <div className="sm:col-span-3">
-              <GlassLabel htmlFor="employeeId">
-                {t("fields.employeeId")} *
-              </GlassLabel>
-              <GlassInput
-                id="employeeId"
-                {...register("employeeId")}
-                error={errors.employeeId?.message}
-                placeholder="EMP-001"
-              />
-            </div>
-
-            <div className="sm:col-span-3">
-              <GlassLabel htmlFor="firstName">
-                {t("fields.firstName")} *
-              </GlassLabel>
-              <GlassInput
-                id="firstName"
-                {...register("firstName")}
-                error={errors.firstName?.message}
-              />
-            </div>
-
-            <div className="sm:col-span-3">
-              <GlassLabel htmlFor="lastName">
-                {t("fields.lastName")} *
-              </GlassLabel>
-              <GlassInput
-                id="lastName"
-                {...register("lastName")}
-                error={errors.lastName?.message}
-              />
-            </div>
-
             <div className="sm:col-span-2">
+              <GlassLabel htmlFor="firstNameTh">First Name (TH) *</GlassLabel>
+              <GlassInput
+                id="firstNameTh"
+                {...register("firstNameTh")}
+                error={errors.firstNameTh?.message}
+              />
+            </div>
+            <div className="sm:col-span-2">
+              <GlassLabel htmlFor="lastNameTh">Last Name (TH) *</GlassLabel>
+              <GlassInput
+                id="lastNameTh"
+                {...register("lastNameTh")}
+                error={errors.lastNameTh?.message}
+              />
+            </div>
+            <div className="sm:col-span-1">
               <GlassLabel htmlFor="nickname">{t("fields.nickname")}</GlassLabel>
               <GlassInput
                 id="nickname"
@@ -158,7 +173,52 @@ export function EmployeeForm({
               />
             </div>
 
+            {/* English Name */}
+            <div className="sm:col-span-1">
+              <GlassLabel htmlFor="prefixEn">Prefix (EN)</GlassLabel>
+              <GlassInput
+                id="prefixEn"
+                {...register("prefixEn")}
+                placeholder="Mr/Mrs/..."
+              />
+            </div>
             <div className="sm:col-span-2">
+              <GlassLabel htmlFor="firstNameEn">First Name (EN) *</GlassLabel>
+              <GlassInput
+                id="firstNameEn"
+                {...register("firstNameEn")}
+                error={errors.firstNameEn?.message}
+              />
+            </div>
+            <div className="sm:col-span-3">
+              <GlassLabel htmlFor="lastNameEn">Last Name (EN) *</GlassLabel>
+              <GlassInput
+                id="lastNameEn"
+                {...register("lastNameEn")}
+                error={errors.lastNameEn?.message}
+              />
+            </div>
+
+            {/* Identities */}
+            <div className="sm:col-span-3">
+              <GlassLabel htmlFor="idCard">{t("fields.idCard")} *</GlassLabel>
+              <GlassInput
+                id="idCard"
+                {...register("idCard")}
+                error={errors.idCard?.message}
+                placeholder="13-digit ID"
+                maxLength={13}
+              />
+            </div>
+            <div className="sm:col-span-3">
+              <GlassLabel htmlFor="passportNo">Passport No.</GlassLabel>
+              <GlassInput
+                id="passportNo"
+                {...register("passportNo")}
+                error={errors.passportNo?.message}
+              />
+            </div>
+            <div className="sm:col-span-3">
               <GlassLabel htmlFor="birthDate">
                 {t("fields.birthDate")}
               </GlassLabel>
@@ -170,7 +230,7 @@ export function EmployeeForm({
               />
             </div>
 
-            <div className="sm:col-span-2">
+            <div className="sm:col-span-3">
               <GlassLabel htmlFor="gender">{t("fields.gender")}</GlassLabel>
               <GlassSelect
                 id="gender"
@@ -178,18 +238,35 @@ export function EmployeeForm({
                 error={errors.gender?.message}
               >
                 <option value="">{tCommon("selectOption")}</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Other">Other</option>
+                <option value="MALE">Male</option>
+                <option value="FEMALE">Female</option>
+                <option value="OTHER">Other</option>
               </GlassSelect>
             </div>
 
-            <div className="sm:col-span-6">
-              <GlassLabel htmlFor="address">{t("fields.address")}</GlassLabel>
+            {/* Contact Info */}
+            <div className="sm:col-span-6 border-t border-white/10 pt-4 mt-2">
+              <h5 className="text-sm font-medium text-white mb-3">
+                Contact Information
+              </h5>
+            </div>
+
+            <div className="sm:col-span-3">
+              <GlassLabel htmlFor="emailPersonal">Email (Personal)</GlassLabel>
               <GlassInput
-                id="address"
-                {...register("address")}
-                error={errors.address?.message}
+                type="email"
+                id="emailPersonal"
+                {...register("emailPersonal")}
+                error={errors.emailPersonal?.message}
+              />
+            </div>
+            <div className="sm:col-span-3">
+              <GlassLabel htmlFor="emailCompany">Email (Company)</GlassLabel>
+              <GlassInput
+                type="email"
+                id="emailCompany"
+                {...register("emailCompany")}
+                error={errors.emailCompany?.message}
               />
             </div>
 
@@ -203,11 +280,29 @@ export function EmployeeForm({
             </div>
 
             <div className="sm:col-span-3">
+              <GlassLabel htmlFor="phonePersonal">Phone (Home)</GlassLabel>
+              <GlassInput
+                id="phonePersonal"
+                {...register("phonePersonal")}
+                error={errors.phonePersonal?.message}
+              />
+            </div>
+
+            <div className="sm:col-span-3">
               <GlassLabel htmlFor="lineId">{t("fields.lineId")}</GlassLabel>
               <GlassInput
                 id="lineId"
                 {...register("lineId")}
                 error={errors.lineId?.message}
+              />
+            </div>
+
+            <div className="sm:col-span-6">
+              <GlassLabel htmlFor="address">{t("fields.address")}</GlassLabel>
+              <GlassInput
+                id="address"
+                {...register("address")}
+                error={errors.address?.message}
               />
             </div>
           </div>
@@ -221,6 +316,18 @@ export function EmployeeForm({
           </div>
 
           <div className="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+            <div className="sm:col-span-6">
+              <GlassLabel htmlFor="employeeId">
+                {t("fields.employeeId")} *
+              </GlassLabel>
+              <GlassInput
+                id="employeeId"
+                {...register("employeeId")}
+                error={errors.employeeId?.message}
+                placeholder="EMP-001"
+              />
+            </div>
+
             <div className="sm:col-span-3">
               <GlassLabel htmlFor="companyId">
                 {t("fields.company")} *
@@ -275,28 +382,6 @@ export function EmployeeForm({
               </GlassSelect>
             </div>
 
-            {/* TODO: Re-enable when WorkingShift is added to API types
-            <div className="sm:col-span-3">
-              <GlassLabel htmlFor="workingShiftId">
-                {t("fields.workingShift")}
-              </GlassLabel>
-              <GlassSelect
-                id="workingShiftId"
-                {...register("workingShiftId")}
-                error={errors.workingShiftId?.message}
-              >
-                <option value="">
-                  {t("placeholders.selectShift")} ({tCommon("optional")})
-                </option>
-                {workingShifts.map((s) => (
-                  <option key={s.id} value={s.id}>
-                    {s.name} ({s.startTime} - {s.endTime})
-                  </option>
-                ))}
-              </GlassSelect>
-            </div>
-            */}
-
             <div className="sm:col-span-6">
               <GlassLabel htmlFor="positionIds">
                 {t("fields.positions")} *
@@ -336,6 +421,26 @@ export function EmployeeForm({
                 <option value="PROBATION">PROBATION</option>
                 <option value="ACTIVE">ACTIVE</option>
               </GlassSelect>
+            </div>
+          </div>
+        </div>
+
+        {/* Support Documents - New Section */}
+        <div className="pt-6 space-y-6">
+          <div className="border-b border-white/10 pb-2 mb-4">
+            <h4 className="text-lg font-medium text-white">Documents</h4>
+            <p className="text-xs text-white/50">Attach relevant documents.</p>
+          </div>
+
+          <div className="grid grid-cols-1 gap-6">
+            <div>
+              <GlassLabel>Attachment</GlassLabel>
+              <FileUpload
+                value={document}
+                onChange={(file) => setValue("document", file)}
+                onRemove={() => setValue("document", null)}
+                error={errors.document?.message as string}
+              />
             </div>
           </div>
         </div>

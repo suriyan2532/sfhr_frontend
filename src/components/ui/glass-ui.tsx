@@ -70,7 +70,7 @@ export const GlassLabel = ({
     <label
       htmlFor={htmlFor}
       className={cn(
-        "block text-xs font-medium text-blue-200 uppercase tracking-wider mb-1.5 ml-1",
+        "block text-sm font-bold text-white uppercase tracking-wider mb-1.5 ml-1",
         className,
       )}
     >

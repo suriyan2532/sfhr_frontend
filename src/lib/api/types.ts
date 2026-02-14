@@ -37,15 +37,27 @@ export enum EmpStatus {
 export interface Employee {
   id: string;
   employeeId: string;
-  firstName: string;
-  lastName: string;
-  nickname?: string;
   idCard: string;
+  prefixTh?: string;
+  firstNameTh: string;
+  lastNameTh: string;
+  prefixEn?: string;
+  firstNameEn: string;
+  lastNameEn: string;
+  firstName: string; // Keep for compatibility or strict mapping? Backend uses th/en
+  lastName: string; // Keep for compatibility
+  nickname?: string;
   birthDate?: Date | null;
+  nationalityId?: number;
+  religionId?: number;
+  passportNo?: string;
   gender?: string;
   maritalStatus?: string;
   address?: string;
+  emailPersonal?: string;
+  emailCompany?: string;
   mobile?: string;
+  phonePersonal?: string;
   lineId?: string;
   companyId: string;
   company?: Company;
@@ -66,13 +78,23 @@ export interface CreateEmployeeData {
   employeeId: string;
   idCard: string;
   prefix?: string;
-  firstName: string;
-  lastName: string;
+
+  prefixTh?: string;
+  firstNameTh: string;
+  lastNameTh: string;
+  prefixEn?: string;
+  firstNameEn?: string;
+  lastNameEn?: string;
+  firstName: string; // Deprecated or mapped?
+  lastName: string; // Deprecated or mapped?
   nickname?: string;
   birthDate?: Date | null;
   gender?: string;
   maritalStatus?: string;
+  passportNo?: string;
   address?: string;
+  emailPersonal?: string;
+  emailCompany?: string;
   mobile?: string;
   lineId?: string;
   companyId: string;

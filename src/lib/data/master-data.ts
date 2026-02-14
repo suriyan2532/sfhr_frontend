@@ -4,27 +4,27 @@
 
 import * as organizationService from "@/lib/api/services/organization.service";
 
-export async function getDepartments() {
-  const result = await organizationService.getDepartments();
+export async function getDepartments(token?: string) {
+  const result = await organizationService.getDepartments({}, token);
   return result.departments;
 }
 
-export async function getPositions() {
-  const result = await organizationService.getPositions();
+export async function getPositions(token?: string) {
+  const result = await organizationService.getPositions({}, token);
   return result.positions;
 }
 
-export async function getCompanies() {
-  const result = await organizationService.getCompanies();
+export async function getCompanies(token?: string) {
+  const result = await organizationService.getCompanies({}, token);
   return result.companies;
 }
 
-export async function getUnits() {
-  const result = await organizationService.getUnits();
+export async function getUnits(token?: string) {
+  const result = await organizationService.getUnits({}, token);
   return result.units;
 }
 
-export async function getWorkingShifts() {
+export async function getWorkingShifts(_token?: string) {
   // TODO: Add WorkingShift to API types and backend
   return [];
 }

@@ -11,7 +11,7 @@ import {
 import { SelectOption } from "@/lib/api/types";
 import { SearchableSelect } from "@/components/ui/searchable-select";
 
-export function EmployeeFilters() {
+export function EmployeeFilters({ token }: { token?: string }) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -28,10 +28,10 @@ export function EmployeeFilters() {
 
   useEffect(() => {
     // Load initial options
-    getCompaniesForSelect().then(setCompanies);
-    getDepartmentsForSelect(companyId || undefined).then(setDepartments);
-    getPositionsForSelect(departmentId || undefined).then(setPositions);
-  }, [companyId, departmentId]);
+    getCompaniesForSelect(token).then(setCompanies);
+    getDepartmentsForSelect(companyId || undefined, token).then(setDepartments);
+    getPositionsForSelect(departmentId || undefined, token).then(setPositions);
+  }, [companyId, departmentId, token]);
 
   const updateFilters = (key: string, value: string) => {
     const params = new URLSearchParams(searchParams);
