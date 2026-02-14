@@ -41,6 +41,11 @@ export const API_ENDPOINTS = {
     delete: (id: string) => `${API_BASE_URL}/employees/${id}`,
   },
 
+  // Dashboard endpoints
+  dashboard: {
+    employee: `${API_BASE_URL}/dashboard/employee`,
+  },
+
   // Add more endpoints as needed
 };
 

@@ -8,15 +8,20 @@ export const authConfig = {
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
-      const isOnDashboard = nextUrl.pathname.startsWith("/dashboard"); // Example protected route
+      const isOnDashboard = nextUrl.pathname.includes("/dashboard");
+      const isOnAuth =
+        nextUrl.pathname.includes("/login") ||
+        nextUrl.pathname.includes("/register");
+
       if (isOnDashboard) {
         if (isLoggedIn) return true;
         return false; // Redirect unauthenticated users to login page
-      } else if (isLoggedIn) {
-        // Redirect to dashboard if trying to access login page while logged in
-        // Ideally this should be handled in the login page or middleware logic
-        // For now, let's keep it simple.
-        return true;
+      } else if (isLoggedIn && isOnAuth) {
+        // Redirect to dashboard if trying to access auth pages while logged in
+        const localeStub = nextUrl.pathname.split("/")[1];
+        const validLocales = ["en", "th"];
+        const locale = validLocales.includes(localeStub) ? localeStub : "th";
+        return Response.redirect(new URL(`/${locale}/dashboard`, nextUrl));
       }
       return true;
     },
