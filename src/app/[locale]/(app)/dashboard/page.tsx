@@ -1,25 +1,32 @@
 import { auth } from "@/auth";
 import {
+  getCompanyDashboardData,
   getDashboardSummary,
-  getEmployeeDashboardData,
 } from "@/lib/actions/dashboard-actions";
 import { DashboardOverview } from "@/components/dashboard/DashboardOverview";
-import { EmployeeDashboard } from "@/components/dashboard/EmployeeDashboard";
+import { redirect } from "@/navigation";
 
 export default async function DashboardPage() {
   const session = await auth();
+  const role = session?.user?.role;
+  console.log("Dashboard Redirect Logic - Role:", role);
 
-  // Check if user is an Employee (and not Admin/HR who might want the overview)
-  // Adjust this logic if Admins also want to see their own employee dashboard
-  if (session?.user?.role === "EMPLOYEE" || session?.user?.role === "MANAGER") {
-    const employeeData = await getEmployeeDashboardData();
-    // Fallback to overview if fetch fails or data is null, or handle error
-    if (employeeData) {
-      return <EmployeeDashboard data={employeeData} />;
-    }
+  // 1. Employee -> Profile Dashboard
+  if (role === "EMPLOYEE") {
+    redirect({ href: "/profile-dashboard", locale: "th" }); // Defaulting locale, but ideally preserve
   }
 
-  const summaryData = await getDashboardSummary();
+  // 2. Manager -> Manager Dashboard
+  if (role === "MANAGER") {
+    redirect({ href: "/manager-dashboard", locale: "th" });
+  }
 
-  return <DashboardOverview data={summaryData} />;
+  // 3. Company Dashboard (HR, ADMIN, SUPER_ADMIN)
+  let companyData = await getCompanyDashboardData();
+
+  if (!companyData) {
+    companyData = await getDashboardSummary();
+  }
+
+  return <DashboardOverview data={companyData} />;
 }

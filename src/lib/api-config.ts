@@ -44,6 +44,8 @@ export const API_ENDPOINTS = {
   // Dashboard endpoints
   dashboard: {
     employee: `${API_BASE_URL}/dashboard/employee`,
+    manager: `${API_BASE_URL}/dashboard/manager`,
+    company: `${API_BASE_URL}/dashboard/company`,
   },
 
   // Add more endpoints as needed

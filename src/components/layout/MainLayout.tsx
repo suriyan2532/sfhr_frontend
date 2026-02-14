@@ -36,7 +36,11 @@ export function MainLayout({ children, user }: MainLayoutProps) {
           Assuming User wants the MAIN CONTENT area to accept the Glass Forms.
       */}
       <div className="relative z-10 flex w-full h-full">
-        <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+        <Sidebar
+          isOpen={sidebarOpen}
+          onClose={() => setSidebarOpen(false)}
+          user={user}
+        />
 
         <div className="flex-1 flex flex-col min-w-0 overflow-hidden bg-white/60 dark:bg-zinc-800/50 backdrop-blur-3xl m-2 rounded-3xl border border-white/60 dark:border-white/10 shadow-xl dark:shadow-2xl transition-all duration-300">
           <Header onMenuClick={() => setSidebarOpen(true)} user={user} />

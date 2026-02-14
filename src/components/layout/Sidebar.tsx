@@ -17,15 +17,25 @@ import { useTranslations } from "next-intl";
 export function Sidebar({
   isOpen,
   onClose,
+  user,
 }: {
   isOpen: boolean;
   onClose: () => void;
+  user?: { role?: string };
 }) {
   const pathname = usePathname();
   const t = useTranslations("Sidebar");
 
+  // Determine Dashboard Link based on Role
+  let dashboardHref = "/dashboard";
+  if (user?.role === "EMPLOYEE") {
+    dashboardHref = "/profile-dashboard";
+  } else if (user?.role === "MANAGER") {
+    dashboardHref = "/manager-dashboard";
+  }
+
   const navigation = [
-    { name: t("dashboard"), href: "/dashboard", icon: LayoutDashboard },
+    { name: t("dashboard"), href: dashboardHref, icon: LayoutDashboard },
     { name: t("employeeManagement"), href: "/employees", icon: Users },
     { name: t("organization"), href: "/organization", icon: Building2 },
     { name: t("chainOfCommand"), href: "/chain-of-command", icon: GitGraph },

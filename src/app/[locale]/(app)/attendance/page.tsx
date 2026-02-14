@@ -6,7 +6,7 @@ import { AttendanceCalendar } from "@/components/attendance/AttendanceCalendar";
 import { AttendanceViewToggle } from "@/components/attendance/AttendanceViewToggle";
 import { useState, useEffect } from "react";
 import {
-  getAttendanceData,
+  getAttendanceRecords,
   getMyEmployeeId,
 } from "@/lib/actions/attendance-actions";
 
@@ -47,11 +47,7 @@ export default function AttendancePage() {
   useEffect(() => {
     async function fetchData() {
       setLoading(true);
-      const data = await getAttendanceData(
-        month,
-        year,
-        view === "self" ? myEmployeeId || "none" : undefined,
-      );
+      const data = await getAttendanceRecords();
       setRecords(data);
       setLoading(false);
     }

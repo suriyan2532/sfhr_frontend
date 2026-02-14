@@ -18,3 +18,7 @@ export async function checkOut() {
 export async function getTodayAttendance() {
   return [];
 }
+
+export async function getMyEmployeeId() {
+  return null;
+}
