@@ -20,7 +20,12 @@ async function authenticateWithBackend(username: string, password: string) {
     }
 
     const data = await response.json();
-    return data;
+
+    if (data.Success && data.Data) {
+      return data.Data;
+    }
+
+    return null;
   } catch (error) {
     console.error("Failed to authenticate with backend:", error);
     return null;
@@ -47,7 +52,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
               username: user.username || username,
               name: user.name || user.fullName || username,
               email: user.email || `${username}@safarihr.com`,
-              role: user.role || "USER",
+              role: user.roles || user.role || "EMPLOYEE",
               accessToken: user.accessToken || user.token, // Ensure we capture the token
             };
           }
