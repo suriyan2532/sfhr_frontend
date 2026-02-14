@@ -5,13 +5,27 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import * as employeeService from "@/lib/api/services/employee.service";
 import { APIError } from "@/lib/api/client";
+import { auth } from "@/auth";
 
-export async function getEmployees(query: string, currentPage: number = 1) {
+export async function getEmployees(
+  query: string,
+  currentPage: number = 1,
+  companyId?: string,
+  departmentId?: string,
+  positionId?: string,
+) {
   try {
+    const session = await auth();
+    const token = session?.user?.accessToken;
+
     const result = await employeeService.getEmployees({
       query,
       page: currentPage,
       pageSize: 10,
+      token,
+      companyId,
+      departmentId,
+      positionId,
     });
 
     return {
@@ -50,7 +64,9 @@ export async function createEmployee(formData: FormData) {
   const { data } = validatedFields;
 
   try {
-    await employeeService.createEmployee(data);
+    const session = await auth();
+    const token = session?.user?.accessToken;
+    await employeeService.createEmployee(data, token);
   } catch (error) {
     console.error("API Error:", error);
     if (error instanceof APIError) {
@@ -69,7 +85,9 @@ export async function createEmployee(formData: FormData) {
 
 export async function deleteEmployee(id: string) {
   try {
-    await employeeService.deleteEmployee(id);
+    const session = await auth();
+    const token = session?.user?.accessToken;
+    await employeeService.deleteEmployee(id, token);
     revalidatePath("/employees");
     return { message: "Deleted Employee." };
   } catch (error) {

@@ -2,40 +2,60 @@ import { Plus } from "lucide-react";
 import { EmployeeTable } from "@/components/employees/EmployeeTable";
 import { getEmployees } from "@/lib/actions/employee-actions";
 import { Link } from "@/navigation";
+import { getTranslations } from "next-intl/server";
+import { EmployeeFilters } from "@/components/employees/EmployeeFilters";
 
 export default async function EmployeeListPage({
   searchParams,
 }: {
-  searchParams: Promise<{ query?: string; page?: string }>;
+  searchParams: Promise<{
+    query?: string;
+    page?: string;
+    companyId?: string;
+    departmentId?: string;
+    positionId?: string;
+  }>;
 }) {
+  const t = await getTranslations("EmployeeForm");
+  const tCommon = await getTranslations("Common");
   const params = await searchParams;
   const query = params.query || "";
   const currentPage = Number(params.page) || 1;
+  const companyId = params.companyId;
+  const departmentId = params.departmentId;
+  const positionId = params.positionId;
 
-  const { employees, totalPages } = await getEmployees(query, currentPage);
+  const { employees } = await getEmployees(
+    query,
+    currentPage,
+    companyId,
+    departmentId,
+    positionId,
+  );
 
   return (
     <div className="space-y-6">
       <div className="sm:flex sm:items-center sm:justify-between">
         <div>
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-            Employees
+            {t("title")}
           </h1>
           <p className="mt-2 text-sm text-gray-700 dark:text-gray-300">
-            A list of all employees including their name, title, department, and
-            role.
+            {t("subtitle")}
           </p>
         </div>
         <div className="mt-4 sm:mt-0">
           <Link
             href="/employees/create"
-            className="inline-flex items-center justify-center rounded-md border border-transparent bg-amber-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 sm:w-auto dark:bg-amber-500 dark:hover:bg-amber-600"
+            className="inline-flex items-center justify-center rounded-md border border-transparent bg-green-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 sm:w-auto dark:bg-green-500 dark:hover:bg-green-600"
           >
             <Plus className="-ml-1 mr-2 h-5 w-5" aria-hidden="true" />
-            Add Employee
+            {tCommon("addEmployee")}
           </Link>
         </div>
       </div>
+
+      <EmployeeFilters />
 
       {/* Search Bar could go here */}
 

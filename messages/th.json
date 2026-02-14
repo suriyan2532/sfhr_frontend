@@ -8,7 +8,8 @@
     "edit": "แก้ไข",
     "search": "ค้นหา...",
     "actions": "การดำเนินการ",
-    "selectOption": "เลือกรายการ",
+    "selectOption": "เลือกตัวเลือก",
+    "addEmployee": "เพิ่มพนักงาน",
     "optional": "ไม่บังคับ",
     "required": "จำเป็น",
     "yes": "ใช่",
@@ -242,6 +243,7 @@
       "requestLeave": "ยื่นใบขอลา",
       "employeeList": "รายชื่อพนักงาน",
       "attendance": "การลงเวลา",
+      "organization": "องค์กร",
       "settings": "ตั้งค่า"
     },
     "charts": {

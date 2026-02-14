@@ -9,6 +9,7 @@
     "search": "Search...",
     "actions": "Actions",
     "selectOption": "Select an option",
+    "addEmployee": "Add Employee",
     "optional": "Optional",
     "required": "Required",
     "yes": "Yes",
@@ -238,6 +239,7 @@
       "requestLeave": "Request Leave",
       "employeeList": "Employee List",
       "attendance": "Attendance",
+      "organization": "Organization",
       "settings": "Settings"
     },
     "charts": {
