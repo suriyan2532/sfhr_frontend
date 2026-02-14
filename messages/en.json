@@ -93,7 +93,15 @@
     "numericOnly": "Numbers only",
     "invalidEmail": "Invalid email",
     "passwordTooShort": "Password must be at least 6 characters",
-    "passwordMismatch": "Passwords do not match"
+    "passwordMismatch": "Passwords do not match",
+    "forgotPasswordSubtitle": "Recover your password",
+    "forgotPasswordDescription": "Enter your registered email address and we will send you a link to reset your password.",
+    "sendResetLink": "Send Reset Link",
+    "requestSent": "Request sent",
+    "checkEmail": "Please check your email.",
+    "checkYourEmail": "Check your email",
+    "emailSentDescription": "We have sent password reset instructions to your email.",
+    "requestFailed": "Request failed"
   },
   "EmployeeForm": {
     "title": "Employee Information",
