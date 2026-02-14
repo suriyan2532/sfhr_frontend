@@ -33,8 +33,6 @@ RUN npm run build
 FROM base AS runner
 WORKDIR /app
 
-# Install dependencies for Prisma
-RUN apk add --no-cache libc6-compat openssl
 
 ENV NODE_ENV production
 # Uncomment the following line in case you want to disable telemetry during runtime.
