@@ -4,7 +4,6 @@
 // This file has been temporarily stubbed out to remove Prisma dependency
 
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
 import * as organizationService from "@/lib/api/services/organization.service";
 
 // Companies
@@ -100,14 +99,17 @@ export async function getUnits() {
 }
 
 export async function createUnit(formData: FormData) {
+  console.log(formData);
   return { message: "Feature temporarily disabled" };
 }
 
 export async function updateUnit(id: string, formData: FormData) {
+  console.log(id, formData);
   return { message: "Feature temporarily disabled" };
 }
 
 export async function deleteUnit(id: string) {
+  console.log(id);
   revalidatePath("/organization");
 }
 
@@ -138,15 +140,21 @@ export async function getDepartments() {
   }
 }
 
-export async function createDepartment(formData: FormData) {
+export async function createDepartment(
+  _formData: FormData | null,
+  _id: string | null,
+) {
+  console.log(_formData, _id);
   return { message: "Feature temporarily disabled" };
 }
 
-export async function updateDepartment(id: string, formData: FormData) {
+export async function updateDepartment(_id: string, _formData: FormData) {
+  console.log(_id, _formData);
   return { message: "Feature temporarily disabled" };
 }
 
 export async function deleteDepartment(id: string) {
+  console.log(id);
   revalidatePath("/organization");
 }
 
@@ -177,14 +185,20 @@ export async function getPositions() {
   }
 }
 
-export async function createPosition(formData: FormData) {
+export async function createPosition(
+  _formData: FormData | null,
+  _id: string | null,
+) {
+  console.log(_formData, _id);
   return { message: "Feature temporarily disabled" };
 }
 
-export async function updatePosition(id: string, formData: FormData) {
+export async function updatePosition(_id: string, _formData: FormData) {
+  console.log(_id, _formData);
   return { message: "Feature temporarily disabled" };
 }
 
 export async function deletePosition(id: string) {
+  console.log(id);
   revalidatePath("/organization");
 }

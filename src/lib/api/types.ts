@@ -96,6 +96,11 @@ export interface Company {
   phone?: string;
   taxId?: string;
   parentId?: string;
+  parent?: Company | null;
+  _count?: {
+    departments: number;
+    employees: number;
+  };
   createdAt: string;
   updatedAt: string;
 }
