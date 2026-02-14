@@ -7,7 +7,8 @@ export async function getLeaveRequests() {
   return [];
 }
 
-export async function createLeaveRequest() {
+export async function createLeaveRequest(_formData: FormData) {
+  console.log(_formData);
   return { success: false, message: "Feature temporarily disabled" };
 }
 
