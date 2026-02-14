@@ -146,11 +146,8 @@ export async function getDepartments() {
   }
 }
 
-export async function createDepartment(
-  _formData: FormData | null,
-  _id: string | null,
-) {
-  console.log(_formData, _id);
+export async function createDepartment(_formData: FormData) {
+  console.log(_formData);
   return { message: "Feature temporarily disabled", errors: undefined };
 }
 
@@ -191,11 +188,8 @@ export async function getPositions() {
   }
 }
 
-export async function createPosition(
-  _formData: FormData | null,
-  _id: string | null,
-) {
-  console.log(_formData, _id);
+export async function createPosition(_formData: FormData) {
+  console.log(_formData);
   return { message: "Feature temporarily disabled", errors: undefined };
 }
 
