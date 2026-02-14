@@ -134,6 +134,16 @@ export interface Position {
   updatedAt: string;
 }
 
+export interface WorkingShift {
+  id: string;
+  name: string;
+  code?: string;
+  startTime: string;
+  endTime: string;
+  createdAt?: string;
+  updatedAt?: string;
+}
+
 // ============================================================================
 // Attendance Types
 // ============================================================================

@@ -7,6 +7,7 @@ import {
   Company,
   Unit,
   EmpStatus,
+  WorkingShift,
 } from "@/lib/api/types";
 import { Link } from "@/navigation";
 import { useForm } from "react-hook-form";
@@ -31,7 +32,7 @@ interface EmployeeFormProps {
   positions: Position[];
   companies: Company[];
   units: Unit[];
-  // workingShifts: WorkingShift[]; // TODO: Add to API types
+  workingShifts: WorkingShift[];
 }
 
 export function EmployeeForm({
