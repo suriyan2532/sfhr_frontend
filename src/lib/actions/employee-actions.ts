@@ -14,6 +14,10 @@ export async function getEmployees(
   companyId?: string,
   departmentId?: string,
   positionId?: string,
+  shiftId?: string,
+  employeeTypeId?: string,
+  workType?: string,
+  roleId?: string,
 ) {
   try {
     const session = await auth();
@@ -27,6 +31,10 @@ export async function getEmployees(
       companyId,
       departmentId,
       positionId,
+      shiftId,
+      employeeTypeId,
+      workType,
+      roleId,
     });
 
     return {

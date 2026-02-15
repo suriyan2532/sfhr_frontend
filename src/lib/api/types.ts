@@ -68,10 +68,25 @@ export interface Employee {
   positionIds?: string[];
   positions?: Position[];
   workingShiftId?: string | null;
+  shift?: WorkingShift;
   joinDate: Date;
   status: EmpStatus;
+  employeeTypeId?: number;
+  employeeType?: EmployeeType;
+  workType?: string; // FULL_TIME, PART_TIME
+  user?: User;
   createdAt?: Date;
   updatedAt?: Date;
+}
+
+export interface EmployeeType {
+  id: number;
+  code: string;
+  name: string;
+  nameTh?: string;
+  nameEn?: string;
+  description?: string;
+  isActive: boolean;
 }
 
 export interface CreateEmployeeData {

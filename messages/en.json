@@ -267,6 +267,10 @@
       "name": "Name",
       "idPosition": "ID / Position",
       "department": "Department",
+      "employeeType": "Type",
+      "shift": "Shift",
+      "role": "Role",
+      "contract": "Contract",
       "status": "Status",
       "actions": "Actions"
     }

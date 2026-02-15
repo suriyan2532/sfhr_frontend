@@ -74,6 +74,10 @@ export interface GetEmployeesParams {
   companyId?: string;
   departmentId?: string;
   positionId?: string;
+  shiftId?: string; // New
+  employeeTypeId?: string; // New
+  workType?: string; // New
+  roleId?: string; // New
 }
 
 export interface GetEmployeesResponse {

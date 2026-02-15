@@ -15,6 +15,10 @@ export default async function EmployeeListPage({
     companyId?: string;
     departmentId?: string;
     positionId?: string;
+    shift_id?: string;
+    employee_type_id?: string;
+    work_type?: string;
+    role_id?: string;
   }>;
 }) {
   const t = await getTranslations("EmployeeForm");
@@ -25,6 +29,10 @@ export default async function EmployeeListPage({
   const companyId = params.companyId;
   const departmentId = params.departmentId;
   const positionId = params.positionId;
+  const shiftId = params.shift_id;
+  const employeeTypeId = params.employee_type_id;
+  const workType = params.work_type;
+  const roleId = params.role_id;
   const session = await auth();
   const token = session?.user?.accessToken;
 
@@ -34,6 +42,10 @@ export default async function EmployeeListPage({
     companyId,
     departmentId,
     positionId,
+    shiftId,
+    employeeTypeId,
+    workType,
+    roleId,
   );
 
   return (

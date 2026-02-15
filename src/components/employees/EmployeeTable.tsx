@@ -36,6 +36,30 @@ export async function EmployeeTable({ employees }: EmployeeTableProps) {
             </th>
             <th
               scope="col"
+              className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider hidden md:table-cell"
+            >
+              {t("headers.employeeType")}
+            </th>
+            <th
+              scope="col"
+              className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider hidden lg:table-cell"
+            >
+              {t("headers.shift")}
+            </th>
+            <th
+              scope="col"
+              className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider hidden xl:table-cell"
+            >
+              {t("headers.role")}
+            </th>
+            <th
+              scope="col"
+              className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider hidden xl:table-cell"
+            >
+              {t("headers.contract")}
+            </th>
+            <th
+              scope="col"
               className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider"
             >
               {t("headers.status")}
@@ -80,6 +104,18 @@ export async function EmployeeTable({ employees }: EmployeeTableProps) {
                 <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400">
                   {employee.department?.name || "-"}
                 </span>
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap hidden md:table-cell text-sm text-gray-500 dark:text-gray-400">
+                {employee.employeeType?.name || "-"}
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap hidden lg:table-cell text-sm text-gray-500 dark:text-gray-400">
+                {employee.shift?.name || "-"}
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap hidden xl:table-cell text-sm text-gray-500 dark:text-gray-400">
+                {employee.user?.role || "-"}
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap hidden xl:table-cell text-sm text-gray-500 dark:text-gray-400">
+                {employee.workType || "-"}
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
                 {employee.status}

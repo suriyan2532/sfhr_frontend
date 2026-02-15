@@ -70,12 +70,21 @@ export async function fetchAPI<T>(
     const isJson = contentType?.includes("application/json");
 
     if (!response.ok) {
-      const errorData = isJson ? await response.json() : await response.text();
-      throw new APIError(
-        errorData?.message || `HTTP ${response.status}: ${response.statusText}`,
-        response.status,
-        errorData,
-      );
+      let errorData;
+      try {
+        errorData = isJson ? await response.json() : await response.text();
+      } catch (e) {
+        errorData = { message: "Failed to parse error response" };
+      }
+
+      const statusCode = response.status;
+      const statusText = response.statusText;
+      const message =
+        typeof errorData === "object" && errorData && "message" in errorData
+          ? (errorData as any).message
+          : `HTTP ${statusCode}: ${statusText}`;
+
+      throw new APIError(message, statusCode, errorData);
     }
 
     // Return parsed JSON or empty object for 204 No Content
